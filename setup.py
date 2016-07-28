@@ -25,6 +25,14 @@ if ".bash_profile" in cur_files:
 else:
     print "bash_profile not found."
 
+with open(os.path.expanduser("~/.bash_logout"), "a+") as bash_logout:
+    if "# cesiu" in bash_logout.read():
+        print "bash_logout already set up."
+    else:
+        with open("bash_logout", "r") as additions:
+            bash_logout.write(additions.read())
+        print "Set up bash_logout."
+
 with open(os.path.expanduser("~/.vimrc"), "rw+") as temp:
     vimrc = temp.read().strip()
     if "\" cesiu" in vimrc:

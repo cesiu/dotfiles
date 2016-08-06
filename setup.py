@@ -33,7 +33,7 @@ with open(os.path.expanduser("~/.bash_logout"), "a+") as bash_logout:
             bash_logout.write(additions.read())
         print "Set up bash_logout."
 
-with open(os.path.expanduser("~/.vimrc"), "rw+") as temp:
+with open(os.path.expanduser("~/.vimrc"), "r+") as temp:
     vimrc = temp.read().strip()
     if "\" cesiu" in vimrc:
         print "vimrc already set up."

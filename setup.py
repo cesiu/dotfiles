@@ -68,3 +68,10 @@ print "Created or overwrote monokai.vim."
 shutil.copy2("vim/plugin/cSyntaxAfter.vim", \
              os.path.expanduser("~/.vim/plugin/cSyntaxAfter.vim"))
 print "Created or overwrote cSyntaxAfter.vim"
+
+print "Done! Don't forget to install Syntastic, typically done with:\n" \
+      + "   mkdir -p ~/.vim/autoload ~/.vim/bundle && \\\n" \
+      + "   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim\n" \
+      + "Add \"execute pathogen#infect()\" to ~/.vimrc.\n" \
+      + "   cd ~/.vim/bundle && \\\n" \
+      + "   git clone --depth=1 https://github.com/scrooloose/syntastic.git"

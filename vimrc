@@ -35,3 +35,4 @@ colorscheme monokai
 :hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 autocmd Filetype c,java,python call CSyntaxAfter()
+autocmd Filetype make       setlocal noexpandtab

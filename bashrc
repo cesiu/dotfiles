@@ -10,4 +10,4 @@ alias starwars='telnet towel.blinkenlights.nl'
 alias untar='tar -zxvf'
 
 # load the old directory
-OLDPWD=$(cat .oldpwd)
+OLDPWD=$(cat ~/.oldpwd)

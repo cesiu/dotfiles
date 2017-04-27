@@ -2,6 +2,9 @@
 
 filetype on
 autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufRead *.txt set filetype=txt
+autocmd BufNewFile,BufRead *.pde set filetype=java
+autocmd BufNewFile,BufRead *.cu set filetype=c
 
 autocmd Filetype *          setlocal ts=3 sts=3 sw=3
 autocmd Filetype cpp        setlocal ts=3 sts=3 sw=3
@@ -16,23 +19,25 @@ autocmd Filetype c          setlocal ts=4 sts=4 sw=4
 autocmd Filetype sql        setlocal ts=2 sts=2 sw=2
 autocmd Filetype java       setlocal ts=3 sts=3 sw=3
 autocmd Filetype markdown   setlocal ts=4 sts=4 sw=4
-autocmd BufNewFile,BufReadPost *.pde set filetype=java ts=2 sts=2 sw=2
 
 filetype indent on
-
 syntax enable
-:set expandtab smarttab
-:set shiftwidth=4
-:set tabstop=4
+colorscheme monokai
+
+set expandtab smarttab
+set shiftwidth=4
+set tabstop=4
 set number
-:set ruler
-:set laststatus=2
+set ruler
+set laststatus=2
 set ai
 set si
-colorscheme monokai
-":set textwidth=80
-:set colorcolumn+=81
-:hi ColorColumn guibg=#2d2d2d ctermbg=246
+"set textwidth=80
+set scrolloff=1
+set cursorline
+set colorcolumn+=81
+hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 autocmd Filetype c,java,python call CSyntaxAfter()
 autocmd Filetype make       setlocal noexpandtab
+autocmd Filetype txt        setlocal spell spelllang=en_us

@@ -19,6 +19,7 @@ autocmd Filetype c          setlocal ts=4 sts=4 sw=4
 autocmd Filetype sql        setlocal ts=2 sts=2 sw=2
 autocmd Filetype java       setlocal ts=3 sts=3 sw=3
 autocmd Filetype markdown   setlocal ts=4 sts=4 sw=4
+autocmd Filetype tex        setlocal ts=2 sts=2 sw=2
 
 filetype indent on
 syntax enable

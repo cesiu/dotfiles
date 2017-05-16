@@ -39,7 +39,12 @@ set colorcolumn+=81
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 
 imap <C-w> <C-o><C-w>
+map <C-n> :NERDTreeToggle<CR>
+
+"autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 autocmd Filetype c,java,python call CSyntaxAfter()
 autocmd Filetype make       setlocal noexpandtab
 autocmd Filetype txt        setlocal spell spelllang=en_us
+autocmd Filetype txt        setlocal textwidth=80

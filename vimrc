@@ -5,6 +5,7 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.txt set filetype=txt
 autocmd BufNewFile,BufRead *.pde set filetype=java
 autocmd BufNewFile,BufRead *.cu set filetype=c
+autocmd BufNewFile,BufRead *.rkt set filetype=scheme
 
 autocmd Filetype *          setlocal ts=3 sts=3 sw=3
 autocmd Filetype cpp        setlocal ts=3 sts=3 sw=3

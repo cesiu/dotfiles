@@ -25,6 +25,7 @@ filetype indent on
 syntax enable
 colorscheme monokai
 
+set backspace=indent,eol,start
 set expandtab smarttab
 set shiftwidth=4
 set tabstop=4

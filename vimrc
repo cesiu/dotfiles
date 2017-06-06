@@ -44,10 +44,32 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 imap <C-w> <C-o><C-w>
 map <C-n> :NERDTreeToggle<CR>
 
-"autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 autocmd Filetype c,java,python call CSyntaxAfter()
 autocmd Filetype make       setlocal noexpandtab
 autocmd Filetype txt        setlocal spell spelllang=en_us
 autocmd Filetype txt        setlocal textwidth=80
+
+"execute pathogen#infect()
+
+"let g:ale_lint_on_text_changed = 'never'
+"let g:ale_lint_on_enter = 0
+
+"let g:airline_theme='silver'
+"if !exists('g:airline_symbols')
+"  let g:airline_symbols = {}
+"endif
+
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.whitespace = 'Ξ'

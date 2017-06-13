@@ -3,6 +3,7 @@
 # disable write
 mesg n
 
+alias ls = 'ls -h'
 alias ks='ls'
 alias l='ls'
 alias sl='ls'

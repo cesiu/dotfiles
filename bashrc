@@ -3,7 +3,7 @@
 # disable write
 mesg n
 
-alias ls = 'ls -h'
+alias ls = 'ls -h --color=auto'
 alias ks='ls'
 alias l='ls'
 alias sl='ls'

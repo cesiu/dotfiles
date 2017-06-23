@@ -56,11 +56,14 @@ autocmd Filetype txt        setlocal textwidth=80
 "let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_enter = 0
 
-"let g:airline_theme='silver'
+"let g:airline_theme='minimalist'
+"let g:airline_powerline_fonts=1
+
+" The following should be unnecessary given correct installation of powerline
+"  patched fonts:
 "if !exists('g:airline_symbols')
 "  let g:airline_symbols = {}
 "endif
-
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'
 "let g:airline_right_sep = '«'

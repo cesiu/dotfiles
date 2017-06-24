@@ -41,6 +41,7 @@ set cursorline
 set colorcolumn+=81
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 
+imap <Home> <C-o>^
 imap <C-w> <C-o><C-w>
 map <C-n> :NERDTreeToggle<CR>
 

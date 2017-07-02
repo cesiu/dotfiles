@@ -1,69 +1,89 @@
 " cesiu
 
-filetype on
-autocmd BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufNewFile,BufRead *.txt set filetype=txt
-autocmd BufNewFile,BufRead *.pde set filetype=java
+" Enable indentation and plugins dependent on filetype.
+filetype plugin indent on
+
+" Treat CUDA files as C files.
 autocmd BufNewFile,BufRead *.cu set filetype=c
+" Treat .md files as Markdown files.
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+" Treat Processing files as Java files.
+autocmd BufNewFile,BufRead *.pde set filetype=java
+" Treat Racket files as Scheme files.
 autocmd BufNewFile,BufRead *.rkt set filetype=scheme
+" Set a type for text files.
+autocmd BufNewFile,BufRead *.txt set filetype=txt
 
-autocmd Filetype *          setlocal ts=3 sts=3 sw=3
-autocmd Filetype cpp        setlocal ts=3 sts=3 sw=3
-autocmd Filetype css        setlocal ts=2 sts=2 sw=2
-autocmd Filetype idl        setlocal ts=2 sts=2 sw=2
-autocmd Filetype php        setlocal ts=2 sts=2 sw=2
-autocmd Filetype html       setlocal ts=2 sts=2 sw=2
-autocmd Filetype scss       setlocal ts=2 sts=2 sw=2
-autocmd Filetype python     setlocal ts=4 sts=4 sw=4
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype c          setlocal ts=4 sts=4 sw=4
-autocmd Filetype sql        setlocal ts=2 sts=2 sw=2
-autocmd Filetype java       setlocal ts=3 sts=3 sw=3
-autocmd Filetype markdown   setlocal ts=4 sts=4 sw=4
-autocmd Filetype tex        setlocal ts=2 sts=2 sw=2
-
-filetype indent on
-syntax enable
-colorscheme monokai
-
-set backspace=indent,eol,start
-set expandtab smarttab
+" Default indentation is four spaces.
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+" Expand tabs to spaces.
+set expandtab smarttab
+" Enable autoindenting and smartindenting...
+set autoindent smartindent
+" ...except with Python since it's not C-like and comments get messed up...
+autocmd FileType python setlocal nosmartindent indentexpr=GetPythonIndent(v:lnum)
+" ...and, of course, we need tabs in Makefiles.
+autocmd Filetype make setlocal noexpandtab
+
+" Use two-space indents for CSS, HTML, JavaScript. 
+autocmd FileType css setlocal ts=2 sts=2 sw=2
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+
+" Enable syntax highlighting.
+syntax enable
+" Use the Monokai color scheme: https://github.com/sickill/vim-monokai
+colorscheme monokai
+" Highlight operators: https://github.com/vim-scripts/cSyntaxAfter
+autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
+" Check spelling and wrap text in txt files.
+autocmd FileType txt setlocal spell spelllang=en_us textwidth=80
+
+" Allow backspacing over autoindents, newlines, and start of insert.
+set backspace=indent,eol,start
+" Allow switching split windows while in insert mode.
+imap <C-w> <C-o><C-w>
+" Remap the home key to mimic '^' instead of '0'.
+imap <Home> <C-o>^
+
+" Turn on line numbers.
 set number
+" (Redundant if using Airline) Show the cursor position.
 set ruler
+" Always show the statusline.
 set laststatus=2
-set ai
-set si
-"set textwidth=80
-set scrolloff=1
-set cursorline
+" Show a guide at 80 chars.
 set colorcolumn+=81
 hi ColorColumn guibg=#2d2d2d ctermbg=246
+" Highlight the current line.
+set cursorline
+" Always show one line beyond the cursor.
+set scrolloff=1
 
-imap <Home> <C-o>^
-imap <C-w> <C-o><C-w>
-map <C-n> :NERDTreeToggle<CR>
 
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-autocmd Filetype c,java,python call CSyntaxAfter()
-autocmd Filetype make       setlocal noexpandtab
-autocmd Filetype txt        setlocal spell spelllang=en_us
-autocmd Filetype txt        setlocal textwidth=80
-
+" Plugin settings:
 "execute pathogen#infect()
 
+" Use Ctrl+N to toggle NERDTree. 
+"map <C-n> :NERDTreeToggle<CR>
+" Exit NERDTree if it's the last open buffer.
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Don't check syntax until save.
 "let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_enter = 0
 
+" Use the Minimalist Airline theme.
 "let g:airline_theme='minimalist'
+" Use patched Powerline fonts for Airline.
 "let g:airline_powerline_fonts=1
 
 " The following should be unnecessary given correct installation of powerline
 "  patched fonts:
 "if !exists('g:airline_symbols')
-"  let g:airline_symbols = {}
+"    let g:airline_symbols = {}
 "endif
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'

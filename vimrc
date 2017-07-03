@@ -11,6 +11,8 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.pde set filetype=java
 " Treat Racket files as Scheme files.
 autocmd BufNewFile,BufRead *.rkt set filetype=scheme
+" Treat Cal Poly's special 'mybashrc' as a shell file.
+autocmd BufNewFile,BufRead .mybashrc set filetype=sh
 " Set a type for text files.
 autocmd BufNewFile,BufRead *.txt set filetype=txt
 

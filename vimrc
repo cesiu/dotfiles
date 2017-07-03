@@ -28,9 +28,7 @@ autocmd FileType python setlocal nosmartindent indentexpr=GetPythonIndent(v:lnum
 autocmd Filetype make setlocal noexpandtab
 
 " Use two-space indents for CSS, HTML, JavaScript. 
-autocmd FileType css setlocal ts=2 sts=2 sw=2
-autocmd FileType html setlocal ts=2 sts=2 sw=2
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
 
 " Enable syntax highlighting.
 syntax enable
@@ -38,8 +36,11 @@ syntax enable
 colorscheme monokai
 " Highlight operators: https://github.com/vim-scripts/cSyntaxAfter
 autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
-" Check spelling and wrap text in txt files.
-autocmd FileType txt setlocal spell spelllang=en_us textwidth=80
+" Check spelling in TeX, text, and Markdown files.
+autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
+" This wraps text in txt files, but realistically, I never end up using it,
+"  and it just ends up annoying me:
+"autocmd FileType txt setlocal textwidth=80
 
 " Allow backspacing over autoindents, newlines, and start of insert.
 set backspace=indent,eol,start

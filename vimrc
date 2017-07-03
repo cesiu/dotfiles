@@ -1,4 +1,4 @@
-" cesiu
+" Begin cesiu.
 
 " Enable indentation and plugins dependent on filetype.
 filetype plugin indent on
@@ -100,3 +100,5 @@ set scrolloff=1
 "let g:airline_symbols.paste = 'Þ'
 "let g:airline_symbols.paste = '∥'
 "let g:airline_symbols.whitespace = 'Ξ'
+
+" End cesiu.

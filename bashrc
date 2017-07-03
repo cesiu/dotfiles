@@ -14,7 +14,7 @@ elif command -v gls > /dev/null 2>&1; then
     alias ls='gls -h --color'
 # Otherwise, we're stuck with the macOS/BSD ls.
 else
-    export LSCOLORS=ExFxBxHxCxegedabagacad
+    export LSCOLORS=ExGxBxHxCxegedabagacad
     export CLICOLOR=1
     alias ls='ls -Gh'
 fi
@@ -33,7 +33,7 @@ alias latex='latex -output-format=pdf'
 # Don't really need this anymore; thanks Professor Khosmood.
 #alias untar='tar -zxvf'
 
-# A long time ago in a galaxy far, far away..."
+# A long time ago in a galaxy far, far away...
 alias starwars='telnet towel.blinkenlights.nl'
 
 # Load the old directory.

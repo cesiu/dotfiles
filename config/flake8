@@ -1,0 +1,4 @@
+[flake8]
+ignore = 
+    # E251: I like spaces around my equals signs.
+    E251

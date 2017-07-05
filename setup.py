@@ -16,10 +16,14 @@ _dotfiles = {".bash_profile": '#',
              ".config": None}
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.
 _home_dir = []       # A list of files already in the home directory.
-#
+# A list of miscellaneous programs to check the existence of, where each
+#  3-tuple is of the form, (<command>, <name>, <install command>).
 _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
+             ("pip", "pip", "echo \"placeholder\""),
+             ("pip3", "pip3", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),
+             ("gls", "GNU ls", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\"")]
 
 

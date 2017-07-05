@@ -25,10 +25,13 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),
              ("gls", "GNU ls", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\"")]
+# In the same form as above, the details for Vim.
+_vim_check = ("vim --version | head -n 1", "Vi IMproved 8",
+              "echo \"placeholder\"")
 
 
 def main(argv):
-    global _dotfiles, _is_calpoly, _home_dir, _to_check
+    global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check
 
     if setup() == 1:
         return 1
@@ -38,6 +41,7 @@ def main(argv):
             copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
 
     misc_checks(_to_check)
+    check_vim(*_vim_check)
 
 
 # Preps for copying by touching all necessary files.
@@ -161,6 +165,24 @@ def check_cmd(cmd, name, install_cmd):
             subprocess.call(install_cmd, shell = True)
     else:
         print("found.")
+
+
+# Checks the installation of Vim.
+# cmd - The command used to display Vim versioning information
+# name - The name and version of Vim to check for
+# install_cmd - The command to install Vim
+def check_vim(cmd, name, install_cmd):
+    print("Checking %s..." % name, end = '')
+    with open(".tmpdotfile", "w") as temp_file:
+        subprocess.call(cmd, stdout = temp_file,
+                        stderr = subprocess.STDOUT, shell = True)
+    with open(".tmpdotfile", "r") as temp_file:
+        # VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Jun 24 2017 12:45:56)
+        if name not in temp_file.read():
+            if input("not found or not version 8. Install? ") == 'y':
+                subprocess.call(install_cmd, shell = True)
+        else:
+            print("found.")
 
 
 if __name__ == "__main__":

@@ -177,12 +177,18 @@ def check_vim(cmd, name, install_cmd):
         subprocess.call(cmd, stdout = temp_file,
                         stderr = subprocess.STDOUT, shell = True)
     with open(".tmpdotfile", "r") as temp_file:
-        # VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Jun 24 2017 12:45:56)
         if name not in temp_file.read():
-            if input("not found or not version 8. Install? ") == 'y':
+            if input("not found or not up-to-date. Install? ") == 'y':
                 subprocess.call(install_cmd, shell = True)
         else:
             print("found.")
+
+    print("Checking vim-pathogen...", end = '')
+    if not os.path.isfile(os.path.expanduser("~/.vim/autoload/pathogen.vim")):
+        if input("not found. Install? ") == 'y':
+            pass
+    else:
+        print("found.")
 
 
 if __name__ == "__main__":

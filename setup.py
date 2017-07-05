@@ -23,7 +23,9 @@ def main(argv):
     if setup() == 1:
         return 1
 
-    copy_file("bash_logout", ".bash_logout", '#')
+    for dotfile in _dotfiles:
+        if _dotfiles[dotfile] is not None:
+            copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
 
 
 # Preps for copying by touching all necessary files.

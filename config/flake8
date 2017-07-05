@@ -1,6 +1,6 @@
 [flake8]
 ignore = 
-    # E251: I like spaces around my equals signs.
+    # I like spaces around my equals signs.
     E251,
-    # E127: I like my line continuations to line up.
-    E127
+    # I like my line continuations to line up.
+    E126, E127

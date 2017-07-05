@@ -51,6 +51,8 @@ def main(argv):
     for dotfile in _dotfiles:
         if _dotfiles[dotfile] is not None:
             copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
+        else:
+            overwrite_dir(dotfile[1:], dotfile)
 
     misc_checks(_to_check)
     check_vim(*_vim_check, _vim_plugins)
@@ -153,10 +155,36 @@ def copy_file(src, dest, delimiter):
 #       vary depending on environment.
 # src - The directory in the repo from which to copy
 # dest - The directory in the home directory to which to copy
-def copy_dir(src, dest):
-    for src_file in os.listdir(src):
-        shutil.copy2("%s/%s" % (src, src_file),
-                     os.path.expanduser("~/%s/%s" % (dest, src_file)))
+def overwrite_dir(src, dest):
+    for src_node in os.listdir(src):
+        print("Setting up ~/%s/%s..." % (dest, src_node), end = '')
+        if os.path.isdir("%s/%s" % (src, src_node)):
+            if os.path.isdir(os.path.expanduser("~/%s/%s" % (dest, src_node))):
+                if input("~/%s/%s already exists! Overwrite? " %
+                         (dest, src_node)) == 'y':
+                    print("Overwriting tree...", end = '')
+                    shutil.rmtree(os.path.expanduser("~/%s/%s"
+                                                     % (dest, src_node)))
+                else:
+                    print("Ignoring...")
+                    continue
+
+            shutil.copytree("%s/%s" % (src, src_node),
+                            os.path.expanduser("~/%s/%s"
+                                               % (dest, src_node)))
+        else:
+            if os.path.isfile(os.path.expanduser("~/%s/%s"
+                                                 % (dest, src_node))):
+                if input("~/%s/%s already exists! Overwrite? "
+                         % (dest, src_node)) == 'y':
+                    print("Overwriting file...", end = '')
+                else:
+                    print("Ignoring...")
+                    continue
+
+            shutil.copy2("%s/%s" % (src, src_node),
+                         os.path.expanduser("~/%s/%s" % (dest, src_node)))
+        print("done.")
 
 
 # Performs assorted checks for other stuff you should install.

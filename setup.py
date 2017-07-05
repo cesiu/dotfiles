@@ -5,6 +5,7 @@
 import os
 import sys
 import shutil
+import subprocess
 
 
 # A map of files to setup to their delimiters, None if they're files.
@@ -15,10 +16,15 @@ _dotfiles = {".bash_profile": '#',
              ".config": None}
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.
 _home_dir = []       # A list of files already in the home directory.
+#
+_to_check = [("brew", "Homebrew", "echo \"placeholder\""),
+             ("flake8", "flake8", "echo \"placeholder\""),
+             ("latex", "LaTeX", "echo \"placeholder\""),
+             ("dos2unix", "dos2unix", "echo \"placeholder\"")]
 
 
 def main(argv):
-    global _dotfiles, _is_calpoly, _home_dir
+    global _dotfiles, _is_calpoly, _home_dir, _to_check
 
     if setup() == 1:
         return 1
@@ -26,6 +32,8 @@ def main(argv):
     for dotfile in _dotfiles:
         if _dotfiles[dotfile] is not None:
             copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
+
+    misc_checks(_to_check)
 
 
 # Preps for copying by touching all necessary files.
@@ -117,6 +125,38 @@ def copy_file(src, dest, delimiter):
     # Now overwrite the dest file with the temp buffer.
     shutil.copy2(".tmpdotfile", os.path.expanduser("~/%s" % dest))
     print("done.")
+
+
+# Copies the contents of one directory (dotdir?).
+# NOTE: This does not check for existing contents; it just overwrites them!
+#       Generally, these are plugin or config files, not settings that might
+#       vary depending on environment.
+# src - The directory in the repo from which to copy
+# dest - The directory in the home directory to which to copy
+def copy_dir(src, dest):
+    for src_file in os.listdir(src):
+        shutil.copy2("%s/%s" % (src, src_file),
+                     os.path.expanduser("~/%s/%s" % (dest, src_file)))
+
+
+# Performs assorted checks for other stuff you should install.
+# to_check - A list of 3-tuples representing other programs to check
+def misc_checks(to_check):
+    for prog in to_check:
+        check_cmd(*prog)
+
+
+# Checks the existence of one program and installs it if necessary.
+# cmd - The command that would normally be used to run the program
+# name - The human-readable name of the program
+# install_cmd - The command that installs the program
+def check_cmd(cmd, name, install_cmd):
+    print("Checking %s..." % name, end = '')
+    if shutil.which(cmd) is None:
+        if input("not found. Install? ") == 'y':
+            subprocess.call(install_cmd, shell = True)
+    else:
+        print("found.")
 
 
 if __name__ == "__main__":

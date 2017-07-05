@@ -28,10 +28,22 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
 # In the same form as above, the details for Vim.
 _vim_check = ("vim --version | head -n 1", "Vi IMproved 8",
               "echo \"placeholder\"")
+# In the same form as above, plugins for Vim.
+_vim_plugins = [("~/.vim/autoload/pathogen.vim", "Vim Pathogen",
+                 "echo \"placeholder\""),
+                ("~/.vim/bundle/vim-airline", "Vim Airline",
+                 "echo \"placeholder\""),
+                ("~/.vim/bundle/vim-airline-themes", "Vim Airline Themes",
+                 "echo \"placeholder\""),
+                ("~/.vim/bundle/nerdtree", "Vim NERDTree",
+                 "echo \"placeholder\""),
+                ("~/.vim/bundle/ale", "Vim ALE",
+                 "echo \"placeholder\"")]
 
 
 def main(argv):
-    global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check
+    global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check,\
+           _vim_plugins
 
     if setup() == 1:
         return 1
@@ -41,7 +53,7 @@ def main(argv):
             copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
 
     misc_checks(_to_check)
-    check_vim(*_vim_check)
+    check_vim(*_vim_check, _vim_plugins)
 
 
 # Preps for copying by touching all necessary files.
@@ -169,9 +181,10 @@ def check_cmd(cmd, name, install_cmd):
 
 # Checks the installation of Vim.
 # cmd - The command used to display Vim versioning information
-# name - The name and version of Vim to check for
+# name - The name and version of Vim for which to check
 # install_cmd - The command to install Vim
-def check_vim(cmd, name, install_cmd):
+# vim_plugins - Vim plugins for which to check
+def check_vim(cmd, name, install_cmd, vim_plugins):
     print("Checking %s..." % name, end = '')
     with open(".tmpdotfile", "w") as temp_file:
         subprocess.call(cmd, stdout = temp_file,
@@ -183,10 +196,19 @@ def check_vim(cmd, name, install_cmd):
         else:
             print("found.")
 
-    print("Checking vim-pathogen...", end = '')
-    if not os.path.isfile(os.path.expanduser("~/.vim/autoload/pathogen.vim")):
+    for vim_plugin in vim_plugins:
+        check_vim_plugin(*vim_plugin)
+
+
+# Checks the existence of one vim plugin.
+# path - The path to the plugin
+# name - The name of the plugin
+# install_cmd - The command to install the plugin
+def check_vim_plugin(path, name, install_cmd):
+    print("Checking %s..." % name, end = '')
+    if not os.path.exists(os.path.expanduser(path)):
         if input("not found. Install? ") == 'y':
-            pass
+            subprocess.call(install_cmd, shell = True)
     else:
         print("found.")
 

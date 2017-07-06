@@ -64,6 +64,8 @@ hi ColorColumn guibg=#2d2d2d ctermbg=246
 set cursorline
 " Always show one line beyond the cursor.
 set scrolloff=1
+" Jump to the last known cursor position.
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 
 " Plugin settings:

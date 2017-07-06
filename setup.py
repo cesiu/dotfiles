@@ -65,7 +65,8 @@ def main(argv):
     check_vim(*_vim_check, _vim_plugins)
 
     # Clean up.
-    _log_out.close()
+    if len(argv) == 3 and argv[1] == "-l":
+        _log_out.close()
     print("\nDone! Don't forget to \"source ~/.bashrc\".")
     return 0
 

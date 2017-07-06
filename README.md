@@ -9,6 +9,8 @@ Copy `vimrc` to `~/.vimrc`, `vim/*` to `~/.vim/`, etc. Then `source ~/.bashrc`.
 
 Other stuff you should then install (assuming macOS):
 * Homebrew
+* GDB
+* Valgrind
 * python, python3, pip, and pip3
 * flake8
 * LaTeX

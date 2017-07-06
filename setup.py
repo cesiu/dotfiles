@@ -19,6 +19,8 @@ _home_dir = []       # A list of files already in the home directory.
 # A list of miscellaneous programs to check the existence of, where each
 #  3-tuple is of the form, (<command>, <name>, <install command>).
 _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
+             ("gdb", "GNU Debugger", "echo \"placeholder\""),
+             ("valgrind", "Valgrind", "echo \"placeholder\""),
              ("pip", "pip", "echo \"placeholder\""),
              ("pip3", "pip3", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),

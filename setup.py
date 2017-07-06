@@ -45,18 +45,25 @@ def main(argv):
     global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check,\
            _vim_plugins
 
+    # Perform setup.
     if setup() == 1:
         return 1
 
+    # Copy or update dotfiles.
     for dotfile in _dotfiles:
         if _dotfiles[dotfile] is not None:
             copy_file(dotfile[1:], dotfile, _dotfiles[dotfile])
         else:
             overwrite_dir(dotfile[1:], dotfile)
 
+    # Perform utility checks.
     misc_checks(_to_check)
+
+    # Check the Vim install.
     check_vim(*_vim_check, _vim_plugins)
 
+    print("\nDone! Don't forget to \"source ~/.bashrc\".")
+    return 0
 
 # Preps for copying by touching all necessary files.
 # Returns 1 if there was an exception on file creation, 0 otherwise.
@@ -156,9 +163,14 @@ def copy_file(src, dest, delimiter):
 # src - The directory in the repo from which to copy
 # dest - The directory in the home directory to which to copy
 def overwrite_dir(src, dest):
+    # The first level is already properly setup per the setup function, so, for
+    #  every node a level down, do...
     for src_node in os.listdir(src):
         print("Setting up ~/%s/%s..." % (dest, src_node), end = '')
+        # If it's a directory, then...
         if os.path.isdir("%s/%s" % (src, src_node)):
+            # If it already exists, double check with the user -- rmtree is
+            #  irreversible!
             if os.path.isdir(os.path.expanduser("~/%s/%s" % (dest, src_node))):
                 if input("~/%s/%s already exists! Overwrite? " %
                          (dest, src_node)) == 'y':
@@ -169,10 +181,13 @@ def overwrite_dir(src, dest):
                     print("Ignoring...")
                     continue
 
+            # Copy the entire tree.
             shutil.copytree("%s/%s" % (src, src_node),
                             os.path.expanduser("~/%s/%s"
                                                % (dest, src_node)))
+        # Else (it's not a directory)...
         else:
+            # Again, if it already exists, double check with the user.
             if os.path.isfile(os.path.expanduser("~/%s/%s"
                                                  % (dest, src_node))):
                 if input("~/%s/%s already exists! Overwrite? "
@@ -182,6 +197,7 @@ def overwrite_dir(src, dest):
                     print("Ignoring...")
                     continue
 
+            # Copy the file.
             shutil.copy2("%s/%s" % (src, src_node),
                          os.path.expanduser("~/%s/%s" % (dest, src_node)))
         print("done.")

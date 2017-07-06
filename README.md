@@ -24,3 +24,9 @@ If you don't have permission or for some other reason can't install Vim 8, ALE
 won't work. Syntastic's an option, but in my experience, if you don't have that
 permission, you're on someone else's server, which is going to be slow enough
 that you don't want syntax checking in Vim.
+
+### About `Monokai.terminal`: ###
+This is a config file for macOS's built-in Terminal. It gives you nice colors
+stolen from the Monokai color scheme. If you install Vim Airline with the
+Powerline patched fonts, you need to install this config, set it as default,
+_and_ change the font to one of the patched fonts.

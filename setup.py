@@ -128,7 +128,7 @@ def check_dotfiles(dotfiles, home_dir):
         # If a file does not exist, then...
         if dotfile not in home_dir:
             # Attempt to create the file.
-            print("does not exist. Creating..." % dotfile, end = '')
+            print("does not exist. Creating...", end = '')
             try:
                 if dotfiles[dotfile] is None:
                     os.mkdir(os.path.expanduser("~/%s" % dotfile),

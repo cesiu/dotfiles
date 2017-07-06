@@ -49,8 +49,8 @@ def main(argv):
     global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check,\
            _vim_plugins, _log_out
 
-    # Perform setup.
-    if setup(argv) == 1:
+    # Check args and perform setup.
+    if check_args(argv) == 1 or setup() == 1:
         return 1
 
     # Copy or update dotfiles.
@@ -73,19 +73,36 @@ def main(argv):
     return 0
 
 
-# Preps for copying by touching all necessary files.
+# Checks command line arguments and sets globals appropriately.
 # argv - The command line arguments
-# Returns 1 if there was an exception on file creation, 0 otherwise.
-def setup(argv):
-    global _dotfiles, _is_calpoly, _home_dir, _log_out
+def check_args(argv):
+    global _dotfiles, _log_out
+    last_opt = ""
 
-    # Set the output log file if necessary.
-    if len(argv) > 1:
-        if argv[1] != "-l" or len(argv) != 3:
-            sys.stderr.write("Usage: python3 setup.py [-l <logfile>]\n")
-            return 1
-        else:
-            _log_out = open(argv[2], "a")
+    for arg in argv[1:]:
+        if arg[0] == '-':
+            if arg == '-h' or arg == '--help':
+                print_usage()
+                return 1
+            else:
+                last_opt = arg
+        elif last_opt == "-l" or last_opt == "--logfile":
+            _log_out = open(arg, "a")
+        elif last_opt == "-e" or last_opt == "--exclude":
+            if arg in _dotfiles:
+                _dotfiles.pop(arg)
+
+
+# Prints usage help.
+# msg - An optional error message.
+def print_usage(msg = ""):
+    sys.stderr.write("%sUsage: python3 setup.py [options]\n" % msg)
+
+
+# Preps for copying by touching all necessary files.
+# Returns 1 if there was an exception on file creation, 0 otherwise.
+def setup():
+    global _dotfiles, _is_calpoly, _home_dir
 
     # Get the files that are already in the home directory.
     _home_dir = os.listdir(os.path.expanduser("~"))

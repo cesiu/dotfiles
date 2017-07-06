@@ -39,14 +39,16 @@ _vim_plugins = [("~/.vim/autoload/pathogen.vim", "Vim Pathogen",
                  "echo \"placeholder\""),
                 ("~/.vim/bundle/ale", "Vim ALE",
                  "echo \"placeholder\"")]
+# The output file for subprocess calls.
+_log_out = sys.stdout
 
 
 def main(argv):
     global _dotfiles, _is_calpoly, _home_dir, _to_check, _vim_check,\
-           _vim_plugins
+           _vim_plugins, _log_out
 
     # Perform setup.
-    if setup() == 1:
+    if setup(argv) == 1:
         return 1
 
     # Copy or update dotfiles.
@@ -62,13 +64,25 @@ def main(argv):
     # Check the Vim install.
     check_vim(*_vim_check, _vim_plugins)
 
+    # Clean up.
+    _log_out.close()
     print("\nDone! Don't forget to \"source ~/.bashrc\".")
     return 0
 
+
 # Preps for copying by touching all necessary files.
+# argv - The command line arguments
 # Returns 1 if there was an exception on file creation, 0 otherwise.
-def setup():
-    global _dotfiles, _is_calpoly, _home_dir
+def setup(argv):
+    global _dotfiles, _is_calpoly, _home_dir, _log_out
+
+    # Set the output log file if necessary.
+    if len(argv) > 1:
+        if argv[1] != "-l" or len(argv) != 3:
+            sys.stderr.write("Usage: python3 setup.py [-l <logfile>]\n")
+            return 1
+        else:
+            _log_out = open(argv[2], "a")
 
     # Get the files that are already in the home directory.
     _home_dir = os.listdir(os.path.expanduser("~"))
@@ -215,10 +229,13 @@ def misc_checks(to_check):
 # name - The human-readable name of the program
 # install_cmd - The command that installs the program
 def check_cmd(cmd, name, install_cmd):
+    global _log_out
+
     print("Checking %s..." % name, end = '')
     if shutil.which(cmd) is None:
         if input("not found. Install? ") == 'y':
-            subprocess.call(install_cmd, shell = True)
+            subprocess.call(install_cmd, stdout = _log_out,
+                            stderr = subprocess.STDOUT, shell = True)
     else:
         print("found.")
 
@@ -236,7 +253,8 @@ def check_vim(cmd, name, install_cmd, vim_plugins):
     with open(".tmpdotfile", "r") as temp_file:
         if name not in temp_file.read():
             if input("not found or not up-to-date. Install? ") == 'y':
-                subprocess.call(install_cmd, shell = True)
+                subprocess.call(install_cmd, stdout = _log_out,
+                                stderr = subprocess.STDOUT, shell = True)
         else:
             print("found.")
 
@@ -252,7 +270,8 @@ def check_vim_plugin(path, name, install_cmd):
     print("Checking %s..." % name, end = '')
     if not os.path.exists(os.path.expanduser(path)):
         if input("not found. Install? ") == 'y':
-            subprocess.call(install_cmd, shell = True)
+            subprocess.call(install_cmd, stdout = _log_out,
+                            stderr = subprocess.STDOUT, shell = True)
     else:
         print("found.")
 

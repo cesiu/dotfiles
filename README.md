@@ -21,6 +21,7 @@ Other stuff you should then install (assuming macOS):
 * Vim NERDTree
 * coreutils
 * dos2unix
+* tree
 
 If you don't have permission or for some other reason can't install Vim 8, ALE
 won't work. Syntastic's an option, but in my experience, if you don't have that

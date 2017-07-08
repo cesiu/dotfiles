@@ -65,7 +65,7 @@ def main(argv):
     misc_checks(_to_check)
 
     # Check the Vim install.
-    check_vim(*_vim_check, vim_plugins =  _vim_plugins)
+    check_vim(*_vim_check, vim_plugins = _vim_plugins)
 
     # Clean up.
     if len(argv) == 3 and argv[1] == "-l":

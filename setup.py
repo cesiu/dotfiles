@@ -135,8 +135,9 @@ def check_dotfiles(dotfiles, home_dir):
                     os.mkdir(os.path.expanduser("~/%s" % dotfile),
                              mode = 0o700)
                 else:
-                    open(os.path.expanduser("~/%s" % dotfile, "x")).close()
-            except:
+                    open(os.path.expanduser("~/%s" % dotfile), "x").close()
+            except Exception as e:
+                print(e)
                 return 1
             print("done.")
         else:

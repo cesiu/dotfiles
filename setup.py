@@ -26,6 +26,7 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),
              ("gls", "GNU ls", "echo \"placeholder\""),
+             ("colordiff", "colordiff", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\""),
              ("tree", "tree", "echo \"placeholder\"")]
 # In the same form as above, the details for Vim.

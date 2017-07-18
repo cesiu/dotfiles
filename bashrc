@@ -31,6 +31,11 @@ alias sl='ls'
 # Color the output of grep, too.
 alias grep='grep --color'
 
+# ...and diff, if it exists.
+if command -v colordiff > /dev/null 2>&1; then
+    alias diff=colordiff
+fi
+
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n
 

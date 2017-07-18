@@ -31,9 +31,9 @@ alias sl='ls'
 # Color the output of grep, too.
 alias grep='grep --color'
 
-# ...and diff, if it exists.
+# ...and diff, if it exists. Also, display output in unified mode.
 if command -v colordiff > /dev/null 2>&1; then
-    alias diff=colordiff
+    alias diff='colordiff --unified=0'
 fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.

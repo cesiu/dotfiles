@@ -50,6 +50,8 @@ set backspace=indent,eol,start
 imap <C-w> <C-o><C-w>
 " Remap the home key to mimic '^' instead of '0'.
 imap <Home> <C-o>^
+" When was the last time you used Ctrl+P instead of 'k'?
+set pastetoggle=<C-p>
 
 " Turn on line numbers.
 set number

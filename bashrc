@@ -33,7 +33,7 @@ alias grep='grep --color'
 
 # ...and diff, if it exists. Also, display output in unified mode.
 if command -v colordiff > /dev/null 2>&1; then
-    alias diff='colordiff --unified=0'
+    alias diff='colordiff --unified=3'
 # Otherwise, use the sed workaround.
 else
     alias diff='$HOME/BashVimRCs/diff.sh'

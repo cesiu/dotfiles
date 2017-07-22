@@ -49,6 +49,8 @@ set spellfile=$HOME/BashVimRCs/spellfile.utf-8.add
 set backspace=indent,eol,start
 " Allow switching split windows while in insert mode.
 imap <C-w> <C-o><C-w>
+" I always forgot that this isn't a thing.
+cnoreabbrev hsplit split
 " Remap the home key to mimic '^' instead of '0'.
 imap <Home> <C-o>^
 " When was the last time you used Ctrl+P instead of 'k'?

@@ -45,6 +45,11 @@ mesg n
 # LaTeX should target PDFs.
 alias latex='latex -output-format=pdf'
 
+# Add autocomplete for git.
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
 # Don't really need this anymore; thanks Professor Khosmood.
 #alias untar='tar -zxvf'
 

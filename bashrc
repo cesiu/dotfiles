@@ -39,11 +39,13 @@ else
     alias diff='$HOME/BashVimRCs/diff.sh'
 fi
 
+# Strip trailing slashes from cp args; BSD cp will copy directory contents.
+function cp {
+    /bin/cp ${@%/};
+}
+
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n
-
-# LaTeX should target PDFs.
-alias latex='latex -output-format=pdf'
 
 # Add autocomplete for git.
 if [ -f ~/.git-completion.bash ]; then
@@ -52,6 +54,9 @@ fi
 
 # Don't really need this anymore; thanks Professor Khosmood.
 #alias untar='tar -zxvf'
+
+# LaTeX should target PDFs.
+alias latex='latex -output-format=pdf'
 
 # A long time ago in a galaxy far, far away...
 alias starwars='telnet towel.blinkenlights.nl'

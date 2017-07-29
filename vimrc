@@ -67,6 +67,8 @@ set colorcolumn+=81
 hi ColorColumn guibg=#2d2d2d ctermbg=246
 " Highlight the current line.
 set cursorline
+" ...that's studidly laggy. Mitigate it.
+set lazyredraw
 " Always show one line beyond the cursor.
 set scrolloff=1
 " Jump to the last known cursor position.

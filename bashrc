@@ -36,7 +36,7 @@ if command -v colordiff > /dev/null 2>&1; then
     alias diff='colordiff --unified=3'
 # Otherwise, use the sed workaround.
 else
-    alias diff='$HOME/BashVimRCs/diff.sh'
+    alias diff='$HOME/dotfiles/diff.sh'
 fi
 
 # Strip trailing slashes from cp args; BSD cp will copy directory contents.

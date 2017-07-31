@@ -1,0 +1,8 @@
+# Begin cesiu.
+
+# Send a null packet every five minutes to keep the connection alive.
+ServerAliveInterval 300
+# Send at most five such packets before giving up.
+ServerAliveCountMax 5
+
+# End cesiu.

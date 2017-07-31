@@ -13,9 +13,10 @@ _dotfiles = {".bash_profile": '#',
              ".bash_logout": '#',
              ".vim": None,
              ".vimrc": '"',
-             ".config": None}
+             ".config": None,
+             ".ssh/config": '#'}
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.
-_home_dir = []       # A list of files already in the home directory.
+_home_dir = ""       # The full path of the user's home directory.
 # A list of miscellaneous programs to check the existence of, where each
 #  3-tuple is of the form, (<command>, <name>, <install command>).
 _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
@@ -106,11 +107,11 @@ def print_usage(msg = ""):
 def setup():
     global _dotfiles, _is_calpoly, _home_dir
 
-    # Get the files that are already in the home directory.
-    _home_dir = os.listdir(os.path.expanduser("~"))
+    # Expand the home directory.
+    _home_dir = os.path.expanduser("~")
 
     # Determine if we need to target Cal Poly's special "mybashrc" file.
-    if ".mybashrc" in _home_dir:
+    if os.path.isfile("%s/.mybashrc" % _home_dir):
         _is_calpoly = True
         _dotfiles[".mybashrc"] = '#'
     else:
@@ -128,15 +129,20 @@ def check_dotfiles(dotfiles, home_dir):
     for dotfile in dotfiles:
         print("Checking ~/%s..." % dotfile, end = '')
         # If a file does not exist, then...
-        if dotfile not in home_dir:
+        if not os.path.exists("%s/%s" % (home_dir, dotfile)):
             # Attempt to create the file.
             print("does not exist. Creating...", end = '')
             try:
                 if dotfiles[dotfile] is None:
-                    os.mkdir(os.path.expanduser("~/%s" % dotfile),
-                             mode = 0o700)
+                    os.makedirs("%s/%s" % (home_dir,
+                                '/'.join(dotfile.split('/'))),
+                                mode = 0o700, exist_ok = True)
                 else:
-                    open(os.path.expanduser("~/%s" % dotfile), "x").close()
+                    if '/' in dotfile:
+                        os.makedirs("%s/%s" % (home_dir,
+                                    '/'.join(dotfile.split('/')[:-1])),
+                                    mode = 0o700, exist_ok = True)
+                    open("%s/%s" % (home_dir, dotfile), "x").close()
             except Exception as e:
                 print(e)
                 return 1

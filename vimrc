@@ -40,7 +40,7 @@ colorscheme monokai
 autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
-set spellfile=$HOME/BashVimRCs/spellfile.utf-8.add
+set spellfile=$HOME/dotfiles/spellfile.utf-8.add
 " This wraps text in txt files, but realistically, I never end up using it,
 "  and it just ends up annoying me:
 "autocmd FileType txt setlocal textwidth=80

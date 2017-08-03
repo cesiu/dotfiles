@@ -48,11 +48,18 @@ set spellfile=$HOME/dotfiles/spellfile.utf-8.add
 " Allow backspacing over autoindents, newlines, and start of insert.
 set backspace=indent,eol,start
 " Allow switching split windows while in insert mode.
-imap <C-w> <C-o><C-w>
+inoremap <C-w> <C-o><C-w>
 " I always forgot that this isn't a thing.
 cnoreabbrev hsplit split
 " Remap the home key to mimic '^' instead of '0'.
 imap <Home> <C-o>^
+" Apparently some other people don't keep their lines under 80 chars.
+noremap <Up> g<Up>
+inoremap <Up> <C-o>g<Up>
+noremap j gj
+noremap <Down> g<Down>
+inoremap <Down> <C-o>g<Down>
+noremap k gk
 " When was the last time you used Ctrl+P instead of 'k'?
 set pastetoggle=<C-p>
 

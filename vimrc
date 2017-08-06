@@ -81,6 +81,9 @@ set scrolloff=1
 " Jump to the last known cursor position.
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" Silence that infernal beeping!
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 " Plugin settings:
 "execute pathogen#infect()

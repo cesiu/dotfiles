@@ -52,11 +52,10 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
-# Don't really need this anymore; thanks Professor Khosmood.
-#alias untar='tar -zxvf'
-
-# LaTeX should target PDFs.
-alias latex='latex -output-format=pdf'
+# If LaTeX was installed, it should target PDFs.
+if [ -x "$(command -v latex)" ]; then
+    alias latex='latex -output-format=pdf'
+fi
 
 # If Leiningen was installed, set up a convenience alias for Clojure.
 if [ -x "$(command -v lein)" ]; then

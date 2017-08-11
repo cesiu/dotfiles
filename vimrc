@@ -41,6 +41,8 @@ autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
 set spellfile=$HOME/dotfiles/spellfile.utf-8.add
+" Underline misspellings instead of highlighting.
+hi SpellBad ctermbg=none cterm=underline,bold
 " This wraps text in txt files, but realistically, I never end up using it,
 "  and it just ends up annoying me:
 "autocmd FileType txt setlocal textwidth=80
@@ -96,6 +98,8 @@ autocmd GUIEnter * set visualbell t_vb=
 " Don't check syntax until save.
 "let g:ale_lint_on_text_changed = 'never'
 "let g:ale_lint_on_enter = 0
+" Underline ALE errors instead of highlighting.
+"hi ALEError ctermbg=none cterm=underline,bold
 
 " Use the Minimalist Airline theme.
 "let g:airline_theme='minimalist'

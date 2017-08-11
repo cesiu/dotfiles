@@ -14,7 +14,7 @@ export LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 if [ "$OSTYPE" == "linux-gnu" ] || [ "$OSTYPE" == "linux-gnueabihf" ]; then 
     alias ls='ls -h --color'
 # Otherwise, check for installation of coreutils ls.
-elif command -v gls > /dev/null 2>&1; then
+elif [ -x "$(command -v gls)" ]; then
     alias ls='gls -h --color'
 # Otherwise, we're stuck with the macOS/BSD ls.
 else
@@ -32,7 +32,7 @@ alias sl='ls'
 alias grep='grep --color'
 
 # ...and diff, if it exists. Also, display output in unified mode.
-if command -v colordiff > /dev/null 2>&1; then
+if [ -x "$(command -v colordiff)" ]; then
     alias diff='colordiff --unified=3'
 # Otherwise, use the sed workaround.
 else
@@ -57,6 +57,11 @@ fi
 
 # LaTeX should target PDFs.
 alias latex='latex -output-format=pdf'
+
+# If Leiningen was installed, set up a convenience alias for Clojure.
+if [ -x "$(command -v lein)" ]; then
+    alias clojure='java -cp ~/.m2/repository/org/clojure/clojure/*/clojure-*.jar clojure.main'
+fi
 
 # A long time ago in a galaxy far, far away...
 alias starwars='telnet towel.blinkenlights.nl'

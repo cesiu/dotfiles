@@ -59,7 +59,7 @@ fi
 
 # If Leiningen was installed, set up a convenience alias for Clojure.
 if [ -x "$(command -v lein)" ]; then
-    alias clojure='java -cp ~/.m2/repository/org/clojure/clojure/*/clojure-*.jar clojure.main'
+    alias clj='java -cp ~/.m2/repository/org/clojure/clojure/*/clojure-*.jar clojure.main'
 fi
 
 # A long time ago in a galaxy far, far away...

@@ -29,7 +29,7 @@ autocmd FileType python setlocal nosmartindent indentexpr=GetPythonIndent(v:lnum
 " ...and, of course, we need tabs in Makefiles.
 autocmd Filetype make setlocal noexpandtab
 
-" Use two-space indents for CSS, HTML, JavaScript. 
+" Use two-space indents for CSS, HTML, JavaScript.
 autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
 
 " Enable syntax highlighting.
@@ -73,7 +73,7 @@ set ruler
 set laststatus=2
 " Show a guide at 80 chars.
 set colorcolumn+=81
-hi ColorColumn guibg=#2d2d2d ctermbg=246
+hi ColorColumn guibg=#3a3a3a ctermbg=237
 " Highlight the current line.
 set cursorline
 " ...that's studidly laggy. Mitigate it.
@@ -90,7 +90,7 @@ autocmd GUIEnter * set visualbell t_vb=
 " Plugin settings:
 "execute pathogen#infect()
 
-" Use Ctrl+N to toggle NERDTree. 
+" Use Ctrl+N to toggle NERDTree.
 "map <C-n> :NERDTreeToggle<CR>
 " Exit NERDTree if it's the last open buffer.
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

@@ -62,6 +62,10 @@ hi Title ctermfg=231 ctermbg=NONE cterm=bold guifg=#f8f8f2 guibg=NONE gui=bold
 hi Todo ctermfg=184 ctermbg=NONE cterm=bold guifg=#d7d700 guibg=NONE gui=bold
 hi Type ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
+hi SpellBad ctermfg=208 ctermbg=NONE cterm=NONE guifg=#ff8700 guibg=NONE gui=NONE
+hi SpellCap ctermfg=222 ctermbg=NONE cterm=NONE guifg=#ff8700 guibg=NONE gui=NONE
+hi SpellLocal ctermfg=222 ctermbg=NONE cterm=NONE guifg=#ff8700 guibg=NONE gui=NONE
+hi SpellRare ctermfg=222 ctermbg=NONE cterm=NONE guifg=#ff8700 guibg=NONE gui=NONE
 hi rubyClass ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi rubyFunction ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
 hi rubyInterpolationDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE

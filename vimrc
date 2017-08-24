@@ -15,6 +15,8 @@ autocmd BufNewFile,BufRead *.rkt set filetype=scheme
 autocmd BufNewFile,BufRead .mybashrc set filetype=sh
 " Set a type for text files.
 autocmd BufNewFile,BufRead *.txt set filetype=txt
+" Set a type for Swift files.
+autocmd BufNewFile,BufRead *.swift set ft=swift
 
 " Default indentation is four spaces.
 set shiftwidth=4

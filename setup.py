@@ -22,7 +22,7 @@ _home_dir = ""       # The full path of the user's home directory.
 _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("gdb", "GNU Debugger", "echo \"placeholder\""),
              ("valgrind", "Valgrind", "echo \"placeholder\""),
-             ("pip", "pip", "echo \"placeholder\""),
+             ("pip2", "pip2", "echo \"placeholder\""),
              ("pip3", "pip3", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),

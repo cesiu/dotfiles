@@ -26,16 +26,15 @@ Other stuff you should then install (assuming macOS):
 * Leiningen (Clojure build manager)
 * Node.js
 
-If you don't have permission or for some other reason can't install Vim 8, ALE
-won't work. Syntastic's an option, but in my experience, if you don't have that
-permission, you're on someone else's server, which is going to be slow enough
-that you don't want syntax checking in Vim.
-
-Note that cycling colorschemes in Vim is known to be buggy. For this reason,
-cycling back to the default in the projector_mode plugin is disabled.
+### Caveats: ###
+* If you don't have permission or for some other reason can't install Vim 8,
+  ALE won't work. Syntastic's an option, but in my experience, if you don't
+  have that permission, you're on someone else's server, which is going to be
+  slow enough that you don't want syntax checking in Vim.
+* Cycling color schemes in Vim is known to be buggy. For this reason, cycling
+  back to the default in the projector_mode plugin is disabled.
 
 ### About `Monokai.terminal`: ###
 This is a config file for macOS's built-in Terminal. It gives you nice colors
-stolen from the Monokai color scheme. If you install Vim Airline with the
-Powerline patched fonts, you need to install this config, set it as default,
-_and_ change the font to one of the patched fonts.
+stolen from the Monokai color scheme. You may or may not need to install the
+Powerline patched fonts first. I don't remember.

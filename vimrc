@@ -37,7 +37,9 @@ autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
 " Enable syntax highlighting.
 syntax enable
 " Use the Monokai color scheme: https://github.com/sickill/vim-monokai
-colorscheme monokai
+let g:default_colorscheme='monokai'
+let g:projector_colorscheme='pencil'
+exec "color ". g:default_colorscheme
 " Highlight operators: https://github.com/vim-scripts/cSyntaxAfter
 autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
 " Check spelling in TeX, text, and Markdown files.
@@ -107,7 +109,9 @@ autocmd GUIEnter * set visualbell t_vb=
 "hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 
 " Use the Minimalist Airline theme.
-"let g:airline_theme='minimalist'
+"let g:airline_default_theme='minimalist'
+"let g:airline_projector_theme='sol'
+"let g:airline_theme=g:airline_default_theme
 " Use patched Powerline fonts for Airline.
 "let g:airline_powerline_fonts=1
 

@@ -1,6 +1,6 @@
 ### Normal installation: ###
 `python3 setup.py`
-Note that the script needs Python, and you should install Python through 
+Note that the script needs Python, and you should install Python through
 Homebrew (on macOS). This means the part of the script that checks for Homebrew
 is redundant. Oh well.
 
@@ -17,11 +17,12 @@ Other stuff you should then install (assuming macOS):
 * Vim 8
 * Vim Pathogen
 * Vim Airline, Airline Themes, and Powerline patched fonts
-* Vim ALE 
+* Vim ALE
 * Vim NERDTree
 * coreutils
 * dos2unix
 * tree
+* Bash completion for git
 * Leiningen (Clojure build manager)
 * Node.js
 

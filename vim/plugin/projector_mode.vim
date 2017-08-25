@@ -14,19 +14,21 @@
 " Thrown together by Adam Whittingham, 2013.
 " Licensed under the WTFPL 2.0 (Do What the Fuck You Want to Public License)
 
-let g:projector_scheme_name=''
+"let g:projector_scheme_name=''
 
 function! ToggleProjectorMode()
-  if (g:colors_name != g:projector_scheme_name)
+"  if (g:colors_name != g:projector_scheme_name)
     exec "color ". g:projector_colorscheme
-    let g:projector_scheme_name=g:colors_name
+"    let g:projector_scheme_name=g:colors_name
     let g:airline_theme=g:airline_projector_theme
     set background=light
-  else
-    exec "color ". g:default_colorscheme
-    let g:airline_theme=g:airline_default_theme
-    set background=dark
-  endif
+    set nospell
+    nohl
+"  else
+"    exec \"color \". g:default_colorscheme
+"    let g:airline_theme=g:airline_default_theme
+"    set background=dark
+"  endif
 endfunction
 
 command! Beam :call ToggleProjectorMode()

@@ -31,6 +31,9 @@ won't work. Syntastic's an option, but in my experience, if you don't have that
 permission, you're on someone else's server, which is going to be slow enough
 that you don't want syntax checking in Vim.
 
+Note that cycling colorschemes in Vim is known to be buggy. For this reason,
+cycling back to the default in the projector_mode plugin is disabled.
+
 ### About `Monokai.terminal`: ###
 This is a config file for macOS's built-in Terminal. It gives you nice colors
 stolen from the Monokai color scheme. If you install Vim Airline with the

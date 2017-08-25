@@ -84,6 +84,8 @@ hi ColorColumn guibg=#3a3a3a ctermbg=237
 set cursorline
 " ...that's studidly laggy. Mitigate it.
 set lazyredraw
+" Show partial wrapped lines at the end of the window.
+set display=lastline
 " Always show one line beyond the cursor.
 set scrolloff=1
 " Jump to the last known cursor position.

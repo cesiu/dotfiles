@@ -13,6 +13,7 @@ Other stuff you should then install (assuming macOS):
 * Valgrind
 * python, python3, pip, and pip3
 * flake8
+* Java (with cask)
 * LaTeX
 * Vim 8
 * Vim Pathogen
@@ -33,6 +34,9 @@ Other stuff you should then install (assuming macOS):
   slow enough that you don't want syntax checking in Vim.
 * Cycling color schemes in Vim is known to be buggy. For this reason, cycling
   back to the default in the projector_mode plugin is disabled.
+* Leiningen won't download the Clojure JAR until you run it once. After
+  installing it, you need to run `lein repl` once, otherwise the bashrc won't
+  find the JAR.
 
 ### About `Monokai.terminal`: ###
 This is a config file for macOS's built-in Terminal. It gives you nice colors

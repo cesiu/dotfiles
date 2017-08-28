@@ -1,0 +1,11 @@
+# Begin cesiu.
+
+# See here: https://github.com/sharelatex/chktex/blob/master/chktexrc
+
+Silent
+{
+    \pause
+    \footnotemark
+}
+
+# End cesiu.

@@ -14,7 +14,8 @@ _dotfiles = {".bash_profile": '#',
              ".vim": None,
              ".vimrc": '"',
              ".config": None,
-             ".ssh/config": '#'}
+             ".ssh/config": '#',
+             ".chktexrc": '#'}
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.
 _home_dir = ""       # The full path of the user's home directory.
 # A list of miscellaneous programs to check the existence of, where each
@@ -26,6 +27,7 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("pip3", "pip3", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),
+             ("chktex", "ChkTeX", "echo \"placeholder\""),
              ("gls", "GNU ls", "echo \"placeholder\""),
              ("colordiff", "colordiff", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\""),

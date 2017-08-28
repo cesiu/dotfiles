@@ -15,6 +15,7 @@ Other stuff you should then install (assuming macOS):
 * flake8
 * Java (with cask)
 * LaTeX
+* ChkTeX
 * Vim 8
 * Vim Pathogen
 * Vim Airline, Airline Themes, and Powerline patched fonts
@@ -42,3 +43,8 @@ Other stuff you should then install (assuming macOS):
 This is a config file for macOS's built-in Terminal. It gives you nice colors
 stolen from the Monokai color scheme. You may or may not need to install the
 Powerline patched fonts first. I don't remember.
+
+#### Stuff I need to check sometime: ####
+* ALE is running syntax checking on load? And not picking up flake8 configs?
+  Don't pull it for now.
+* Did ChkTeX get installed with MacTeX?

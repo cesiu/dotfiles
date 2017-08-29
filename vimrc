@@ -95,25 +95,26 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+
 " Plugin settings:
-"execute pathogen#infect()
+silent! execute pathogen#infect()
 
 " Use Ctrl+N to toggle NERDTree.
-"map <C-n> :NERDTreeToggle<CR>
+map <C-n> :silent! NERDTreeToggle<CR>
 " Exit NERDTree if it's the last open buffer.
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Don't check syntax until save.
-"let g:ale_lint_on_text_changed = 'never'
-"let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 " Underline ALE errors instead of highlighting.
-"hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
+hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 
 " Use the Minimalist Airline theme.
-"let g:airline_theme='minimalist'
-"let g:airline_projector_theme='sol'
+let g:airline_theme='minimalist'
+let g:airline_projector_theme='sol'
 " Use patched Powerline fonts for Airline.
-"let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
 
 " The following should be unnecessary given correct installation of powerline
 "  patched fonts:

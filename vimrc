@@ -78,7 +78,7 @@ set ruler
 " Always show the statusline.
 set laststatus=2
 " Show a guide at 80 chars.
-set colorcolumn+=81
+autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown" | set colorcolumn+=81
 " Highlight the current line.
 set cursorline
 " ...that's studidly laggy. Mitigate it.

@@ -79,7 +79,6 @@ set ruler
 set laststatus=2
 " Show a guide at 80 chars.
 set colorcolumn+=81
-hi ColorColumn guibg=#3a3a3a ctermbg=237
 " Highlight the current line.
 set cursorline
 " ...that's studidly laggy. Mitigate it.

@@ -73,8 +73,21 @@ set pastetoggle=<C-p>
 
 " Turn on line numbers.
 set number
+" Use relative line numbers while yanking and deleting.
+nnoremap y :set relativenumber<CR>y
+nnoremap d :set relativenumber<CR>d
+" Sometimes the naive solution is the safest solution.
+onoremap y y:set norelativenumber<CR>
+onoremap d d:set norelativenumber<CR>
+onoremap j j:set norelativenumber<CR>
+onoremap k k:set norelativenumber<CR>
+onoremap <Esc> <Esc>:set norelativenumber<CR>
+onoremap gg gg:set norelativenumber<CR>
+onoremap G G:set norelativenumber<CR>
 " (Redundant if using Airline) Show the cursor position.
 set ruler
+" Show the current command.
+set showcmd
 " Always show the statusline.
 set laststatus=2
 " Show a guide at 80 chars.

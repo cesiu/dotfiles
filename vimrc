@@ -81,9 +81,13 @@ onoremap y y:set norelativenumber<CR>
 onoremap d d:set norelativenumber<CR>
 onoremap j j:set norelativenumber<CR>
 onoremap k k:set norelativenumber<CR>
-onoremap <Esc> <Esc>:set norelativenumber<CR>
+onoremap w w:set norelativenumber<CR>
+onoremap b b:set norelativenumber<CR>
+onoremap $ $:set norelativenumber<CR>
+onoremap ^ ^:set norelativenumber<CR>
 onoremap gg gg:set norelativenumber<CR>
 onoremap G G:set norelativenumber<CR>
+onoremap <Esc> <Esc>:set norelativenumber<CR>
 " (Redundant if using Airline) Show the cursor position.
 set ruler
 " Show the current command.

@@ -44,6 +44,12 @@ This is a config file for macOS's built-in Terminal. It gives you nice colors
 stolen from the Monokai color scheme. You may or may not need to install the
 Powerline patched fonts first. I don't remember.
 
+### About `Pencil.terminal`: ###
+This is a high-contrast, light background color scheme for use on projectors. It matches the projector mode color scheme used by the custom `:Beam` command in vim.
+
+#### Even more stuff I forget to do: ####
+* macOS uses Ctrl+Arrow to switch spaces, so it uses Alt+Arrow to move by words in terminal. This is inane. Change it.
+
 #### Stuff I need to check sometime: ####
 * ALE is running syntax checking on load? And not picking up flake8 configs?
   Don't pull it for now.

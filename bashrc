@@ -43,6 +43,10 @@ fi
 function cp {
     /bin/cp ${@%/};
 }
+# BSD cat has different flags...
+if [ -x "$(command -v gcat)" ]; then
+    alias cat='gcat'
+fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n

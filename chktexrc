@@ -8,6 +8,8 @@ Silent
     \footnotemark
     \Input
     \Output
+    \EndIf
+    \EndFor
 }
 
 # End cesiu.

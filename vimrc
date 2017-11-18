@@ -79,8 +79,10 @@ nnoremap d :set relativenumber<CR>d
 " Sometimes the naive solution is the safest solution.
 onoremap y y:set norelativenumber<CR>
 onoremap d d:set norelativenumber<CR>
+onoremap h h:set norelativenumber<CR>
 onoremap j j:set norelativenumber<CR>
 onoremap k k:set norelativenumber<CR>
+onoremap l l:set norelativenumber<CR>
 onoremap w w:set norelativenumber<CR>
 onoremap b b:set norelativenumber<CR>
 onoremap $ $:set norelativenumber<CR>
@@ -106,6 +108,15 @@ set display=lastline
 set scrolloff=1
 " Jump to the last known cursor position.
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" Persist undo history across sessions.
+if has('persistent_undo')
+    let undo_dir = expand('$HOME/.vim/undo_dir')
+    if !isdirectory(undo_dir)
+        call mkdir(undo_dir, "", 0700)
+    endif
+    set undodir=$HOME/.vim/undo_dir
+    set undofile
+endif
 
 " Silence that infernal beeping!
 set noerrorbells visualbell t_vb=

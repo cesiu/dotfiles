@@ -47,6 +47,8 @@ _vim_plugins = [("~/.vim/autoload/pathogen.vim", "Vim Pathogen",
                 ("~/.vim/bundle/nerdtree", "Vim NERDTree",
                  "echo \"placeholder\""),
                 ("~/.vim/bundle/ale", "Vim ALE",
+                 "echo \"placeholder\""),
+                ("~/.vim/bundle/vim-gitgutter", "Vim gitgutter",
                  "echo \"placeholder\"")]
 # The output file for subprocess calls.
 _log_out = sys.stdout

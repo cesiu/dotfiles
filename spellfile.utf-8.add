@@ -75,3 +75,7 @@ runtime
 Def'n
 linearithmic
 multigraph
+undirected
+isomorphism
+subgraph
+acyclic

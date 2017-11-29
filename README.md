@@ -11,16 +11,18 @@ Other stuff you should then install (assuming macOS):
 * Homebrew
 * GDB
 * Valgrind
+* Cling (C++ REPL)
 * python, python3, pip, and pip3
 * flake8
-* Java (with cask)
-* LaTeX
+* Java (using cask)
+* LaTeX (from MacTeX)
 * ChkTeX
 * Vim 8
 * Vim Pathogen
 * Vim Airline, Airline Themes, and Powerline patched fonts
 * Vim ALE
 * Vim NERDTree
+* Vim gitgutter
 * coreutils
 * dos2unix
 * tree
@@ -49,6 +51,7 @@ This is a high-contrast, light background color scheme for use on projectors. It
 
 #### Even more stuff I forget to do: ####
 * macOS uses Ctrl+Arrow to switch spaces, so it uses Alt+Arrow to move by words in terminal. This is inane. Change it.
+* There are a bunch of cool quicklook plugins. Just Google them.
 
 #### Stuff I need to check sometime: ####
 * ALE is running syntax checking on load? And not picking up flake8 configs?

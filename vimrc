@@ -70,6 +70,8 @@ inoremap <Down> <C-o>g<Down>
 noremap k gk
 " When was the last time you used Ctrl+P instead of 'k'?
 set pastetoggle=<C-p>
+" Allow switching to visual block mode from insert mode.
+inoremap <C-v> <C-o><C-v>
 
 " Turn on line numbers.
 set number
@@ -130,6 +132,9 @@ silent! execute pathogen#infect()
 map <C-n> :silent! NERDTreeToggle<CR>
 " Exit NERDTree if it's the last open buffer.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Don't use any of the gitgutter mappings.
+let g:gitgutter_map_keys = 0
 
 " Don't check syntax until save.
 let g:ale_lint_on_text_changed = 'never'

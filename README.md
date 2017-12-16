@@ -49,6 +49,9 @@ Powerline patched fonts first. I don't remember.
 ### About `Pencil.terminal`: ###
 This is a high-contrast, light background color scheme for use on projectors. It matches the projector mode color scheme used by the custom `:Beam` command in vim.
 
+### About `sVimrc`: ###
+[sVim](https://github.com/flipxfx/sVim) is a Safari extension for vim keybindings.
+
 #### Even more stuff I forget to do: ####
 * macOS uses Ctrl+Arrow to switch spaces, so it uses Alt+Arrow to move by words in terminal. This is inane. Change it.
 * There are a bunch of cool quicklook plugins. Just Google them.

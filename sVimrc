@@ -1,0 +1,15 @@
+" Match laptop settings.
+let homeurl = "https://my.calpoly.edu/"
+let newtaburl = "https://my.calpoly.edu/"
+
+" Use undo/redo to navigate history...
+map "ctrl+r" goForward
+map "u" goBack
+
+" ...using H/J to navigate tabs...
+map "shift+h" previousTab
+map "shift+l" nextTab
+
+" ...freeing up J/K to be faster scrolling.
+map "shift+j" scrollPageDown
+map "shift+k" scrollPageUp

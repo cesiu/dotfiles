@@ -123,6 +123,9 @@ endif
 " Silence that infernal beeping!
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+" Use Bash-esque file completion.
+set wildmode=longest,full
+set wildmenu
 
 
 " Plugin settings:

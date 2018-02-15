@@ -104,3 +104,4 @@ globals
 falsey
 truthy
 deallocate
+decrement

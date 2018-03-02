@@ -4,6 +4,9 @@ Note that the script needs Python, and you should install Python through
 Homebrew (on macOS). This means the part of the script that checks for Homebrew
 is redundant. Oh well.
 
+* The `texmf` directory is in different places on different systems (I usually
+  only need it on macOS, in `~/Library`), so the script won't copy it.
+
 ### Manual installation: ###
 Copy `vimrc` to `~/.vimrc`, `vim/*` to `~/.vim/`, etc. Then `source ~/.bashrc`.
 

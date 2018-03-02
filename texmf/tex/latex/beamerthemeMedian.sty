@@ -1,0 +1,104 @@
+\usepackage{tikz, datetime, textpos}
+%\DeclareOption{beteckna}{
+%	\setsansfont[Ligatures=TeX, 
+%				 Extension=.ttf,
+%				 BoldFont=*Bold,
+%				 ItalicFont=*Italic
+%				 ]{BetecknaLowerCase}
+%}
+%\ProcessOptions
+%\yyyymmdddate \renewcommand{\dateseparator}{.}
+\usefonttheme[onlymath]{serif}
+
+% Cal Poly green
+\definecolor{MedianBrown}{RGB}{3,86,66}
+% Cal Poly green
+\definecolor{MedianLightBrown}{RGB}{3,86,66}
+% Cal Poly green
+\definecolor{MedianLightBlue}{RGB}{3,86,66}
+% Cal Poly bright gold
+\definecolor{MedianOrange}{RGB}{234,171,0}
+% Cal Poly ocher
+\definecolor{MedianLightOrange}{RGB}{202,155,74}
+% lighter Cal Poly buff
+\definecolor{MedianUltraLightOrange}{RGB}{245,242,228}
+
+\setbeamercolor*{title page header}{fg=white}
+\setbeamercolor*{title}{fg=MedianLightBrown}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{date}{fg=white}
+\setbeamercolor*{item}{fg=MedianOrange}
+\setbeamercolor*{frametitle}{fg=MedianBrown}
+\setbeamercolor*{block title}{fg=white, bg=MedianOrange}
+\setbeamercolor*{block title example}{fg=white, bg=MedianLightOrange}
+\setbeamercolor*{block body}{bg=MedianUltraLightOrange}
+\setbeamercolor*{block body example}{bg=MedianUltraLightOrange}
+\setbeamercolor*{section in toc}{fg=black}
+\setbeamercolor*{section page}{fg=white}
+
+\setbeamerfont{section page}{size=\LARGE}
+\setbeamerfont{title}{size=\LARGE}
+\setbeamerfont{author}{size=\Large}
+\setbeamerfont{date}{size=\Large}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[square]
+\setbeamertemplate{itemize item}{\tikz{\draw[color=MedianOrange, semithick] rectangle(.2,.2);}}
+\setbeamertemplate{itemize subitem}{\tikz{\draw[color=MedianLightBlue, ultra thick] rectangle(.2,.2);}}
+\setbeamertemplate{sections/subsections in toc}[square]
+
+\newenvironment{xplainframe}{\bgroup\setbeamertemplate{background}{}\begin{frame}[plain]}{\end{frame}\egroup}
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \ifnum\thepage>1\relax% Not the title page
+	    \fill[color=MedianOrange] (0,8) rectangle(0.8,8.3);
+	    \fill[color=MedianLightBlue] (0.9,8) rectangle(\the\paperwidth, 8.3);
+  \else% Title page
+	  \fill[color=MedianBrown] (0,1.2) rectangle (\the\paperwidth,\the\paperheight);
+	  \fill[color=MedianOrange] (0,0.1) rectangle(3.15,1.1);
+	  \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1); 
+  \fi
+  \end{tikzpicture}
+}
+\setbeamertemplate{title page}{
+	\begin{textblock*}{12cm}(2.55cm,2.8cm)
+    \begin{beamercolorbox}[wd=8cm]{title page header}
+      \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
+    \end{beamercolorbox}%
+    \end{textblock*}
+    \begin{textblock*}{3cm}(-1.1cm,5.125cm)
+		\begin{beamercolorbox}{date}
+	      \hfill\usebeamerfont{date}\insertdate%
+	    \end{beamercolorbox}
+    \end{textblock*}
+    \begin{textblock*}{9cm}(2.55cm,5.125cm)
+	    \begin{beamercolorbox}{author}
+	      \usebeamerfont{author}\insertauthor%
+    	\end{beamercolorbox}
+    \end{textblock*}
+}
+\newcommand{\sectionframe}{{
+	\setbeamertemplate{background}{
+		\begin{tikzpicture}
+			\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+			\fill[color=MedianOrange] (0,6) rectangle (1.5, 7);
+			\fill[color=MedianLightBlue] (1.6, 6) rectangle (\the\paperwidth, 7);
+		\end{tikzpicture}
+	}
+	\frame{\sectionpage}
+}}
+\setbeamertemplate{section page}{
+	\begin{textblock*}{12cm}(0.8cm,-0.9cm)
+		\begin{beamercolorbox}{section page}
+			\insertsectionhead
+		\end{beamercolorbox}
+	\end{textblock*}
+}
+\setbeamertemplate{frametitle}{
+	\vspace{0.3cm}
+	\begin{beamercolorbox}{frametitle}
+		\insertframetitle
+	\end{beamercolorbox}
+}

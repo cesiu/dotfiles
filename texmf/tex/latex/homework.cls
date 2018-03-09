@@ -172,7 +172,7 @@
             } {
                 \underline{\texttt{~~~~}}
             }
-            % Spacing might be a little off here...this word experimentally.
+            % Spacing might be a little off here...this works experimentally.
             \hspace{-1.125em}
         }
     }

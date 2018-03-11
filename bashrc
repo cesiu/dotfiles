@@ -56,6 +56,11 @@ if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash
 fi
 
+# "gcc" is aliased to "clang" -- why isn't "gdb" aliased to "lldb"?
+if [ -x "$(command -v lldb)" -a ! -x "$(command -v gdb)" ]; then
+    alias gdb='lldb'
+fi
+
 # Make sure python is properly aliased to the brew installs.
 if [ -x "$(command -v python2)" ]; then
     alias python='python2'

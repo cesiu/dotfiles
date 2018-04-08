@@ -72,12 +72,6 @@ if [ -x "$(command -v latex)" ]; then
     alias latex='latex -output-format=pdf'
 fi
 
-# If Leiningen was installed, set up a convenience alias for Clojure.
-if [ -x "$(command -v lein)" ]; then
-    export CLASSPATH="$CLASSPATH":"$(/bin/ls ~/.m2/repository/org/clojure/clojure/*/clojure-*.jar)":.
-    alias clj='java clojure.main'
-fi
-
 # A long time ago in a galaxy far, far away...
 alias starwars='telnet towel.blinkenlights.nl'
 

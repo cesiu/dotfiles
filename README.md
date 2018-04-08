@@ -29,7 +29,7 @@ Other stuff you should then install (assuming macOS):
 * dos2unix
 * tree
 * Bash completion for git
-* Leiningen (Clojure build manager)
+* Clojure
 * Node.js
 
 ### Caveats: ###

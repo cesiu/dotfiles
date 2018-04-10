@@ -43,9 +43,16 @@ fi
 function cp {
     /bin/cp ${@%/};
 }
-# BSD cat has different flags...
+
+# BSD commands have different flags...
 if [ -x "$(command -v gcat)" ]; then
     alias cat='gcat'
+fi
+if [ -x "$(command -v gtail)" ]; then
+    alias tail='gtail'
+fi
+if [ -x "$(command -v ghead)" ]; then
+    alias head='ghead'
 fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.

@@ -32,7 +32,7 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("colordiff", "colordiff", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\""),
              ("tree", "tree", "echo \"placeholder\""),
-             ("lein", "Leiningen", "echo \"placeholder\""),
+             ("clj", "Clojure", "echo \"placeholder\""),
              ("node", "Node.js", "echo \"placeholder\"")]
 # In the same form as above, the details for Vim.
 _vim_check = ("vim --version | head -n 1", "Vi IMproved 8",

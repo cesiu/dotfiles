@@ -12,6 +12,19 @@ Copy `vimrc` to `~/.vimrc`, `vim/*` to `~/.vim/`, etc. Then `source ~/.bashrc`.
 
 Other stuff you should then install (assuming macOS):
 * Homebrew
+* gpg (for signing commits)
+* Bash completion for git
+* coreutils
+* dos2unix
+* tree
+* Ripgrep
+* fzf
+* Vim 8
+* Vim Pathogen
+* Vim Airline, Airline Themes, and Powerline patched fonts
+* Vim ALE
+* Vim NERDTree
+* Vim gitgutter
 * Valgrind
 * Cling (C++ REPL)
 * python, python3, pip, and pip3
@@ -19,16 +32,6 @@ Other stuff you should then install (assuming macOS):
 * Java (using cask)
 * LaTeX (from MacTeX)
 * ChkTeX
-* Vim 8
-* Vim Pathogen
-* Vim Airline, Airline Themes, and Powerline patched fonts
-* Vim ALE
-* Vim NERDTree
-* Vim gitgutter
-* coreutils
-* dos2unix
-* tree
-* Bash completion for git
 * Clojure
 * Node.js
 

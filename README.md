@@ -15,6 +15,7 @@ Other stuff you should then install (assuming macOS):
 * gpg (for signing commits)
 * Bash completion for git
 * coreutils
+* gnu-sed
 * dos2unix
 * tree
 * Ripgrep

@@ -54,6 +54,9 @@ fi
 if [ -x "$(command -v ghead)" ]; then
     alias head='ghead'
 fi
+if [ -x "$(command -v gsed)" ]; then
+    alias sed='gsed'
+fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n

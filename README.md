@@ -24,7 +24,7 @@ Other stuff you should then install (assuming macOS):
 * Vim Pathogen
 * Vim Airline, Airline Themes, and Powerline patched fonts
 * Vim ALE
-* Vim NERDTree
+* Vim NERDTree and undotree
 * Vim gitgutter
 * Valgrind
 * Cling (C++ REPL)

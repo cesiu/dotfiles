@@ -28,10 +28,12 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("flake8", "flake8", "echo \"placeholder\""),
              ("latex", "LaTeX", "echo \"placeholder\""),
              ("chktex", "ChkTeX", "echo \"placeholder\""),
-             ("gls", "GNU ls", "echo \"placeholder\""),
+             ("gls", "GNU coreutils", "echo \"placeholder\""),
              ("colordiff", "colordiff", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\""),
              ("tree", "tree", "echo \"placeholder\""),
+             ("rg", "Ripgrep", "echo \"placeholder\""),
+             ("cling", "Cling", "echo \"placeholder\""),
              ("clj", "Clojure", "echo \"placeholder\""),
              ("node", "Node.js", "echo \"placeholder\"")]
 # In the same form as above, the details for Vim.

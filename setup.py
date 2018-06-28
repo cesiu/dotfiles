@@ -32,7 +32,7 @@ _to_check = [("brew", "Homebrew", "echo \"placeholder\""),
              ("colordiff", "colordiff", "echo \"placeholder\""),
              ("dos2unix", "dos2unix", "echo \"placeholder\""),
              ("tree", "tree", "echo \"placeholder\""),
-             ("rg", "Ripgrep", "echo \"placeholder\""),
+             ("rg", "ripgrep", "echo \"placeholder\""),
              ("cling", "Cling", "echo \"placeholder\""),
              ("clj", "Clojure", "echo \"placeholder\""),
              ("node", "Node.js", "echo \"placeholder\"")]

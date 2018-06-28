@@ -34,15 +34,18 @@ alias ks='ls'
 alias l='ls'
 alias sl='ls'
 
-# Color the output of grep, too.
+# Color the output of grep and ripgrep, too.
 alias grep='grep --color'
+if [ -x "$(command -v rg)" ]; then
+    export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep"
+fi
 
 # ...and diff, if it exists. Also, display output in unified mode.
 if [ -x "$(command -v colordiff)" ]; then
     alias diff='colordiff --unified=3'
 # Otherwise, use the sed workaround.
 else
-    alias diff='$HOME/dotfiles/diff.sh'
+    alias diff="$HOME/dotfiles/diff.sh"
 fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.

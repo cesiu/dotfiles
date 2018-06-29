@@ -12,14 +12,11 @@ Copy `vimrc` to `~/.vimrc`, `vim/*` to `~/.vim/`, etc. Then `source ~/.bashrc`.
 
 Other stuff you should then install (assuming macOS):
 * Homebrew
-* gpg (for signing commits)
-* Bash completion for git
 * coreutils
 * gnu-sed
 * dos2unix
 * tree
 * Ripgrep
-* fzf
 * Vim 8
 * Vim Pathogen
 * Vim Airline, Airline Themes, and Powerline patched fonts
@@ -27,15 +24,16 @@ Other stuff you should then install (assuming macOS):
 * Vim NERDTree and undotree
 * Vim gitgutter
 * Vim abolish
-* Valgrind
 * Cling (C++ REPL)
 * python, python3, pip, and pip3
-* flake8
+* flake8 (for Python 3 only)
 * Java (using cask)
 * LaTeX (from MacTeX)
 * ChkTeX
 * Clojure
 * Node.js
+* Bash completion for git
+* gpg (for signing commits)
 
 ### Caveats: ###
 * If you don't have permission or for some other reason can't install Vim 8,
@@ -44,9 +42,6 @@ Other stuff you should then install (assuming macOS):
   slow enough that you don't want syntax checking in Vim.
 * Cycling color schemes in Vim is known to be buggy. For this reason, cycling
   back to the default in the projector_mode plugin is disabled.
-* Leiningen won't download the Clojure JAR until you run it once. After
-  installing it, you need to run `lein repl` once, otherwise the bashrc won't
-  find the JAR.
 
 ### About `Monokai.terminal`: ###
 This is a config file for macOS's built-in Terminal. It gives you nice colors
@@ -62,8 +57,3 @@ This is a high-contrast, light background color scheme for use on projectors. It
 #### Even more stuff I forget to do: ####
 * macOS uses Ctrl+Arrow to switch spaces, so it uses Alt+Arrow to move by words in terminal. This is inane. Change it.
 * There are a bunch of cool quicklook plugins. Just Google them.
-
-#### Stuff I need to check sometime: ####
-* ALE is running syntax checking on load? And not picking up flake8 configs?
-  Don't pull it for now.
-* Did ChkTeX get installed with MacTeX?

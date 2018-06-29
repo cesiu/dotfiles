@@ -9,53 +9,90 @@ import subprocess
 
 
 # A map of files to setup to their delimiters, None if they're files.
-_dotfiles = {".bash_profile": '#',
-             ".bash_logout": '#',
-             ".vim": None,
-             ".vimrc": '"',
-             ".config": None,
-             ".ssh/config": '#',
-             ".chktexrc": '#'}
+_dotfiles = {
+    ".bash_profile": '#',
+    ".bash_logout": '#',
+    ".vim": None,
+    ".vimrc": '"',
+    ".config": None,
+    ".ssh/config": '#',
+    ".chktexrc": '#'
+}
+
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.
 _home_dir = ""       # The full path of the user's home directory.
+
 # A list of miscellaneous programs to check the existence of, where each
 #  3-tuple is of the form, (<command>, <name>, <install command>).
-_to_check = [("brew", "Homebrew", "echo \"placeholder\""),
-             ("gdb", "GNU Debugger", "echo \"placeholder\""),
-             ("valgrind", "Valgrind", "echo \"placeholder\""),
-             ("pip2", "pip2", "echo \"placeholder\""),
-             ("pip3", "pip3", "echo \"placeholder\""),
-             ("flake8", "flake8", "echo \"placeholder\""),
-             ("latex", "LaTeX", "echo \"placeholder\""),
-             ("chktex", "ChkTeX", "echo \"placeholder\""),
-             ("gls", "GNU coreutils", "echo \"placeholder\""),
-             ("colordiff", "colordiff", "echo \"placeholder\""),
-             ("dos2unix", "dos2unix", "echo \"placeholder\""),
-             ("tree", "tree", "echo \"placeholder\""),
-             ("rg", "ripgrep", "echo \"placeholder\""),
-             ("cling", "Cling", "echo \"placeholder\""),
-             ("clj", "Clojure", "echo \"placeholder\""),
-             ("node", "Node.js", "echo \"placeholder\"")]
+_to_check = [
+    ("brew", "Homebrew",
+     "/usr/bin/ruby -e \"$(curl -fsSL "
+     "https://raw.githubusercontent.com/Homebrew/install/master/install)\""),
+    ("gls", "GNU coreutils",
+     "brew install coreutils"),
+    ("gsed", "GNU sed",
+     "brew install gnu-sed"),
+    ("colordiff", "colordiff",
+     "brew install colordiff"),
+    ("dos2unix", "dos2unix",
+     "brew install dos2unix"),
+    ("tree", "tree",
+     "brew install tree"),
+    ("rg", "ripgrep",
+     "brew install ripgrep"),
+    ("cling", "Cling",
+     "brew install cling"),
+    ("latex", "LaTeX",
+     "brew cask install mactex"),
+    ("chktex", "ChkTeX",
+     "brew cask install mactex"),
+    ("pip2", "Python 2/pip2",
+     "brew install python@2"),
+    ("pip3", "Python 3/pip3",
+     "brew install python3"),
+    ("flake8", "flake8",
+     "pip3 install flake8"),
+    ("javac", "Java",
+     "brew cask install java"),
+    ("clj", "Clojure",
+     "brew install clojure"),
+    ("node", "Node.js",
+     "brew install node"),
+    ("gpg", "GPG",
+     "brew install gnupg; brew install pinentry-mac")
+]
+
 # In the same form as above, the details for Vim.
-_vim_check = ("vim --version | head -n 1", "Vi IMproved 8",
-              "echo \"placeholder\"")
+_vim_check = ("vim --version | head -n 1", "Vi IMproved 8", "brew install vim")
+
 # In the same form as above, plugins for Vim.
-_vim_plugins = [("~/.vim/autoload/pathogen.vim", "Vim Pathogen",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/vim-airline", "Vim Airline",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/vim-airline-themes", "Vim Airline Themes",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/nerdtree", "Vim NERDTree",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/undotree", "Vim undotree",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/ale", "Vim ALE",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/vim-gitgutter", "Vim gitgutter",
-                 "echo \"placeholder\""),
-                ("~/.vim/bundle/vim-abolish", "Vim abolish",
-                 "echo \"placeholder\"")]
+_vim_plugins = [
+    ("~/.vim/autoload/pathogen.vim", "Vim Pathogen",
+     "mkdir -p ~/.vim/autoload ~/.vim/bundle && "
+     "curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim"),
+    ("~/.vim/bundle/vim-airline", "Vim Airline",
+     "git clone https://github.com/vim-airline/vim-airline "
+     "~/.vim/bundle/vim-airline"),
+    ("~/.vim/bundle/vim-airline-themes", "Vim Airline Themes",
+     "git clone https://github.com/vim-airline/vim-airline-themes "
+     "~/.vim/bundle/vim-airline-themes"),
+    ("~/.vim/bundle/nerdtree", "Vim NERDTree",
+     "git clone https://github.com/scrooloose/nerdtree.git "
+     "~/.vim/bundle/nerdtree"),
+    ("~/.vim/bundle/undotree", "Vim undotree",
+     "git clone https://github.com/mbbill/undotree.git "
+     "~/.vim/bundle/undotree"),
+    ("~/.vim/bundle/ale", "Vim ALE",
+     "git clone https://github.com/w0rp/ale.git "
+     "~/.vim/bundle/ale"),
+    ("~/.vim/bundle/vim-gitgutter", "Vim gitgutter",
+     "git clone git://github.com/airblade/vim-gitgutter.git "
+     "~/.vim/bundle/vim-gitgutter"),
+    ("~/.vim/bundle/vim-abolish", "Vim abolish",
+     "git clone git://github.com/tpope/vim-abolish.git "
+     "~/.vim/bundle/vim-abolish")
+]
+
 # The output file for subprocess calls.
 _log_out = sys.stdout
 

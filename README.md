@@ -26,6 +26,7 @@ Other stuff you should then install (assuming macOS):
 * Vim ALE
 * Vim NERDTree and undotree
 * Vim gitgutter
+* Vim abolish
 * Valgrind
 * Cling (C++ REPL)
 * python, python3, pip, and pip3

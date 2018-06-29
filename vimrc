@@ -131,8 +131,8 @@ set wildmenu
 " Plugin settings:
 silent! execute pathogen#infect()
 
-" Use Ctrl+u to toggle undotree.
-map <C-u> :silent! UndotreeToggle<CR>
+" Use Ctrl+m to toggle undotree.
+map <C-m> :silent! UndotreeToggle<CR>
 " Use Ctrl+n to toggle NERDTree.
 map <C-n> :silent! NERDTreeToggle<CR>
 " Exit NERDTree if it's the last open buffer.

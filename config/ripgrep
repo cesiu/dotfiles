@@ -1,4 +1,3 @@
---colors=path:fg:cyan
---colors=path:style:bold
+--colors=path:fg:white
 --colors=line:fg:white
 --colors=match:fg:yellow

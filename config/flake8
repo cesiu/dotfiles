@@ -1,8 +1,8 @@
 [flake8]
-ignore = 
+ignore =
     # I like spaces around my equals signs.
     E251,
     # I like my line continuations to line up.
-    E126, E127,
+    E126, E127, E128
     # Same goes for my dict elements.
     E241

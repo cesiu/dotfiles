@@ -33,7 +33,7 @@ Other stuff you should then install (assuming macOS):
 * Clojure
 * Node.js
 * Bash completion for git
-* gpg (for signing commits)
+* gpg, pinentry, pinentry-mac (for signing commits)
 
 ### Caveats: ###
 * If you don't have permission or for some other reason can't install Vim 8,

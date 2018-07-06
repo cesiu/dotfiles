@@ -5,6 +5,7 @@ export PROMPT_COMMAND=genprompt
 function genprompt() {
     export PS1="\[\e[0;40;37m\]$(date '+%I:%M:%S %p' | sed 's/:/\\[\\033[93m\\]:\\[\\033[37m\\]/g')\[\e[100;30m\] \[\e[1;36m\]\h \[\e[40;90m\] \[\e[1;34m\]\W\[\e[97m\]  \$\[\e[0;30m\]\[\e[0m\] "
 }
+export PS2="\[\e[0;40;37m\] (cont.)  \[\e[0;30m\]\[\e[0m\] "
 
 # vim masterrace
 export VISUAL=vim

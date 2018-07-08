@@ -122,3 +122,5 @@ classpath
 Eulerian
 finiteness
 Transpiler
+inlining
+recurses

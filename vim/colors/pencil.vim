@@ -35,6 +35,7 @@ if exists('syntax on')
     syntax reset
 endif
 
+set t_Co=256
 let g:colors_name='pencil'
 
 if ! exists("g:pencil_higher_contrast_ui")
@@ -63,11 +64,11 @@ if ! exists("g:pencil_gutter_color")
 endif
 
 " Colors
-let s:black           = { "gui": "#212121", "cterm": "0"   }
+let s:black           = { "gui": "#212121", "cterm": "232" }
 let s:medium_gray     = { "gui": "#585858", "cterm": "240" }
-let s:white           = { "gui": "#F1F1F1", "cterm": "15"  }
+let s:white           = { "gui": "#F1F1F1", "cterm": "255" }
 let s:actual_white    = { "gui": "#FFFFFF", "cterm": "231" }
-let s:light_black     = { "gui": "#424242", "cterm": "8"   }
+let s:light_black     = { "gui": "#424242", "cterm": "236" }
 let s:lighter_black   = { "gui": "#545454", "cterm": "240" }
 
 if g:pencil_higher_contrast_ui == 0
@@ -83,7 +84,7 @@ else
 endif
 
 let s:pink            = { "gui": "#fb007a", "cterm": "9"   }
-let s:dark_red        = { "gui": "#870000", "cterm": "88"   }
+let s:dark_red        = { "gui": "#870000", "cterm": "88"  }
 let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
 let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
 

@@ -1,40 +1,98 @@
-" Vim color file
-" Converted from Textmate theme Monokai using Coloration v0.3.2 (http://github.com/sickill/coloration)
+" Monokai vim color scheme, based on:
+"  https://github.com/sickill/vim-monokai
+"  https://www.monokai.pro
+"  https://github.com/thinkpixellab/flatland
+
+let g:colors_name = "monokai"
 
 set background=dark
+set t_Co=256
 highlight clear
 
 if exists("syntax_on")
   syntax reset
 endif
 
-set t_Co=256
-let g:colors_name = "monokai"
+" Base syntax colors:
+let s:pink          = { "cterm": "204", "gui": "#ff6188" }
+let s:green         = { "cterm": "113", "gui": "#a9dc76" }
+let s:yellow        = { "cterm": "221", "gui": "#ffd866" }
+let s:orange        = { "cterm": "209", "gui": "#fc9867" }
+let s:purple        = { "cterm": "141", "gui": "#ab9df2" }
+let s:cyan          = { "cterm":  "81", "gui": "#78dce8" }
 
-hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
-hi Visual ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#005f87 gui=NONE
-hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-hi CursorLineNr ctermfg=184 ctermbg=NONE cterm=NONE guifg=#d7d700 guibg=NONE gui=NONE
-hi ColorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-hi LineNr ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
-hi VertSplit ctermfg=241 ctermbg=241 cterm=NONE guifg=#64645e guibg=#64645e gui=NONE
+" Grayscale colors:
+let s:white         = { "cterm": "231", "gui": "#fcfcfa" }
+let s:lighter_gray  = { "cterm": "250", "gui": "#bcbbbb" }
+let s:light_gray    = { "cterm": "245", "gui": "#908e8f" }
+let s:gray          = { "cterm": "242", "gui": "#6c6a6c" }
+let s:dark_gray     = { "cterm": "240", "gui": "#575558" }
+let s:darker_gray   = { "cterm": "237", "gui": "#3e3b3f" }
+let s:darkest_gray  = { "cterm": "235", "gui": "#2c292d" }
+let s:black         = { "cterm": "233", "gui": "#131d16" }
+
+" Interface colors:
+let s:blue          = { "cterm":  "33", "gui": "#2095f0" }
+let s:dark_blue     = { "cterm":  "24", "gui": "#005f87" }
+let s:off_white     = { "cterm": "230", "gui": "#fdf9f3" }
+let s:tan           = { "cterm": "222", "gui": "#ffd787" }
+
+
+" Highlights a given group with a style specified in an associative array.
+"  Stolen from: https://github.com/noahfrederick/vim-hemisu
+function! s:h(group, style)
+  execute "highlight" a:group
+        \ "ctermfg=" (has_key(a:style, "fg")    ? a:style.fg.cterm : "NONE")
+        \ "ctermbg=" (has_key(a:style, "bg")    ? a:style.bg.cterm : "NONE")
+        \ "cterm="   (has_key(a:style, "cterm") ? a:style.cterm    : "NONE")
+        \ "guifg="   (has_key(a:style, "fg")    ? a:style.fg.gui   : "NONE")
+        \ "guibg="   (has_key(a:style, "bg")    ? a:style.bg.gui   : "NONE")
+        \ "gui="     (has_key(a:style, "gui")   ? a:style.gui      : "NONE")
+endfunction
+
+
+" Base mode settings:
+call s:h("Normal",        { "bg": s:darkest_gray, "fg": s:white })
+call s:h("Visual",        { "bg": s:dark_blue })
+
+" Cursor positioning:
+call s:h("Cursor",        { "bg": s:light_gray })
+call s:h("CursorLine",    { "bg": s:darker_gray })
+call s:h("CursorColumn",  { "bg": s:darker_gray })
+call s:h("CursorLineNr",  { "bg": s:darker_gray,  "fg": s:orange })
+
+" Line numbers:
+call s:h("LineNr",        { "bg": s:darker_gray,  "fg": s:gray })
+" The guide at 80 characters:
+call s:h("ColorColumn",   { "bg": s:darker_gray })
+
+" Interface borders:
+call s:h("VertSplit",     { "bg": s:dark_gray,    "fg": s:dark_gray })
+call s:h("StatusLine",    { "bg": s:darker_gray,  "fg": s:white })
+call s:h("StatusLineNC",  { "bg": s:darkest_gray, "fg": s:gray })
+
+" Tab names:
+call s:h("TabLine",       { "bg": s:dark_gray,    "fg": s:white })
+call s:h("TabLineFill",   { "bg": s:darker_gray })
+call s:h("TabLineSel",    { "bg": s:darkest_gray, "fg": s:white,
+                          \ "cterm": "bold", "gui": "bold" })
+
+" Active WildMenu selection:
+call s:h("WildMenu",      { "bg": s:dark_gray,    "fg": s:white,
+                          \ "cterm": "bold", "gui": "bold" })
+
+" Keyword completion menu:
+call s:h("Pmenu",         { "bg": s:darker_gray,  "fg": s:white})
+call s:h("PmenuSel",      { "bg": s:dark_gray,    "fg": s:white,
+                          \ "cterm": "bold", "gui": "bold" })
+
+
 hi MatchParen ctermfg=197 ctermbg=NONE cterm=underline guifg=#f92672 guibg=NONE gui=underline
-hi StatusLine ctermfg=231 ctermbg=237 cterm=NONE guifg=#f8f8f2 guibg=#3c3d37 gui=bold
-hi StatusLineNC ctermfg=231 ctermbg=237 cterm=NONE guifg=#f8f8f2 guibg=#3c3d37 gui=NONE
-" Use the tab color scheme for wildmenu.
-hi WildMenu ctermfg=231 ctermbg=241 cterm=bold guifg=#f8f8f2 guibg=#64645e gui=bold
-hi TabLine ctermbg=241 cterm=NONE guibg=#64645e gui=NONE
-" Set fg, not bg, for TabLineFill: https://stackoverflow.com/a/12548374
-hi TabLineFill ctermfg=237 guifg=#3c3d37
-hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi PmenuSel ctermfg=NONE ctermbg=59 cterm=NONE guifg=NONE guibg=#49483e gui=NONE
 hi IncSearch ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Folded ctermfg=242 ctermbg=235 cterm=NONE guifg=#75715e guibg=#272822 gui=NONE
 hi SignColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
-hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi Boolean ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Character ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Comment ctermfg=242 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE

@@ -144,6 +144,8 @@ let g:gitgutter_map_keys = 0
 " Don't check syntax until save.
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+" Show ALE errors in Airline.
+let g:airline#extensions#ale#enabled = 1
 " Underline ALE errors instead of highlighting.
 hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 

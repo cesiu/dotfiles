@@ -39,14 +39,14 @@
 
 function! CSyntaxAfter()
     syntax keyword Boolean true false null NULL TRUE FALSE
-    syntax keyword Statement namespace stderr stdin stdout new this delete
+    syntax keyword Statement namespace stderr stdin stdout new this self delete
 
     "syntax match _Block "[{}]"
     "syntax match _Bracket "[\[\]]"
-    syntax match _Operator "[-+&|<>=!\/~.,;:*%&^?()]"
+    syntax match _Operator "[-+&|<>=!\/~.,;:*%&^?]"
     syntax region _Comment start="\/\*" end="\*\/"
     syntax match _Comment "\/\/.*$"
-    syntax match _Function /\w\+\s*(/me=e-1,he=e-1
+    syntax match _Function "\w\+\s*("me=e-1,he=e-1
 
     "hi _Block guifg=yellow1 guibg=NONE gui=none
     "hi link _Bracket Constant

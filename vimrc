@@ -39,8 +39,6 @@ syntax enable
 " Use the Monokai color scheme: https://github.com/sickill/vim-monokai
 colorscheme monokai
 let g:projector_colorscheme='pencil'
-" Highlight operators: https://github.com/vim-scripts/cSyntaxAfter
-autocmd FileType c,cpp,java,python,php,javascript call CSyntaxAfter()
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
 set spellfile=$HOME/dotfiles/spellfile.utf-8.add

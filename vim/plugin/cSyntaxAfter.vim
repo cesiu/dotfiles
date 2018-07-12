@@ -41,12 +41,18 @@ function! CSyntaxAfter()
     syntax keyword Boolean true false null NULL TRUE FALSE
     syntax keyword Statement namespace stderr stdin stdout new this self delete
 
+    " All the operators *except* slash and star:
     syntax match csaOperator "[-+&|<>=!~.,;:%&^?]"
+    " Stars and slashes may not be adjacent:
     syntax match csaOperator "[^\/*][\/*][^\/*]"ms=s+1,hs=s+1,me=e-1,he=e-1
+    " Account for the beginnings and ends of lines:
     syntax match csaOperator "^[\/*][^\/*]"me=e-1,he=e-1
     syntax match csaOperator "[^\/*][\/*]$"ms=s+1,hs=s+1
     syntax match csaOperator "^[\/*]$"
+    " Account for a slash or star immediately following a match:
+    syntax match csaOperator "[^\/*]\@1<=[\/*][^\/*]"me=e-1,he=e-1
 
+    " Also highlight functions:
     syntax match csaFunction "\w\+\s*("me=e-1,he=e-1
 
     hi link csaOperator Operator

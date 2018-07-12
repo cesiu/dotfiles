@@ -122,7 +122,8 @@ hi! link NonText          EndOfBuffer
 " Comments :
 call s:h("Comment",       { "fg": s:gray })
 call s:h("Todo",          { "fg": s:yellow, "cterm": "bold", "gui": "bold" })
-hi! link SpecialComment   Todo
+call s:h("SpecialComment",{ "fg": s:light_gray,
+                          \ "cterm": "bold", "gui": "bold" })
 
 " Types :
 call s:h("Type",          { "fg": s:cyan })
@@ -132,6 +133,7 @@ hi! link Typedef          Type
 
 " Literals :
 call s:h("String",        { "fg": s:tan })
+call s:h("SpecialChar",   { "fg": s:yellow })
 call s:h("Constant",      { "fg": s:purple })
 hi! link Number           Constant
 hi! link Character        Constant
@@ -167,8 +169,7 @@ hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 " Miscellaneous syntax:
-call s:h("Special",       { "fg": s:yellow })
-hi! link SpecialChar      Special
+call s:h("Special",       { "fg": s:pink })
 hi! link Tag              Special
 hi! link Delimiter        Special
 hi! link Debug            Special

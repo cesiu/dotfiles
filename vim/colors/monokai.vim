@@ -117,6 +117,7 @@ call s:h("Question",      { "fg": s:white })
 " Directories (this also affects NERDTree) and files:
 call s:h("Directory",     { "fg": s:blue })
 call s:h("EndOfBuffer",   { "fg": s:darkest_gray})
+hi! link NonText          EndOfBuffer
 
 " Comments :
 call s:h("Comment",       { "fg": s:gray })
@@ -171,5 +172,4 @@ hi! link SpecialChar      Special
 hi! link Tag              Special
 hi! link Delimiter        Special
 hi! link Debug            Special
-hi! link NonText          Special
 call s:h("Underlined",    { "gui": "underline", "cterm": "underline" })

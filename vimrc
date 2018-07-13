@@ -96,6 +96,8 @@ set ruler
 set showcmd
 " Always show the statusline.
 set laststatus=2
+" Always show the tabline.
+set showtabline=2
 " Show a guide at 80 chars.
 autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown" | set colorcolumn+=81
 " Highlight the current line.
@@ -142,8 +144,6 @@ let g:gitgutter_map_keys = 0
 " Don't check syntax until save.
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
-" Show ALE errors in Airline.
-let g:airline#extensions#ale#enabled = 1
 " Underline ALE errors instead of highlighting.
 hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 
@@ -152,6 +152,10 @@ let g:airline_theme='minimalist'
 let g:airline_projector_theme='sol'
 " Use patched Powerline fonts for Airline.
 let g:airline_powerline_fonts=1
+" Show ALE errors in Airline.
+let g:airline#extensions#ale#enabled = 1
+" Use Airline for the tabline, too.
+let g:airline#extensions#tabline#enabled = 1
 
 " The following should be unnecessary given correct installation of powerline
 "  patched fonts:

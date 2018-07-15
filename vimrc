@@ -154,8 +154,6 @@ let g:airline_projector_theme='sol'
 let g:airline_powerline_fonts=1
 " Show ALE errors in Airline.
 let g:airline#extensions#ale#enabled = 1
-" Use Airline for the tabline, too.
-let g:airline#extensions#tabline#enabled = 1
 
 " The following should be unnecessary given correct installation of powerline
 "  patched fonts:

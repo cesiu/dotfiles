@@ -53,10 +53,6 @@ hi SpellRare ctermbg=NONE cterm=underline guibg=NONE gui=underline
 
 " Allow backspacing over autoindents, newlines, and start of insert.
 set backspace=indent,eol,start
-" Allow switching split windows while in insert mode.
-inoremap <C-w> <C-o><C-w>
-" I always forgot that this isn't a thing.
-cnoreabbrev hsplit split
 " Remap the home key to mimic '^' instead of '0'.
 imap <Home> <C-o>^
 " Apparently some other people don't keep their lines under 80 chars.
@@ -66,8 +62,11 @@ noremap j gj
 noremap <Down> g<Down>
 inoremap <Down> <C-o>g<Down>
 noremap k gk
-" When was the last time you used Ctrl+P instead of 'k'?
-set pastetoggle=<C-p>
+
+" Allow switching split windows while in insert mode.
+inoremap <C-w> <C-o><C-w>
+" I always forgot that this isn't a thing.
+cnoreabbrev hsplit split
 " Allow switching to visual block mode from insert mode.
 inoremap <C-v> <C-o><C-v>
 
@@ -108,6 +107,11 @@ set lazyredraw
 set display=lastline
 " Always show one line beyond the cursor.
 set scrolloff=1
+
+" Use Bash-esque file completion.
+set wildmode=longest,full
+set wildmenu
+
 " Jump to the last known cursor position.
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " Persist undo history across sessions.
@@ -123,18 +127,23 @@ endif
 " Silence that infernal beeping!
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-" Use Bash-esque file completion.
-set wildmode=longest,full
-set wildmenu
+
+
+" Use 'p' to toggle paste mode.
+set pastetoggle=<Leader>p
+" Use 's' to strip trailing whitespace.
+map <Leader>s :%s/\s\+$//e<CR>
+" Use 'cd' to set the working directory.
+map <Leader>cd :lcd %:p:h<CR>
+" Use 'u' to toggle undotree.
+map <Leader>u :silent! UndotreeToggle<CR>
+" Use 'n' to toggle NERDTree.
+map <Leader>n :silent! NERDTreeToggle<CR>
 
 
 " Plugin settings:
 silent! execute pathogen#infect()
 
-" Use Ctrl+j to toggle undotree.
-map <C-j> :silent! UndotreeToggle<CR>
-" Use Ctrl+n to toggle NERDTree.
-map <C-n> :silent! NERDTreeToggle<CR>
 " Exit NERDTree if it's the last open buffer.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

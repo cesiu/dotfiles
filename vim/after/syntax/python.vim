@@ -10,5 +10,8 @@ hi! link pySynAfterBoolean Boolean
 syntax keyword pySynAfterKeyword self
 hi! link pySynAfterKeyword Keyword
 
+syntax keyword pySynAfterExceptions TimeoutExpired
+hi! link pySynAfterExceptions Structure
+
 " By default, escape sequences link to Special, which doesn't match C/Java.
 hi! link pythonEscape SpecialChar

@@ -97,10 +97,12 @@ call s:h("Search",        {})
 call s:h("IncSearch",     {})
 
 " Spell checking:
-call s:h("SpellBad",      { "fg": s:orange })
-call s:h("SpellCap",      { "fg": s:yellow })
-call s:h("SpellLocal",    { "fg": s:yellow })
-call s:h("SpellRare",     { "fg": s:yellow })
+call s:h("SpellBad",      { "fg": s:orange,
+                          \ "cterm": "underline", "gui": "underline"})
+call s:h("SpellRare",     { "fg": s:yellow,
+                          \ "cterm": "underline", "gui": "underline"})
+hi! link SpellLocal       SpellRare
+hi! link SpellCap         SpellRare
 
 " vimdiff differences:
 call s:h("DiffAdd",       { "fg": s:green })

@@ -76,10 +76,12 @@ inoremap <C-v> <C-o><C-v>
 " Turn on line numbers.
 set number
 " Use relative line numbers while yanking and deleting.
-nnoremap y :set relativenumber<CR>y
-nnoremap d :set relativenumber<CR>d
-autocmd TextYankPost * set norelativenumber
-onoremap <Esc> <Esc>:set norelativenumber<CR>
+if exists('##TextYankPost')
+    nnoremap y :set relativenumber<CR>y
+    nnoremap d :set relativenumber<CR>d
+    autocmd TextYankPost * set norelativenumber
+    onoremap <Esc> <Esc>:set norelativenumber<CR>
+endif
 
 " (Redundant if using Airline) Show the cursor position.
 set ruler

@@ -47,7 +47,6 @@ let g:projector_colorscheme='pencil'
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
 set spellfile=$HOME/dotfiles/spellfile.utf-8.add
-hi SpellRare ctermbg=NONE cterm=underline guibg=NONE gui=underline
 
 
 " Allow backspacing over autoindents, newlines, and start of insert.
@@ -97,7 +96,7 @@ set showtabline=2
 autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown" | set colorcolumn+=81
 " Highlight the current line.
 set cursorline
-" ...that's studidly laggy. Mitigate it.
+" ...that's stupidly laggy. Mitigate it.
 set lazyredraw
 " Show partial wrapped lines at the end of the window.
 set display=lastline

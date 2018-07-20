@@ -16,7 +16,8 @@ _dotfiles = {
     ".vimrc": '"',
     ".config": None,
     ".ssh/config": '#',
-    ".chktexrc": '#'
+    ".chktexrc": '#',
+    ".colordiffrc": '#'
 }
 
 _is_calpoly = False  # Whether or not to target Cal Poly dotfiles.

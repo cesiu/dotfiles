@@ -44,9 +44,9 @@ if [ -x "$(command -v rg)" ]; then
     export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep"
 fi
 
-# ...and diff, if it exists. Also, display output in unified mode.
+# ...and diff, if it exists.
 if [ -x "$(command -v colordiff)" ]; then
-    alias diff='colordiff --unified=3'
+    alias diff='colordiff'
 # Otherwise, use the sed workaround.
 else
     alias diff="$HOME/dotfiles/diff.sh"

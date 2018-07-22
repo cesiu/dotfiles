@@ -66,9 +66,9 @@ if [ -x "$(command -v lldb)" -a ! -x "$(command -v gdb)" ]; then
 fi
 
 # Make sure python is properly aliased to the brew installs.
-if [ -x "$(command -v python2)" ]; then
-    alias python='python2'
-    alias pip='pip2'
+if [ -x "$(command -v python3)" ]; then
+    alias python='python3'
+    alias pip='pip3'
 fi
 
 # If LaTeX was installed, it should target PDFs.

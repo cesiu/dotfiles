@@ -121,6 +121,8 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 
+" I write tons of LaTeX and I'm bad at marks.
+let mapleader='`'
 " Use 'p' to toggle paste mode.
 set pastetoggle=<Leader>p
 " Use 's' to strip trailing whitespace.

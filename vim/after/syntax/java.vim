@@ -10,3 +10,5 @@ hi! link javaSynAfterType Type
 
 hi! link javaDocParam Keyword
 hi! link javaDocSeeTagParam Keyword
+
+syntax keyword javaTodo NOTE contained

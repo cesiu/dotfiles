@@ -32,7 +32,8 @@ set expandtab smarttab
 " Enable autoindenting and smartindenting...
 set autoindent smartindent
 " ...except with Python since it's not C-like and comments get messed up...
-autocmd FileType python setlocal nosmartindent indentexpr=GetPythonIndent(v:lnum)
+autocmd FileType python
+               \ setlocal nosmartindent indentexpr=GetPythonIndent(v:lnum)
 " ...and, of course, we need tabs in Makefiles.
 autocmd Filetype make setlocal noexpandtab
 " Use two-space indents for CSS, HTML, JavaScript.
@@ -93,7 +94,8 @@ set laststatus=2
 " Always show the tabline.
 set showtabline=2
 " Show a guide at 80 chars.
-autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown" | set colorcolumn+=81
+autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown"
+                 \ | set colorcolumn+=81
 " Highlight the current line.
 set cursorline
 " ...that's stupidly laggy. Mitigate it.
@@ -104,7 +106,8 @@ set display=lastline
 set scrolloff=1
 
 " Jump to the last known cursor position.
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+                    \ | exe "normal! g`\"" | endif
 " Persist undo history across sessions.
 if has('persistent_undo')
     let undo_dir = expand('$HOME/.vim/undo_dir')
@@ -139,7 +142,8 @@ map <Leader>n :silent! NERDTreeToggle<CR>
 silent! execute pathogen#infect()
 
 " Exit NERDTree if it's the last open buffer.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")
+                 \     && b:NERDTree.isTabTree()) | q | endif
 
 " Don't use any of the gitgutter mappings.
 let g:gitgutter_map_keys = 0

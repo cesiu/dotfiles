@@ -6,3 +6,5 @@ ignore =
     E121, E126, E127, E128
     # Same goes for my dict elements.
     E241
+    # Breaking after binops is unreadable.
+    W503

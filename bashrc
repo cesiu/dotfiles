@@ -73,7 +73,7 @@ fi
 
 # If LaTeX was installed, it should target PDFs.
 if [ -x "$(command -v latex)" ]; then
-    alias latex='latex -output-format=pdf'
+    alias latex='lualatex'
 fi
 
 # A long time ago in a galaxy far, far away...

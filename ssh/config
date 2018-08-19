@@ -5,4 +5,10 @@ ServerAliveInterval 300
 # Send at most five such packets before giving up.
 ServerAliveCountMax 5
 
+# If the host is an address on Cal Poly's subnet, we're probably connecting to
+#  a VM behind the firewall, so if we're not also campus, jump through unix6.
+Match host 129.65.*.* exec "! ifconfig | grep 129.65"
+ ProxyJump cesiu@unix6.csc.calpoly.edu
+Match all
+
 # End cesiu.

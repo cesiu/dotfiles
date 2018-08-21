@@ -19,7 +19,7 @@ autocmd BufNewFile,BufRead *.txt set filetype=txt
 autocmd BufNewFile,BufRead *.swift set ft=swift
 
 " Use Bash-esque file completion.
-set wildmode=longest,full
+set wildmode=longest:full,full
 set wildmenu
 
 

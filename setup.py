@@ -91,7 +91,10 @@ _vim_plugins = [
      "~/.vim/bundle/vim-gitgutter"),
     ("~/.vim/bundle/vim-abolish", "Vim abolish",
      "git clone git://github.com/tpope/vim-abolish.git "
-     "~/.vim/bundle/vim-abolish")
+     "~/.vim/bundle/vim-abolish"),
+    ("~/.vim/bundle/kotlin-vim", "Vim Kotlin",
+     "git clone git://github.com/udalov/kotlin-vim.git "
+     "~/.vim/bundle/kotlin-vim")
 ]
 
 # The output file for subprocess calls.

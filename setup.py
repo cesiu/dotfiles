@@ -87,14 +87,17 @@ _vim_plugins = [
      "git clone https://github.com/w0rp/ale.git "
      "~/.vim/bundle/ale"),
     ("~/.vim/bundle/vim-gitgutter", "Vim gitgutter",
-     "git clone git://github.com/airblade/vim-gitgutter.git "
+     "git clone https://github.com/airblade/vim-gitgutter.git "
      "~/.vim/bundle/vim-gitgutter"),
     ("~/.vim/bundle/vim-abolish", "Vim abolish",
-     "git clone git://github.com/tpope/vim-abolish.git "
+     "git clone https://github.com/tpope/vim-abolish.git "
      "~/.vim/bundle/vim-abolish"),
     ("~/.vim/bundle/kotlin-vim", "Vim Kotlin",
-     "git clone git://github.com/udalov/kotlin-vim.git "
-     "~/.vim/bundle/kotlin-vim")
+     "git clone https://github.com/udalov/kotlin-vim.git "
+     "~/.vim/bundle/kotlin-vim"),
+    ("~/.vim/bundle/swift.vim", "Vim Swift",
+     "git clone https://github.com/keith/swift.vim.git "
+     "~/.vim/bundle/swift.vim")
 ]
 
 # The output file for subprocess calls.

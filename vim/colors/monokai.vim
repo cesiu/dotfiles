@@ -111,7 +111,7 @@ call s:h("DiffText",      { "fg": s:orange })
 call s:h("DiffDelete",    { "fg": s:pink })
 
 " Warning messages:
-call s:h("Error",         { "bg": s:darker_gray,  "fg": s:pink })
+call s:h("Error",         { "fg": s:pink, "cterm": "bold", "gui": "bold" })
 call s:h("ErrorMsg",      { "fg": s:pink })
 call s:h("WarningMsg",    { "fg": s:orange })
 call s:h("Question",      { "fg": s:white })

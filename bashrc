@@ -55,6 +55,9 @@ fi
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n
 
+# Ignore macOS's ".DS_Store" directories when autocompleting. 
+export FIGNORE="$FIGNORE:.DS_Store"
+
 # Add autocomplete for git.
 if [ -f ~/.git-completion.bash ]; then
     . ~/.git-completion.bash

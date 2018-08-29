@@ -57,6 +57,8 @@ _to_check = [
      "brew cask install java"),
     ("clj", "Clojure",
      "brew install clojure"),
+    ("kotlinc", "Kotlin",
+     "brew install kotlin"),
     ("node", "Node.js",
      "brew install node"),
     ("gpg", "GPG",

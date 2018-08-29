@@ -1,6 +1,6 @@
 \usepackage{tikz, datetime, textpos}
 %\DeclareOption{beteckna}{
-%	\setsansfont[Ligatures=TeX, 
+%	\setsansfont[Ligatures=TeX,
 %				 Extension=.ttf,
 %				 BoldFont=*Bold,
 %				 ItalicFont=*Italic
@@ -43,10 +43,16 @@
 \setbeamerfont{date}{size=\Large}
 
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{caption}{\insertcaption}
 \setbeamertemplate{items}[square]
 \setbeamertemplate{itemize item}{\tikz{\draw[color=MedianOrange, semithick] rectangle(.2,.2);}}
 \setbeamertemplate{itemize subitem}{\tikz{\draw[color=MedianLightBlue, ultra thick] rectangle(.2,.2);}}
 \setbeamertemplate{sections/subsections in toc}[square]
+\defbeamertemplate{description item}{bulleted}{
+    \hspace{1em}\tikz{\draw[color=MedianOrange, semithick] rectangle(.2,.2);}
+    ~\color{black}\textbf{\insertdescriptionitem}~\hfill
+}
 
 \newenvironment{xplainframe}{\bgroup\setbeamertemplate{background}{}\begin{frame}[plain]}{\end{frame}\egroup}
 
@@ -59,7 +65,7 @@
   \else% Title page
 	  \fill[color=MedianBrown] (0,1.2) rectangle (\the\paperwidth,\the\paperheight);
 	  \fill[color=MedianOrange] (0,0.1) rectangle(3.15,1.1);
-	  \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1); 
+	  \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1);
   \fi
   \end{tikzpicture}
 }

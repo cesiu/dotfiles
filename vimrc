@@ -103,6 +103,8 @@ set display=lastline
 " Always show one line beyond the cursor.
 set scrolloff=1
 
+" Open all arguments as tabs.
+tab all
 " Jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
                     \ | exe "normal! g`\"" | endif

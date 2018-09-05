@@ -5,7 +5,7 @@ endif
 syntax keyword javaSynAfterKeyword this super
 hi! link javaSynAfterKeyword Keyword
 
-syntax keyword javaSynAfterType Object Boolean Byte Short Integer Long Float Double Character String Iterable Iterator Collection Collections List Map Array Arrays ArrayList LinkedList HashMap LinkedHashMap Set HashSet LinkedHashSet Stream Collectors Function
+syntax keyword javaSynAfterType Object Objects Class Boolean Byte Short Integer Long Float Double Character String Optional Iterable Iterator Comparable Comparator Collection Collections List Map Array Arrays ArrayList LinkedList HashMap LinkedHashMap Set HashSet LinkedHashSet Stream Collectors Function Math
 hi! link javaSynAfterType Type
 
 hi! link javaDocParam Keyword

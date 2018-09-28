@@ -49,6 +49,7 @@
     \newcommand{\CourseTitle}{}
     \newcommand{\HandoutTitle}{}
     \newcommand{\DueDate}{}
+    \newcommand{\Student}{}
     \newcommand{\Instructor}{}
     \newcommand{\Semester}{}
     \newcommand{\Blank}{}
@@ -57,6 +58,7 @@
     \newcommand{\SetCourseTitle}[1]{\renewcommand{\CourseTitle}{#1}}
     \newcommand{\SetHandoutTitle}[1]{\renewcommand{\HandoutTitle}{#1}}
     \newcommand{\SetDueDate}[1]{\renewcommand{\DueDate}{Due: #1}}
+    \newcommand{\SetStudent}[1]{\renewcommand{\Student}{#1}}
     \newcommand{\SetInstructor}[1]{\renewcommand{\Instructor}{#1}}
     \newcommand{\SetSemester}[1]{\renewcommand{\Semester}{#1}}
     \newcommand{\ShowNameBlank}{\renewcommand{\Blank}{\large Name:\rule{2in}{0.5pt}\\}}
@@ -69,8 +71,8 @@
     \renewcommand\maketitle{
         \thispagestyle{handouttitle}
         \begin{center}
-        \LARGE{\HandoutTitle} \\
-        \large\textbf{\DueDate} \\
+            \LARGE{\HandoutTitle} \\
+            \large\textbf{\DueDate}\Student \\
         \end{center}
     }
 

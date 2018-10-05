@@ -55,6 +55,8 @@ _to_check = [
      "pip3 install flake8"),
     ("javac", "Java",
      "brew cask install java"),
+    ("jenv", "jEnv",
+     "brew install jenv"),
     ("clj", "Clojure",
      "brew install clojure"),
     ("kotlinc", "Kotlin",

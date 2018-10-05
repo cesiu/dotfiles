@@ -28,6 +28,7 @@ Other stuff you should then install (assuming macOS):
 * python, python3, pip, and pip3
 * flake8 (for Python 3 only)
 * Java (using cask)
+* jEnv
 * LaTeX (from MacTeX)
 * ChkTeX
 * Clojure

@@ -55,7 +55,7 @@ fi
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
 mesg n
 
-# Ignore macOS's ".DS_Store" directories when autocompleting. 
+# Ignore macOS's ".DS_Store" directories when autocompleting.
 export FIGNORE="$FIGNORE:.DS_Store"
 
 # Add autocomplete for git.
@@ -72,6 +72,12 @@ fi
 if [ -x "$(command -v python3)" ]; then
     alias python='python3'
     alias pip='pip3'
+fi
+
+# If jEnv is installed, add it to the path.
+if [ -x "$(command -v jenv)" ]; then
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
 fi
 
 # If LaTeX was installed, it should target PDFs.

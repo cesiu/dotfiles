@@ -127,3 +127,5 @@ recurses
 Artoo
 Threepio
 nondeterministic
+prefetching
+prefetch

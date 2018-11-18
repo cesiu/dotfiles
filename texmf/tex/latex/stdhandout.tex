@@ -6,3 +6,30 @@
 \renewcommand\labelitemi{{\boldmath$\cdot$}}
 \renewcommand\labelitemii{{\boldmath$\cdot$}}
 \renewcommand\labelitemiii{{\boldmath$\cdot$}}
+
+\newmdenv[
+    linecolor=Maroon,
+    frametitlebackgroundcolor=Maroon,
+    frametitlefont=\color{white}\scshape,
+    frametitle={\textls[80]{definition}},
+    skipabove=1em,
+    skipbelow=0.5em
+]{ctdefinition}
+
+\newmdenv[
+    linecolor=Maroon,
+    frametitlebackgroundcolor=Maroon,
+    frametitlefont=\color{white}\scshape,
+    skipabove=1em,
+    skipbelow=0.5em
+]{cttheorem}
+
+\definecolor{mdenvCTsemi}{gray}{0.55}
+\newmdenv[
+    linecolor=mdenvCTsemi,
+    frametitlebackgroundcolor=mdenvCTsemi,
+    frametitlefont=\color{white}\scshape,
+    frametitle={\textls[80]{example}},
+    skipabove=1em,
+    skipbelow=0.5em
+]{ctexample}

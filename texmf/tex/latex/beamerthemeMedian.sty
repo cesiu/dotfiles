@@ -1,12 +1,15 @@
 \usepackage{tikz, datetime, textpos}
 %\DeclareOption{beteckna}{
-%	\setsansfont[Ligatures=TeX,
-%				 Extension=.ttf,
-%				 BoldFont=*Bold,
-%				 ItalicFont=*Italic
-%				 ]{BetecknaLowerCase}
+%   \setsansfont[Ligatures=TeX,
+%                Extension=.ttf,
+%                BoldFont=*Bold,
+%                ItalicFont=*Italic
+%                ]{BetecknaLowerCase}
 %}
-%\ProcessOptions
+\newif\if@IsThesis
+\@IsThesisfalse
+\DeclareOption{thesis}{\@IsThesistrue}
+\ProcessOptions
 %\yyyymmdddate \renewcommand{\dateseparator}{.}
 \usefonttheme[onlymath]{serif}
 
@@ -60,52 +63,56 @@
   \begin{tikzpicture}
   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
   \ifnum\thepage>1\relax% Not the title page
-	    \fill[color=MedianOrange] (0,8) rectangle(0.8,8.3);
-	    \fill[color=MedianLightBlue] (0.9,8) rectangle(\the\paperwidth, 8.3);
+        \fill[color=MedianOrange] (0,8) rectangle(0.8,8.3);
+        \fill[color=MedianLightBlue] (0.9,8) rectangle(\the\paperwidth, 8.3);
   \else% Title page
-	  \fill[color=MedianBrown] (0,1.2) rectangle (\the\paperwidth,\the\paperheight);
-	  \fill[color=MedianOrange] (0,0.1) rectangle(3.15,1.1);
-	  \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1);
+      \fill[color=MedianBrown] (0,1.2) rectangle (\the\paperwidth,\the\paperheight);
+      \fill[color=MedianOrange] (0,0.1) rectangle(3.15,1.1);
+      \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1);
   \fi
   \end{tikzpicture}
 }
 \setbeamertemplate{title page}{
-	\begin{textblock*}{12cm}(2.55cm,2.8cm)
+    \if@IsThesis
+        \begin{textblock*}{12cm}(2.55cm,1.6cm)
+    \else
+        \begin{textblock*}{12cm}(2.55cm,2.8cm)
+    \fi
     \begin{beamercolorbox}[wd=8cm]{title page header}
       \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
     \end{beamercolorbox}%
     \end{textblock*}
     \begin{textblock*}{3cm}(-1.1cm,5.125cm)
-		\begin{beamercolorbox}{date}
-	      \hfill\usebeamerfont{date}\insertdate%
-	    \end{beamercolorbox}
+        \begin{beamercolorbox}{date}
+          \hfill\usebeamerfont{date}\insertdate%
+        \end{beamercolorbox}
     \end{textblock*}
     \begin{textblock*}{9cm}(2.55cm,5.125cm)
-	    \begin{beamercolorbox}{author}
-	      \usebeamerfont{author}\insertauthor%
-    	\end{beamercolorbox}
+        \begin{beamercolorbox}{author}
+          \usebeamerfont{author}\insertauthor%
+        \end{beamercolorbox}
     \end{textblock*}
 }
 \newcommand{\sectionframe}{{
-	\setbeamertemplate{background}{
-		\begin{tikzpicture}
-			\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-			\fill[color=MedianOrange] (0,6) rectangle (1.5, 7);
-			\fill[color=MedianLightBlue] (1.6, 6) rectangle (\the\paperwidth, 7);
-		\end{tikzpicture}
-	}
-	\frame{\sectionpage}
+    \setbeamertemplate{background}{
+        \begin{tikzpicture}
+            \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+            \fill[color=MedianOrange] (0,6) rectangle (1.5, 7);
+            \fill[color=MedianLightBlue] (1.6, 6) rectangle (\the\paperwidth, 7);
+        \end{tikzpicture}
+    }
+    \frame{\sectionpage}
 }}
 \setbeamertemplate{section page}{
-	\begin{textblock*}{12cm}(0.8cm,-0.9cm)
-		\begin{beamercolorbox}{section page}
-			\insertsectionhead
-		\end{beamercolorbox}
-	\end{textblock*}
+    \begin{textblock*}{12cm}(0.8cm,-0.9cm)
+        \begin{beamercolorbox}{section page}
+            \insertsectionhead
+        \end{beamercolorbox}
+    \end{textblock*}
 }
 \setbeamertemplate{frametitle}{
-	\vspace{0.3cm}
-	\begin{beamercolorbox}{frametitle}
-		\insertframetitle
-	\end{beamercolorbox}
+    \vspace{0.3cm}
+    \begin{beamercolorbox}{frametitle}
+        \insertframetitle
+    \end{beamercolorbox}
 }

@@ -20,9 +20,19 @@
     linecolor=Maroon,
     frametitlebackgroundcolor=Maroon,
     frametitlefont=\color{white}\scshape,
+    frametitle={\textls[80]{theorem}},
     skipabove=1em,
     skipbelow=0.5em
 ]{cttheorem}
+
+\newmdenv[
+    linecolor=Maroon,
+    frametitlebackgroundcolor=Maroon,
+    frametitlefont=\color{white}\scshape,
+    frametitle={\textls[80]{corollary}},
+    skipabove=1em,
+    skipbelow=0.5em
+]{ctcorollary}
 
 \definecolor{mdenvCTsemi}{gray}{0.55}
 \newmdenv[
@@ -40,3 +50,12 @@
     skipabove=0.5em,
     skipbelow=0.5em
 ]{ctsubexample}
+
+\newmdenv[
+    linecolor=mdenvCTsemi,
+    frametitlebackgroundcolor=mdenvCTsemi,
+    frametitlefont=\color{white}\scshape,
+    frametitle={\textls[80]{lemma}},
+    skipabove=1em,
+    skipbelow=0.5em
+]{ctlemma}

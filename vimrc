@@ -108,6 +108,9 @@ tab all
 " Jump to the last known cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
                     \ | exe "normal! g`\"" | endif
+
+" Turn off Shift+U; it's too easy to hit accidentally.
+nmap U <Nop>
 " Persist undo history across sessions.
 if has('persistent_undo')
     let undo_dir = expand('$HOME/.vim/undo_dir')

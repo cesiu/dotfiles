@@ -1,3 +1,3 @@
-syntax match asmSynAfterNumber "#[-]\=[1-9]\d*"
+syntax match asmSynAfterNumber "#[-]\=\d*"
 
 hi! link asmSynAfterNumber Number

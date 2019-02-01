@@ -1,3 +1,3 @@
-syntax match asmSynAfterNumber "#[-]\=\d*"
+syntax match asmSynAfterNumber "[#x][-]\=\d*"
 
 hi! link asmSynAfterNumber Number

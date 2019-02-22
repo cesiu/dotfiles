@@ -1,15 +1,21 @@
 % Because I'm too lazy to manage my used packages properly.
 
+% Include general settings:
 \input{stdheader.tex}
+
+% Regular documents can use enumitem:
 \usepackage{enumitem}
 
+% Smaller bullet points:
 \renewcommand\labelitemi{{\boldmath$\cdot$}}
 \renewcommand\labelitemii{{\boldmath$\cdot$}}
 \renewcommand\labelitemiii{{\boldmath$\cdot$}}
 
 % Redefine Classic Thesis Maroon as Cal Poly green.
 \definecolor{Maroon}{RGB}{3,86,66}
+\definecolor{mdenvCTsemi}{gray}{0.55}
 
+% Add Beamer-esque blocks with Classic Thesis styling:
 \newmdenv[
     linecolor=Maroon,
     frametitlebackgroundcolor=Maroon,
@@ -37,7 +43,6 @@
     skipbelow=0.5em
 ]{ctcorollary}
 
-\definecolor{mdenvCTsemi}{gray}{0.55}
 \newmdenv[
     linecolor=mdenvCTsemi,
     frametitlebackgroundcolor=mdenvCTsemi,

@@ -42,14 +42,54 @@
 \usepackage{microtype}
 
 
+% Fixes older bits of Classic Thesis:
 \renewcommand{\sc}{\scshape}
-\newcommand{\tinyskip}{\vspace{1.5pt plus 0.5pt minus 0.5pt}}
 \setlength{\epigraphwidth}{0.5\linewidth}
+\newcommand{\tinyskip}{\vspace{1.5pt plus 0.5pt minus 0.5pt}}
 
+% Fixed-width tabular columns:
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
 
+% More Beamer-friendly theorem blocks:
+\theoremstyle{definition}\newtheorem{theorem*}{Theorem}
+\theoremstyle{definition}\newtheorem{corollary*}{Corollary}
+\theoremstyle{definition}\newtheorem{lemma*}{Lemma}
+\theoremstyle{example}\newtheorem{excont}{Example \textit{(cont.)}}
+
+% I like thin arrows in my propositions:
+\DeclareMathOperator{\contradiction}{\rightarrow\leftarrow}
+\let\implies\relax
+\DeclareMathOperator{\implies}{\rightarrow}
+\let\iff\relax
+\DeclareMathOperator{\iff}{\leftrightarrow}
+\newcommand{\fn}[2]{#1\hspace{-0.1em}\left(#2\right)}
+
+% Extra algorithm statements: 
+\renewcommand{\algorithmiccomment}[1]{\hspace{2em}// #1}
+\algnewcommand\Input{\item[\textbf{Input:}]}
+\algnewcommand\Output{\item[\textbf{Output:}]}
+\algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
+\renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
+
+% TikZ libraries:
+\usetikzlibrary{
+    positioning,
+    calc,
+    fit,
+    shapes,
+    shapes.misc,
+    intersections,
+    arrows,
+    arrows.meta,
+    decorations.pathreplacing,
+    decorations.pathmorphing,
+    automata,
+    chains
+}
+
+% Listings settings:
 \lstset{
     numbers=left,
     numberstyle=\scriptsize\ttfamily,
@@ -59,6 +99,9 @@
     frame=L,
     escapeinside=``
 }
+
+
+% Deprecated, but some of the 225 materials from Winter '18 still do.
 \lstdefinestyle{skippable}{
     numberblanklines=false
 }
@@ -85,35 +128,3 @@
     }
 }
 \makeatother
-
-\theoremstyle{definition}\newtheorem{theorem*}{Theorem}
-\theoremstyle{definition}\newtheorem{corollary*}{Corollary}
-\theoremstyle{definition}\newtheorem{lemma*}{Lemma}
-\theoremstyle{example}\newtheorem{excont}{Example \textit{(cont.)}}
-\DeclareMathOperator{\contradiction}{\rightarrow\leftarrow}
-\let\implies\relax
-\DeclareMathOperator{\implies}{\rightarrow}
-\let\iff\relax
-\DeclareMathOperator{\iff}{\leftrightarrow}
-\newcommand{\fn}[2]{#1\hspace{-0.1em}\left(#2\right)}
-
-\usetikzlibrary{
-    positioning,
-    calc,
-    automata,
-    arrows,
-    arrows.meta,
-    decorations.pathreplacing,
-    decorations.pathmorphing,
-    intersections,
-    fit,
-    chains,
-    shapes,
-    shapes.misc
-}
-
-\renewcommand{\algorithmiccomment}[1]{\hspace{2em}// #1}
-\algnewcommand\Input{\item[\textbf{Input:}]}
-\algnewcommand\Output{\item[\textbf{Output:}]}
-\algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
-\renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}

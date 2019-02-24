@@ -10,6 +10,9 @@ hi! link pySynAfterBoolean Boolean
 syntax keyword pySynAfterKeyword self
 hi! link pySynAfterKeyword Keyword
 
+syntax keyword pySynAfterTypes TypeVar Generic Any Union List Dict Tuple Set Iterable Iterator Generator Callable
+hi! link pySynAfterTypes pythonBuiltin
+
 syntax keyword pySynAfterExceptions TimeoutExpired
 hi! link pySynAfterExceptions Structure
 

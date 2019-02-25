@@ -96,6 +96,9 @@ _vim_plugins = [
     ("~/.vim/bundle/vim-abolish", "Vim abolish",
      "git clone https://github.com/tpope/vim-abolish.git "
      "~/.vim/bundle/vim-abolish"),
+    ("~/.vim/bundle/vimtex", "Vimtex",
+     "git clone https://github.com/lervag/vimtex "
+     "~/.vim/bundle/vimtex"),
     ("~/.vim/bundle/kotlin-vim", "Vim Kotlin",
      "git clone https://github.com/udalov/kotlin-vim.git "
      "~/.vim/bundle/kotlin-vim"),

@@ -11,6 +11,13 @@
 \renewcommand\labelitemii{{\boldmath$\cdot$}}
 \renewcommand\labelitemiii{{\boldmath$\cdot$}}
 
+% Listing style for shell commands:
+\lstdefinestyle{cli}{
+    basicstyle=\normalsize\ttfamily,
+    numbers=none,
+    frame=none
+}
+
 % Redefine Classic Thesis Maroon as Cal Poly green.
 \definecolor{Maroon}{RGB}{3,86,66}
 \definecolor{mdenvCTsemi}{gray}{0.55}
@@ -67,9 +74,3 @@
     skipabove=1em,
     skipbelow=0.5em
 ]{ctlemma}
-
-\lstdefinestyle{cli}{
-    basicstyle=\normalsize\ttfamily,
-    numbers=none,
-    frame=none
-}

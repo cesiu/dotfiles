@@ -41,8 +41,11 @@ autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
 " Enable syntax highlighting.
 syntax enable
 " Use the Monokai color scheme by default; Pencil for projections.
-colorscheme monokai
-let g:projector_colorscheme='pencil'
+if $PENCIL == 1
+    colorscheme pencil
+else
+    colorscheme monokai
+endif
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
 set spellfile=$HOME/dotfiles/spellfile.utf-8.add
@@ -102,6 +105,8 @@ set lazyredraw
 set display=lastline
 " Always show one line beyond the cursor.
 set scrolloff=1
+" Disable folding.
+set nofoldenable
 
 " Open all arguments as tabs.
 tab all
@@ -157,9 +162,12 @@ let g:ale_lint_on_enter = 0
 " Underline ALE errors instead of highlighting.
 hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 
-" Use the Minimalist Airline theme.
-let g:airline_theme='minimalist'
-let g:airline_projector_theme='sol'
+" Use the Minimalist Airline theme by default; Silver for projections.
+if $PENCIL == 1
+    let g:airline_theme='silver'
+else
+    let g:airline_theme='minimalist'
+endif
 " Use patched Powerline fonts for Airline.
 let g:airline_powerline_fonts=1
 " Show ALE errors in Airline.

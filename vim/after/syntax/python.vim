@@ -17,8 +17,10 @@ syntax keyword pySynAfterExceptions TimeoutExpired
 hi! link pySynAfterExceptions Structure
 
 " It's not a perfect match, but attempt to highlight docstrings as comments.
-syntax region pySynAfterDocstring start=/\z('''\|"""\)/ end=/\z1/ keepend contains=pythonEscape,pythonSpaceError,pythonDoctest,@Spell
+syntax region pySynAfterDocstring start=/\z('''\|"""\)/ end=/\z1/ keepend contains=pythonEscape,pythonSpaceError,pythonDoctest,pySynAfterDocKeyword,@Spell
+syntax region pySynAfterDocKeyword start=/^\s*:/ end=/:/ contained
 hi! link pySynAfterDocstring Comment
+hi! link pySynAfterDocKeyword Keyword
 
 " By default, escape sequences link to Special, which doesn't match C/Java.
 hi! link pythonEscape SpecialChar

@@ -122,7 +122,7 @@ hi! link NonText          EndOfBuffer
 call s:h("Comment",       { "fg": s:darker_gray })
 call s:h("Todo",          { "fg": s:dark_red,
                           \ "cterm": "bold", "gui": "bold" })
-call s:h("SpecialComment",{ "fg": s:dark_gray,
+call s:h("SpecialComment",{ "fg": s:darker_gray,
                           \ "cterm": "bold", "gui": "bold" })
 
 " Types :

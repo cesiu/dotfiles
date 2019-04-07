@@ -168,13 +168,12 @@ if $PENCIL == 1
 else
     let g:airline_theme='minimalist'
 endif
-" Use patched Powerline fonts for Airline.
+" Use Powerline fonts for Airline.
 let g:airline_powerline_fonts=1
 " Show ALE errors in Airline.
 let g:airline#extensions#ale#enabled = 1
 
-" The following should be unnecessary given correct installation of powerline
-"  patched fonts:
+" The following should be unnecessary given correct installation of Nerd Fonts:
 "if !exists('g:airline_symbols')
 "    let g:airline_symbols = {}
 "endif

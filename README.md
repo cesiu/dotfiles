@@ -19,19 +19,18 @@ Other stuff you should then install (assuming macOS):
 * Ripgrep
 * Vim 8
 * Vim Pathogen
-* Vim Airline, Airline Themes, and Powerline patched fonts
+* Vim Airline, Airline Themes, and Nerd Fonts
 * Vim ALE
 * Vim NERDTree and undotree
 * Vim gitgutter
 * Vim abolish
 * Cling (C++ REPL)
 * python, python3, pip, and pip3
-* flake8 (for Python 3 only)
+* PyPy, flake8, MyPy, and coverage.py
 * Java (using cask)
 * jEnv
-* LaTeX (from MacTeX)
-* ChkTeX
-* Clojure
+* MacTeX and ChkTeX
+* Clojure and Kotlin
 * Node.js
 * Bash completion for git
 * gpg, pinentry, pinentry-mac (for signing commits)
@@ -41,8 +40,6 @@ Other stuff you should then install (assuming macOS):
   ALE won't work. Syntastic's an option, but in my experience, if you don't
   have that permission, you're on someone else's server, which is going to be
   slow enough that you don't want syntax checking in Vim.
-* Cycling color schemes in Vim is known to be buggy. For this reason, cycling
-  back to the default in the projector_mode plugin is disabled.
 
 ### About `Monokai.terminal`: ###
 This is a config file for macOS's built-in Terminal. It gives you nice colors
@@ -50,7 +47,7 @@ stolen from the Monokai color scheme. You may or may not need to install the
 Powerline patched fonts first. I don't remember.
 
 ### About `Pencil.terminal`: ###
-This is a high-contrast, light background color scheme for use on projectors. It matches the projector mode color scheme used by the custom `:Beam` command in vim.
+This is a high-contrast, light background color scheme for use on projectors. It also sets an environment variable so that vim will automatically use a matching color scheme.
 
 ### About `sVimrc`: ###
 [sVim](https://github.com/flipxfx/sVim) is a Safari extension for vim keybindings.

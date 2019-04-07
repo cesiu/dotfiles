@@ -1,6 +1,6 @@
 # Begin cesiu.
 
-# Recolor the prompt.
+# Make the prompt look like Vim Airline.
 export PROMPT_COMMAND=genprompt
 function genprompt() {
     export PS1="\[\e[0;40;37m\]$(date '+%I:%M:%S %p' | sed 's/:/\\[\\033[93m\\]:\\[\\033[37m\\]/g')\[\e[100;30m\] \[\e[1;36m\]\h \[\e[40;90m\] \[\e[1;34m\]\W\[\e[97m\]  \$\[\e[0;30m\]\[\e[0m\] "
@@ -92,3 +92,8 @@ alias starwars='telnet towel.blinkenlights.nl'
 OLDPWD=$(cat ~/.oldpwd)
 
 # End cesiu.
+
+export PATH="/usr/local/bin:$PATH:/usr/local/opt/python@2/bin:/Users/christopher/bin:/Users/christopher/iCloud/grading/threepio/packages/lc3"
+export CLASSPATH="$CLASSPATH:/Users/christopher/iCloud/grading/threepio/packages/java/*:/Users/christopher/bin/antlr-4.7.1-complete.jar"
+export PYTHONPATH="$PYTHONPATH:/Users/christopher/iCloud/grading/threepio/packages/python"
+export GPG_TTY=$(tty)

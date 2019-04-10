@@ -53,8 +53,6 @@ set spellfile=$HOME/dotfiles/spellfile.utf-8.add
 
 " Allow backspacing over autoindents, newlines, and start of insert.
 set backspace=indent,eol,start
-" Treat the underscore as a word.
-set iskeyword-=_
 " Remap the home key to mimic '^' instead of '0'.
 map <Home> ^
 imap <Home> <C-o>^

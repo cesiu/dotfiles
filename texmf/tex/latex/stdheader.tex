@@ -34,6 +34,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{phaistos}
+\usepackage{textgreek}
 % Misc. Text Formatting:
 \usepackage{hyperref}
 \usepackage{url}
@@ -72,6 +73,17 @@
 \algnewcommand\Output{\item[\textbf{Output:}]}
 \algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
 \renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
+% Algorithm statements for plain-English-style pseudocode:
+\algnewcommand{\BigLet}[1]{\State{Let #1}}
+\algnewcommand{\BigRet}[1]{\State{Return #1}}
+\algloopdefx{BigFor}[1]{For #1}
+\algloopdefx{BigIf}[1]{If #1}
+%\algcloopdefx[<new loop>]{<old block>}{<continue>}
+%   [<continueparamcount>][<default value>]{<continue text>}
+
+% Temporary variables:
+\newdimen{\tempx}
+\newdimen{\tempy}
 
 % TikZ libraries:
 \usetikzlibrary{
@@ -102,7 +114,7 @@
 }
 
 
-% Deprecated, but some of the 225 materials from Winter '18 still do.
+% Deprecated, but some of the 225 materials from Winter '18 still use them.
 %\lstdefinestyle{skippable}{
 %    numberblanklines=false
 %}

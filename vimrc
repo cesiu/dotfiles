@@ -49,6 +49,8 @@ endif
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
 set spellfile=$HOME/dotfiles/spellfile.utf-8.add
+" Default to LaTeX highlighting.
+let g:tex_flavor = "latex"
 
 
 " Allow backspacing over autoindents, newlines, and start of insert.

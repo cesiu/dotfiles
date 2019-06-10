@@ -7,7 +7,7 @@ endif
 syntax keyword pySynAfterBoolean None True False
 hi! link pySynAfterBoolean Boolean
 
-syntax keyword pySynAfterKeyword self
+syntax keyword pySynAfterKeyword self cls
 hi! link pySynAfterKeyword Keyword
 
 syntax keyword pySynAfterTypes TypeVar Generic Optional Any Union List Dict Tuple Set Iterable Iterator Generator Callable

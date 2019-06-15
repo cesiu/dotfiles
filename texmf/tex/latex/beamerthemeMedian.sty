@@ -74,7 +74,7 @@
 }
 \setbeamertemplate{title page}{
     \if@IsThesis
-        \begin{textblock*}{12cm}(2.55cm,1.6cm)
+        \begin{textblock*}{12cm}(2.55cm,0.6cm)
     \else
         \begin{textblock*}{12cm}(2.55cm,2.8cm)
     \fi
@@ -97,14 +97,16 @@
     \setbeamertemplate{background}{
         \begin{tikzpicture}
             \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-            \fill[color=MedianOrange] (0,6) rectangle (1.5, 7);
+            \fill[color=MedianLightBlue] (0, 0) rectangle (\the\paperwidth, 5.9);
+            \fill[color=MedianOrange] (0,6) rectangle (1.475, 7);
             \fill[color=MedianLightBlue] (1.6, 6) rectangle (\the\paperwidth, 7);
+            \fill[color=MedianLightBlue] (0, 7.1) rectangle (\the\paperwidth, \the\paperheight);
         \end{tikzpicture}
     }
     \frame{\sectionpage}
 }}
 \setbeamertemplate{section page}{
-    \begin{textblock*}{12cm}(0.8cm,-0.9cm)
+    \begin{textblock*}{12cm}(0.84cm,-0.78cm)
         \begin{beamercolorbox}{section page}
             \insertsectionhead
         \end{beamercolorbox}

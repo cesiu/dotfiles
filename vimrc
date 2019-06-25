@@ -70,8 +70,9 @@ nnoremap k gk
 vnoremap <Down> g<Down>
 vnoremap k gk
 
-" Open vertical splits to the right.
-set spr
+" Open splits below/to the right.
+set splitbelow
+set splitright
 " Allow switching split windows while in insert mode.
 inoremap <C-w> <C-o><C-w>
 " Allow switching to visual block mode from insert mode.

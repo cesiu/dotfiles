@@ -158,3 +158,9 @@ dataset
 superset
 prodrome
 simulatable
+dequeueing
+enqueued
+enqueueing
+dequeued
+enqueue
+dequeue

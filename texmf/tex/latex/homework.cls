@@ -188,17 +188,15 @@
         \renewcommand\footrulewidth{0.5pt}
         \chead{}
         \cfoot{\thepage\ of \pageref{LastPage}}
-        \ifthenelse{\boolean{@showsolns}}
-            {
+        \rhead{\Blank \small \Semester}
+        \ifthenelse{\boolean{@showsolns}}{
+            \renewcommand\headsep{25pt}
             \lhead{ \solnstamp \\ \small \CourseTitle }
             \lfoot{\solnstamp}
-            }
-            {
+        }{
             \lhead{ \small \CourseTitle }
             \lfoot{}
-            }
-        \rhead{\Blank \small \Semester}
-
+        }
     }
 
     % The style for pages without \maketitle called on it.
@@ -208,15 +206,14 @@
         \chead{}
         \cfoot{\thepage\ of \pageref{LastPage}}
         \rhead{ \Blank \textbf{\small \HandoutTitle} \\  \small \textbf{\DueDate} }
-        \ifthenelse{\boolean{@showsolns}}
-            {
+        \ifthenelse{\boolean{@showsolns}}{
+            \renewcommand\headsep{14pt}
             \lhead{ \solnstamp \\ \small \CourseTitle \\ \Semester\ }
             \lfoot{\solnstamp}
-            }
-            {
+        }{
             \lhead{ \small \CourseTitle \\ \Semester\ }
             \lfoot{}
-            }
+        }
     }
 
 % Set the default page style to homework.

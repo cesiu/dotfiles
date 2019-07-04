@@ -8,3 +8,5 @@ ignore =
     E241
     # Breaking after binops is unreadable.
     W503
+    # I know you mean well, but in 101/202, sometimes star imports are okay...
+    F403, F405

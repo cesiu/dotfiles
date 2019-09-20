@@ -57,7 +57,7 @@
     % change the values if the user sets these commands
     \newcommand{\SetCourseTitle}[1]{\renewcommand{\CourseTitle}{#1}}
     \newcommand{\SetHandoutTitle}[1]{\renewcommand{\HandoutTitle}{#1}}
-    \newcommand{\SetDueDate}[1]{\renewcommand{\DueDate}{Due: #1}}
+    \newcommand{\SetDueDate}[1]{\renewcommand{\DueDate}{#1}}
     \newcommand{\SetStudent}[1]{\renewcommand{\Student}{#1}}
     \newcommand{\SetInstructor}[1]{\renewcommand{\Instructor}{#1}}
     \newcommand{\SetSemester}[1]{\renewcommand{\Semester}{#1}}
@@ -66,13 +66,14 @@
         {0.5pt} Date:\rule{0.75in}{0.5pt}\\}}
     \newcommand{\ShowAllBlanks}{\renewcommand{\Blank}{\large Name:\rule{2in}%
         {0.5pt} Section:\rule{0.75in}{0.5pt} Date:\rule{0.75in}{0.5pt}\\}}
+    \newcommand{\ShowDueDate}{Due: \DueDate}
 
     % redefine the make title command
     \renewcommand\maketitle{
         \thispagestyle{handouttitle}
         \begin{center}
             \LARGE{\HandoutTitle} \\
-            \large\textbf{\DueDate}\Student \\
+            \large\textbf{\ShowDueDate}\Student \\
         \end{center}
     }
 
@@ -205,7 +206,7 @@
         \renewcommand\footrulewidth{0.5pt}
         \chead{}
         \cfoot{\thepage\ of \pageref{LastPage}}
-        \rhead{ \Blank \textbf{\small \HandoutTitle} \\  \small \textbf{\DueDate} }
+        \rhead{ \Blank \textbf{\small \HandoutTitle} \\  \small \textbf{\ShowDueDate} }
         \ifthenelse{\boolean{@showsolns}}{
             \renewcommand\headsep{14pt}
             \lhead{ \solnstamp \\ \small \CourseTitle \\ \Semester\ }

@@ -66,7 +66,7 @@
         {0.5pt} Date:\rule{0.75in}{0.5pt}\\}}
     \newcommand{\ShowAllBlanks}{\renewcommand{\Blank}{\large Name:\rule{2in}%
         {0.5pt} Section:\rule{0.75in}{0.5pt} Date:\rule{0.75in}{0.5pt}\\}}
-    \newcommand{\ShowDueDate}{Due: \DueDate}
+    \newcommand{\ShowDueDate}{\ifthenelse{\NOT\equal{\DueDate}{\empty}}{Due: \DueDate}{}}
 
     % redefine the make title command
     \renewcommand\maketitle{

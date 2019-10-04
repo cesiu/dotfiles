@@ -99,6 +99,9 @@ _vim_plugins = [
     ("~/.vim/bundle/vimtex", "Vimtex",
      "git clone https://github.com/lervag/vimtex "
      "~/.vim/bundle/vimtex"),
+    ("~/.vim/bundle/csv", "Vim CSV",
+     "git clone https://github.com/chrisbra/csv.vim "
+     "~/.vim/bundle/csv"),
     ("~/.vim/bundle/kotlin-vim", "Vim Kotlin",
      "git clone https://github.com/udalov/kotlin-vim.git "
      "~/.vim/bundle/kotlin-vim"),

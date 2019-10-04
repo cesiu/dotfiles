@@ -176,6 +176,15 @@ let g:airline_powerline_fonts=1
 " Show ALE errors in Airline.
 let g:airline#extensions#ale#enabled = 1
 
+" Auto-arrange columns in CSVs.
+let g:csv_autocmd_arrange = 1
+let g:csv_autocmd_arrange_size = 1048576
+" Set subtler colors for CSVs.
+hi! link CSVColumnOdd Normal
+hi! link CSVColumnEven Alternative
+hi! link CSVColumnHeaderOdd Heading
+hi! link CSVColumnHeaderEven Heading
+
 " The following should be unnecessary given correct installation of Nerd Fonts:
 "if !exists('g:airline_symbols')
 "    let g:airline_symbols = {}

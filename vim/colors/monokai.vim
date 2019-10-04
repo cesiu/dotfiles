@@ -54,6 +54,9 @@ endfunction
 " Base mode settings:
 call s:h("Normal",        { "bg": s:darkest_gray, "fg": s:white })
 call s:h("Visual",        { "bg": s:dark_blue })
+call s:h("Alternative",   { "bg": s:darker_gray,  "fg": s:white })
+call s:h("Heading",       { "bg": s:darker_gray,  "fg": s:gray,
+                          \ "cterm": "underline", "gui": "underline" })
 
 " Cursor positioning:
 call s:h("Cursor",        { "bg": s:light_gray })
@@ -65,7 +68,8 @@ call s:h("CursorLineNr",  { "bg": s:darker_gray,  "fg": s:orange })
 call s:h("LineNr",        { "bg": s:darker_gray,  "fg": s:gray })
 call s:h("SignColumn",    { "bg": s:darker_gray })
 " The guide at 80 characters:
-call s:h("ColorColumn",   { "bg": s:darker_gray })
+call s:h("ColorColumn",   { "bg": s:darker_gray,  "fg": s:darker_gray })
+hi! link Conceal          LineNr
 
 " Interface borders:
 call s:h("VertSplit",     { "bg": s:dark_gray,    "fg": s:dark_gray })
@@ -111,19 +115,22 @@ call s:h("DiffText",      { "fg": s:orange })
 call s:h("DiffDelete",    { "fg": s:pink })
 
 " Warning messages:
-call s:h("Error",         { "fg": s:pink, "cterm": "bold", "gui": "bold" })
+call s:h("Error",         { "fg": s:pink,
+                          \ "cterm": "bold", "gui": "bold" })
 call s:h("ErrorMsg",      { "fg": s:pink })
 call s:h("WarningMsg",    { "fg": s:orange })
 call s:h("Question",      { "fg": s:white })
 
 " Directories (this also affects NERDTree) and files:
-call s:h("Directory",     { "fg": s:blue })
+call s:h("Directory",     { "fg": s:blue,
+                          \ "cterm": "bold", "gui": "bold" })
 call s:h("EndOfBuffer",   { "fg": s:darkest_gray})
 hi! link NonText          EndOfBuffer
 
 " Comments :
 call s:h("Comment",       { "fg": s:gray })
-call s:h("Todo",          { "fg": s:yellow, "cterm": "bold", "gui": "bold" })
+call s:h("Todo",          { "fg": s:yellow,
+                          \ "cterm": "bold", "gui": "bold" })
 call s:h("SpecialComment",{ "fg": s:light_gray,
                           \ "cterm": "bold", "gui": "bold" })
 

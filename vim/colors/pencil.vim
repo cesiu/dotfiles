@@ -49,6 +49,9 @@ endfunction
 " Base mode settings:
 call s:h("Normal",        { "bg": s:white,        "fg": s:subtle_black })
 call s:h("Visual",        { "bg": s:light_blue })
+call s:h("Alternative",   { "bg": s:lighter_gray, "fg": s:subtle_black })
+call s:h("Heading",       { "bg": s:lighter_gray, "fg": s:gray,
+                          \ "cterm": "underline", "gui": "underline" })
 
 " Cursor positioning:
 call s:h("Cursor",        { "bg": s:light_blue })
@@ -60,7 +63,8 @@ call s:h("CursorLineNr",  { "bg": s:lighter_gray, "fg": s:subtle_black })
 call s:h("LineNr",        { "bg": s:lighter_gray, "fg": s:gray })
 call s:h("SignColumn",    { "bg": s:lighter_gray })
 " The guide at 80 characters:
-call s:h("ColorColumn",   { "bg": s:lighter_gray })
+call s:h("ColorColumn",   { "bg": s:lighter_gray, "fg": s:lighter_gray })
+hi! link Conceal          LineNr
 
 " Interface borders:
 call s:h("VertSplit",     { "bg": s:gray,         "fg": s:gray })

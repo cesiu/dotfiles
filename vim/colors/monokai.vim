@@ -68,7 +68,7 @@ call s:h("CursorLineNr",  { "bg": s:darker_gray,  "fg": s:orange })
 call s:h("LineNr",        { "bg": s:darker_gray,  "fg": s:gray })
 call s:h("SignColumn",    { "bg": s:darker_gray })
 " The guide at 80 characters:
-call s:h("ColorColumn",   { "bg": s:darker_gray,  "fg": s:darker_gray })
+call s:h("ColorColumn",   { "bg": s:darker_gray })
 hi! link Conceal          LineNr
 
 " Interface borders:

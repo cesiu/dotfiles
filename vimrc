@@ -179,6 +179,8 @@ let g:airline#extensions#ale#enabled = 1
 " Auto-arrange columns in CSVs.
 let g:csv_autocmd_arrange = 1
 let g:csv_autocmd_arrange_size = 1048576
+" Force use of comma delimiters in CSVs.
+let g:csv_delim=','
 " Set subtler colors for CSVs.
 hi! link CSVColumnOdd Normal
 hi! link CSVColumnEven Alternative

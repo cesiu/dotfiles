@@ -79,6 +79,10 @@
 \algnewcommand\Output{\item[\textbf{Output:}]}
 \algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
 \renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
+\algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}
+\algdef{SE}[BLOCK]{Block}{EndBlock}{}{}
+\algtext*{Block}
+\algtext*{EndBlock}
 % Algorithm statements for plain-English-style pseudocode:
 \algnewcommand{\BigLet}[1]{\State{Let #1}}
 \algnewcommand{\BigRet}[1]{\State{Return #1}}

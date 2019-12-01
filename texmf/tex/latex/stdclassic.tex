@@ -37,6 +37,14 @@
 \addtolength{\cftsecindent}{1em}
 \addtolength{\cftsecnumwidth}{0.5em}
 
+% Set enumitem spacing within marginpar:
+\SetEnumitemKey{marginpar}{
+    left=0.25em,
+    labelsep=0.25em,
+    topsep=0.25em,
+    itemsep=0em
+}
+
 % Add Beamer-esque blocks with Classic Thesis styling:
 \newmdenv[
     linecolor=Maroon,

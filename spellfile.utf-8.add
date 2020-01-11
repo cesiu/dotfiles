@@ -199,3 +199,7 @@ subsequences
 optimality
 parallelization
 pathing
+pipelining
+unary
+bitmask
+whitespace

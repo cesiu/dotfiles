@@ -114,6 +114,10 @@ call s:h("DiffChange",    { "fg": s:orange })
 call s:h("DiffText",      { "fg": s:orange })
 call s:h("DiffDelete",    { "fg": s:pink })
 
+" ALE errors:
+call s:h("ALEErrorSign",  { "bg": s:darker_gray, "fg": s:pink })
+call s:h("ALEWarningSign",{ "bg": s:darker_gray, "fg": s:pink })
+
 " Warning messages:
 call s:h("Error",         { "fg": s:pink,
                           \ "cterm": "bold", "gui": "bold" })

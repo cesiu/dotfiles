@@ -164,6 +164,9 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 " Underline ALE errors instead of highlighting.
 hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
+" Make all warnings look like errors.
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>>'
 
 " Use the Minimalist Airline theme by default; Silver for projections.
 if $PENCIL == 1

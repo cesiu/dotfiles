@@ -204,3 +204,4 @@ unary
 bitmask
 whitespace
 Fortran
+goto

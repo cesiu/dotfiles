@@ -65,13 +65,8 @@ fi
 
 # "gcc" is aliased to "clang" -- why isn't "gdb" aliased to "lldb"?
 if [ -x "$(command -v lldb)" -a ! -x "$(command -v gdb)" ]; then
+    alias lldb="PATH=/usr/bin:$PATH lldb"
     alias gdb='lldb'
-fi
-
-# Make sure python is properly aliased to the brew installs.
-if [ -x "$(command -v python3)" ]; then
-    alias python='python3'
-    alias pip='pip3'
 fi
 
 # If jEnv is installed, add it to the path.

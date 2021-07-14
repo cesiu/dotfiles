@@ -65,6 +65,9 @@
 \theoremstyle{definition}\newtheorem{lemma*}{Lemma}
 \theoremstyle{example}\newtheorem{excont}{Example \textit{(cont.)}}
 
+% Additionally break URLs on hyphens:
+\def\UrlBreaks{\do\/\do-}
+
 % I like thin arrows in my propositions:
 \DeclareMathOperator{\contradiction}{\rightarrow\leftarrow}
 \let\implies\relax
@@ -131,8 +134,6 @@
 \tikzstyle{contains}=[diamond-]
 \tikzstyle{implements}=[-open triangle 60, dashed]
 \tikzstyle{extends}=[-open triangle 60]
-
-
 
 % Listings settings:
 \lstset{

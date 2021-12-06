@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{framed}
 \usepackage{mdframed}
+\usepackage{adjustbox}
 % Lists and Tables:
 \usepackage{mdwlist}
 \usepackage{booktabs}
@@ -43,6 +44,7 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{cancel}
+\usepackage{contour}
 \usepackage{setspace}
 \usepackage{microtype}
 
@@ -53,6 +55,8 @@
 \newcommand{\semiskip}{\vspace{4.5pt plus 1.5pt minus 1.5pt}}
 \newcommand{\tinyskip}{\vspace{1.5pt plus 0.5pt minus 0.5pt}}
 \newcommand{\zeroskip}{\vspace{0.0pt plus 0.0pt minus 0.0pt}}
+\newcommand{\halfstrut}{\rule{0pt}{0.5\baselineskip}}
+\newcommand{\cursor}[1]{\framebox{\halfstrut\!#1\!}}
 
 % Fixed-width tabular columns:
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
@@ -89,10 +93,11 @@
 \renewcommand{\algorithmiccomment}[1]{\hspace{2em}// #1}
 \algnewcommand\Input{\item[\textbf{Input:}]}
 \algnewcommand\Output{\item[\textbf{Output:}]}
-\algnewcommand\DPDefn{\smallskip\item[\raisebox{0.5ex}{\,\tiny$\bullet$\!}\;\textit{Definition:}]}
-\algnewcommand\DPBase{\smallskip\item[\raisebox{0.5ex}{\,\tiny$\bullet$\!}\;\textit{Base Cases:}]}
-\algnewcommand\DPForm{\smallskip\item[\raisebox{0.5ex}{\,\tiny$\bullet$\!}\;\textit{Formula:}]}
-\algnewcommand\DPSoln{\smallskip\item[\raisebox{0.5ex}{\,\tiny$\bullet$\!}\;\textit{Solution:}]}
+\newcommand{\DPBullet}{\raisebox{0.5ex}{\hspace*{0.5em}\tiny$\bullet$\hspace*{0.7em}}}
+\algnewcommand\DPDefn{\smallskip\item[\DPBullet\textit{Definition:}]}
+\algnewcommand\DPBase{\smallskip\item[\DPBullet\textit{Base Cases:}]}
+\algnewcommand\DPForm{\smallskip\item[\DPBullet\textit{Formula:}]}
+\algnewcommand\DPSoln{\smallskip\item[\DPBullet\textit{Solution:}]}
 \algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
 \renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
 \algdef{SE}[DOWHILE]{Do}{DoWhile}{\algorithmicdo}[1]{\algorithmicwhile\ #1}
@@ -123,6 +128,7 @@
     arrows,
     arrows.meta,
     backgrounds,
+    shadings,
     decorations.pathreplacing,
     decorations.pathmorphing,
     calligraphy,

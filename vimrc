@@ -99,7 +99,7 @@ set laststatus=2
 set showtabline=2
 " Show a guide at 80 chars.
 autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown"
-                 \ | set colorcolumn+=81
+                 \ && &ft != "csv" | set colorcolumn+=81
 " Highlight the current line.
 set cursorline
 " ...that's stupidly laggy. Mitigate it.

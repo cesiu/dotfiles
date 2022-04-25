@@ -1,4 +1,4 @@
-" Begin cesiu.
+
 
 " Enable indentation and plugins dependent on filetype.
 filetype plugin indent on
@@ -147,6 +147,8 @@ map <Leader>cd :lcd %:p:h<CR>
 map <Leader>u :silent! UndotreeToggle<CR>
 " Use 'n' to toggle NERDTree.
 map <Leader>n :silent! NERDTreeToggle<CR>
+" Use 't' to add all the rows in a CSV.
+map <Leader>t :g/./exec 'SumRow' <bar> exec 's/$/\=b:csv_result'<CR>
 
 
 " Plugin settings:

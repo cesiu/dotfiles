@@ -150,7 +150,7 @@
 	<key>Bell</key>
 	<false/>
 	<key>CommandString</key>
-	<string>export PENCIL=1</string>
+	<string>export XMODIFIERS=@beamer</string>
 	<key>CursorColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS

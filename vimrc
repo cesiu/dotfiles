@@ -1,4 +1,4 @@
-
+" Begin cesiu.
 
 " Enable indentation and plugins dependent on filetype.
 filetype plugin indent on
@@ -41,10 +41,12 @@ autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
 " Enable syntax highlighting.
 syntax enable
 " Use the Monokai color scheme by default; Pencil for projections.
-if $PENCIL == 1
+if stridx($XMODIFIERS, "@beamer") >= 0
     colorscheme pencil
+    let g:airline_theme='silver'
 else
     colorscheme monokai
+    let g:airline_theme='minimalist'
 endif
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
@@ -135,7 +137,7 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 
-" I write tons of LaTeX and I'm bad at marks.
+" I write too much LaTeX for this to be reasonable, but muscle memory...
 let mapleader='`'
 " Use 'p' to toggle paste mode.
 set pastetoggle=<Leader>p
@@ -170,12 +172,6 @@ hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '!'
 
-" Use the Minimalist Airline theme by default; Silver for projections.
-if $PENCIL == 1
-    let g:airline_theme='silver'
-else
-    let g:airline_theme='minimalist'
-endif
 " Use Powerline fonts for Airline.
 let g:airline_powerline_fonts=1
 " Show ALE errors in Airline.

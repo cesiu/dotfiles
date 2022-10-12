@@ -116,7 +116,7 @@
     % \hidesoln hides the solutions for the document.
     \newcommand{\hidesoln}{\setboolean{@showsolns}{false}}
     % This is the solution stamp put at the top and bottom of each page.
-    \newcommand{\solnstamp}{\large \textcolor{\solncolor}{\textbf{SOLUTION}}}
+    \newcommand{\solnstamp}{\small \textcolor{\solncolor}{\textbf{SOLUTION}}}
 
     %The command \soln{length}{text} takes two arguments.
     %The length is the amount of vertical space to display when the solution is not shown.
@@ -187,16 +187,15 @@
     \fancypagestyle{handouttitle} {
         \renewcommand\headrulewidth{0.5pt}
         \renewcommand\footrulewidth{0.5pt}
-        \chead{}
-        \cfoot{\thepage\ of \pageref{LastPage}}
+        \lhead{ \small \CourseTitle }
         \rhead{\Blank \small \Semester}
+        \lfoot{}
+        \cfoot{\thepage\ of \pageref{LastPage}}
+        \rfoot{}
         \ifthenelse{\boolean{@showsolns}}{
-            \renewcommand\headsep{25pt}
-            \lhead{ \solnstamp \\ \small \CourseTitle }
-            \lfoot{\solnstamp}
+            \chead{\solnstamp}
         }{
-            \lhead{ \small \CourseTitle }
-            \lfoot{}
+            \chead{}
         }
     }
 
@@ -204,16 +203,15 @@
     \fancypagestyle{homework} {
         \renewcommand\headrulewidth{0.5pt}
         \renewcommand\footrulewidth{0.5pt}
+        \lhead{ \small \CourseTitle \\ \Semester\ }
         \chead{}
+        \lfoot{}
         \cfoot{\thepage\ of \pageref{LastPage}}
-        \rhead{ \Blank \textbf{\small \HandoutTitle} \\  \small \textbf{\ShowDueDate} }
+        \rfoot{}
         \ifthenelse{\boolean{@showsolns}}{
-            \renewcommand\headsep{14pt}
-            \lhead{ \solnstamp \\ \small \CourseTitle \\ \Semester\ }
-            \lfoot{\solnstamp}
+            \rhead{ \Blank \textbf{\small \HandoutTitle} \\ \solnstamp }
         }{
-            \lhead{ \small \CourseTitle \\ \Semester\ }
-            \lfoot{}
+            \rhead{ \Blank \textbf{\small \HandoutTitle} \\ \small \textbf{\ShowDueDate} }
         }
     }
 

@@ -118,33 +118,9 @@
     % This is the solution stamp put at the top and bottom of each page.
     \newcommand{\solnstamp}{\small \textcolor{\solncolor}{\textbf{SOLUTION}}}
 
-    %The command \soln{length}{text} takes two arguments.
-    %The length is the amount of vertical space to display when the solution is not shown.
-    %The text is the text of the solution to display when the solution is displayed.
-    \newcommand{\soln}[2]{
-        \ifthenelse{\boolean{@showsolns}} {
-            \begin{solution}
-                {#2}
-            \end{solution}
-        } {
-            \vspace{#1}
-        }
-    }
-
-    % This version of soln works for highlighting existing text, e.g., for
-    %  multiple choice questions.
-    \newcommand{\solninline}[1]{
-        \ifthenelse{\boolean{@showsolns}} {
-            \begin{solution}
-                {#1}
-            \end{solution}
-        } {
-            {#1}
-        }
-    }
-
-    % This version of soln lets you specify the non-soln text. Also useful for
-    %  inputting the vspace command yourself when used with cprotect.
+    % Defines \solnraw{given}{soln}, which optionally hides an answer:
+    %  given - Any text to be shown outside of solutions
+    %  soln  - Any text to be shown inside of solutions
     \newcommand{\solnraw}[2]{
         \ifthenelse{\boolean{@showsolns}} {
             \begin{solution}
@@ -155,30 +131,21 @@
         }
     }
 
-    % This version of soln takes a list of characters and prints blanks
-    %  that are underlined.
-    \newcommand{\solnblanks}[1]{
-        \ifthenelse{\boolean{@showsolns}} {
-            \vspace{0.75em}
-            \begin{solution}
-                \foreach \char in {#1} {
-                    \texttt{\,~\char~\,}
-                }
-            \end{solution}
-        } {
-            \vspace{2em}
-        }
-
-        \foreach \char in {#1} {
-            \ifthenelse{\equal{\char}{~}} {
-                \texttt{~~~~}
-            } {
-                \underline{\texttt{~~~~}}
-            }
-            % Spacing might be a little off here...this works experimentally.
-            \hspace{-1.125em}
-        }
+    % Defines \soln{height}{answer}, which also leaves space for an answer.
+    \newcommand{\soln}[2]{
+        \begin{minipage}[t][#1][t]{\linewidth}
+            \setlength{\parskip}{0.25em}
+            \setitemize{nosep, itemsep=0.25em}
+            \setenumerate{nosep, itemsep=0.25em}
+            \solnraw{\vphantom{}}{#2}
+        \end{minipage}
     }
+
+    % Defines \solnbox{height}{answer}, which also boxes space for an answer.
+    \newcommand{\solnbox}[2]{\fbox{\soln{#1}{#2}}}
+
+    % Defines \solninline{answer}, which only highlights a given answer.
+    \newcommand{\solninline}[1]{\solnraw{#1}{#1}}
 
     %\ExecuteOptions{solution}
 % --- Define the Header and Footer Styles ---

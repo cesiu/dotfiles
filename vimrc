@@ -3,18 +3,14 @@
 " Enable indentation and plugins dependent on filetype.
 filetype plugin indent on
 
-" Treat CUDA files as C files.
+" Set filetypes for unusual files.
 autocmd BufNewFile,BufRead *.cu set filetype=c
-" Treat .md files as Markdown files.
 autocmd BufNewFile,BufRead *.md set filetype=markdown
-" Treat Processing files as Java files.
 autocmd BufNewFile,BufRead *.pde set filetype=java
-" Treat Racket files as Scheme files.
 autocmd BufNewFile,BufRead *.rkt set filetype=scheme
-" Treat Cal Poly's special 'mybashrc' as a shell file.
-autocmd BufNewFile,BufRead .mybashrc set filetype=sh
-" Set a type for text files.
+autocmd BufNewFile,BufRead *.3po set filetype=python
 autocmd BufNewFile,BufRead *.txt set filetype=txt
+autocmd BufNewFile,BufRead .mybashrc set filetype=sh
 
 " Use Bash-esque file completion.
 set wildmode=longest:full,full

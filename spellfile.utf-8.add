@@ -216,3 +216,6 @@ iterables
 timestep
 timesteps
 endianness
+bitmasks
+inode
+inodes

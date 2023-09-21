@@ -69,13 +69,22 @@
     \newcommand{\ShowDueDate}{\ifthenelse{\NOT\equal{\DueDate}{\empty}}{Due: \DueDate}{}}
 
     % redefine the make title command
-    \renewcommand\maketitle{
+    \newcommand{\ShowDatedTitle}{
         \thispagestyle{handouttitle}
         \begin{center}
             \LARGE{\HandoutTitle} \\
             \large\textbf{\ShowDueDate}\Student \\
         \end{center}
     }
+
+    \newcommand{\ShowUndatedTitle}{
+        \thispagestyle{handouttitle}
+        \begin{center}
+            \LARGE{\HandoutTitle} \\
+        \end{center}
+    }
+
+    \renewcommand{\maketitle}{\ShowDatedTitle}
 
     % Redefine the sectioning commands \section \subsection and \subsubsection
     \renewcommand\section{\@startsection

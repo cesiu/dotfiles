@@ -1,0 +1,129 @@
+\tikzset{
+    % Animations:
+    bg/.style={dashed, draw=gray, fill=none, text=gray},
+    fg/.style={very thick, draw=black, text=black},
+    % Nodes:
+    anon/.style={every node/.append style={minimum width=0.3cm}},
+    % Sets:
+    set/.style={
+        rectangle, dashed, inner sep=0.1cm, thick,
+        draw=black, fill=none, rounded corners=0.25cm
+    },
+    % Graphs:
+    graph/.style={
+        node distance=0.75cm, label distance=-0.48cm,
+        thick, draw=black, fill=white, text=black,
+        every node/.style={
+            circle, minimum width=0.75cm,
+            draw=black, fill=white, text=black},
+        every label/.style={
+            rectangle, inner sep=0cm, text depth=+0.1ex,
+            draw=none, fill=none, text=black},
+        every loop/.style={},
+        weight/.style={
+            inner sep=0cm, minimum width=0.3cm,
+            draw=none, fill=MedianUltraLightOrange,
+            font=\scriptsize, anchor=center},
+        walk left/.style={
+            shorten >=0.07cm, shorten <=0.09cm, decorate,
+            decoration={walkto, raise=0.12cm}},
+        walk right/.style={
+            shorten >=0.07cm, shorten <=0.09cm, decorate,
+            decoration={walkto, raise=-0.12cm}},
+        dummy/.style={weight, draw=black}
+    },
+    % Jobs:
+    jobs/.style={
+        thick, draw=black, fill=lightgray, text=black,
+        font=\small, xscale=0.5, yscale=0.5
+    },
+    % Knapsacks:
+    knapsack/.style={
+        thick, draw=black, fill=none, text=black,
+        item/.style={draw=black, fill=white, text=black, rounded corners=0.25cm}
+    },
+    % Reductions:
+    reduction/.style={
+        thick, draw=black, fill=white, text=black,
+        node distance=1.6cm, text depth=+0.1ex,
+        minimum width=0.75cm, minimum height=0.75cm
+    },
+    % Memory:
+    memarr/.style={
+        node distance=-0.05cm, font=\small\ttfamily,
+        thick, draw=black, fill=white, text=black,
+        memctr/.style={
+            trim left=(orig.center), trim right=(orig.center)},
+        memaddr/.style={
+            draw=none, fill=none, text=black},
+        memloc/.style={
+            minimum width=2cm, minimum height=0.630cm,
+            inner sep=0cm, outer sep=0cm, text depth=+0.1ex,
+            draw=black, fill=white, text=black},
+        memedge/.style={
+            draw=black, fill=white,
+            decoration={zigzag, segment length=0.22cm, amplitude=0.04cm}},
+        membrc/.style={
+            very thick, fill=none, decorate,
+            decoration={calligraphic brace, amplitude=0.15cm}},
+        memhide/.style={
+            draw=none, fill=none, text=MedianUltraLightOrange},
+        ref/.style={draw=none, fill=none, text=black},
+        val/.style={draw=none, fill=none, baseline=-0.5ex},
+        obj/.style={
+            rectangle split, rectangle split parts=2,
+            inner xsep=-0.05cm, inner ysep=0.075cm,
+            draw=black, fill=white, text=black},
+        baseline=(orig.center), remember picture
+    }
+}
+
+% Paths along edges:
+\pgfdeclaredecoration{walkto}{initial}{
+    \state{initial}[width=\pgfdecoratedpathlength-1sp]{
+        \pgfmoveto{\pgfpointorigin}
+    }
+    \state{final}{
+        \pgflineto{\pgfpointorigin}
+    }
+}
+
+% Addresses and values in memory:
+\newcommand{\membase}[1][\empty]{
+    \begin{scope}[start chain=1 going below, node distance=-0.5mm]
+        \def\memf{}
+        \def\meml{}
+
+        \foreach \addr/\val [count=\i] in {#1}{
+            \node[on chain=1, memloc] (v\addr) {\val};
+            \node[memaddr] (a\addr) [left=of v\addr] {\addr};
+
+            \ifnum\i=1
+                \xdef\memf{\addr}
+            \fi
+            \xdef\meml{\addr}
+        }
+
+        \draw[memedge]
+            (v\memf.north west) -- (v\memf.north east) -- ++(0,0.25)
+            decorate {-- ($(v\memf.north west)+(0,0.25)$)} -- cycle;
+
+        \draw[memedge]
+            (v\meml.south west) -- (v\meml.south east) -- ++(0,-0.25)
+            decorate {-- ($(v\meml.south west)+(0,-0.25)$)} -- cycle;
+
+        \coordinate (orig) at (v\memf.south);
+    \end{scope}
+}
+
+% References to memory:
+\newcommand{\memref}[3][]{
+    \path[draw, <-, #1] ({v#2}.east) -- +(0.375, 0) node[ref, anchor=west] {#3}
+}
+
+% Pointers to memory:
+\newcommand{\memptr}[4][]{
+    \path[draw, ->, rounded corners=5pt, #1]
+        ($({v#2}.east)+(-0.125,0)$) -- ($({v#2}.east)+#4*(0.25,0)$) --
+        ($({v#3}.east)+#4*(0.25,0)$) -- ({v#3}.east);
+}

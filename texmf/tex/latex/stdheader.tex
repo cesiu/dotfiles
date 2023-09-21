@@ -1,6 +1,5 @@
 % Because I'm too lazy to manage my used packages properly.
 
-
 % Document Setup:
 \usepackage[english]{babel}
 \usepackage{fontspec}
@@ -40,6 +39,8 @@
 \usepackage{textgreek}
 \usepackage{greek6cbc}
 \usepackage{phoenician}
+\usepackage{oldprsn}
+\usepackage{runic}
 \usepackage{skak}
 % Misc. Text Formatting:
 \PassOptionsToPackage{hidelinks}{hyperref}
@@ -143,6 +144,7 @@
 \tikzstyle{contains}=[diamond-]
 \tikzstyle{implements}=[-open triangle 60, dashed]
 \tikzstyle{extends}=[-open triangle 60]
+\input{stdtikz.tex}
 
 % Listings settings:
 \lstset{
@@ -152,32 +154,5 @@
     basewidth=0.55em,
     upquote=true,
     frame=L,
+    tabsize=4,
 }
-
-% Deprecated, but some of the 225 materials from Winter '18 still use them.
-%\lstdefinestyle{skippable}{
-%    numberblanklines=false
-%}
-%\lstdefinestyle{output}{
-%    moredelim = [is][\itshape]{|}{|}
-%}
-%\lstdefinestyle{soln}{
-%    moredelim = [is][\color{red}\itshape]{|}{|}
-%}
-%\let\origthelstnumber\thelstnumber
-%\makeatletter
-%\newcommand*\SuspendNumber{
-%    \lst@AddToHook{OnNewLine}{
-%    \let\thelstnumber\relax
-%        \advance\c@lstnumber-\@ne\relax
-%    }
-%}
-%
-%\newcommand*\ResumeNumber[1]{
-%    \setcounter{lstnumber}{\numexpr#1-1\relax}
-%    \lst@AddToHook{OnNewLine}{
-%        \let\thelstnumber\origthelstnumber
-%        \refstepcounter{lstnumber}
-%    }
-%}
-%\makeatother

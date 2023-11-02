@@ -30,7 +30,10 @@
         walk right/.style={
             shorten >=0.07cm, shorten <=0.09cm, decorate,
             decoration={walkto, raise=-0.12cm}},
-        dummy/.style={weight, draw=black}
+        dummy/.style={weight, draw=black},
+        soln/.style={
+            draw=red, text=red,
+            every node/.append style={draw=red, text=red}}
     },
     % Jobs:
     jobs/.style={
@@ -55,25 +58,28 @@
         memctr/.style={
             trim left=(orig.center), trim right=(orig.center)},
         memaddr/.style={
-            draw=none, fill=none, text=black},
+            draw=none, fill=none},
         memloc/.style={
             minimum width=2cm, minimum height=0.630cm,
             inner sep=0cm, outer sep=0cm, text depth=+0.1ex,
-            draw=black, fill=white, text=black},
+            draw, fill=white},
         memedge/.style={
-            draw=black, fill=white,
+            draw, fill=white,
             decoration={zigzag, segment length=0.22cm, amplitude=0.04cm}},
         membrc/.style={
             very thick, fill=none, decorate,
             decoration={calligraphic brace, amplitude=0.15cm}},
         memhide/.style={
             draw=none, fill=none, text=MedianUltraLightOrange},
-        ref/.style={draw=none, fill=none, text=black},
+        memprob/.style={
+            minimum width=4cm, minimum height=1cm},
+        memsoln/.style={
+            draw=red, fill=none, text=red},
+        ref/.style={draw=none, fill=none},
         val/.style={draw=none, fill=none, baseline=-0.5ex},
         obj/.style={
             rectangle split, rectangle split parts=2,
-            inner xsep=-0.05cm, inner ysep=0.075cm,
-            draw=black, fill=white, text=black},
+            inner xsep=-0.05cm, inner ysep=0.075cm, draw},
         baseline=(orig.center), remember picture
     }
 }
@@ -90,7 +96,7 @@
 
 % Addresses and values in memory:
 \newcommand{\membase}[1][\empty]{
-    \begin{scope}[start chain=1 going below, node distance=-0.5mm]
+    \begin{scope}[start chain=1 going below]
         \def\memf{}
         \def\meml{}
 

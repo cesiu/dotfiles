@@ -98,8 +98,9 @@ set showtabline=2
 " Show a guide at 80 chars.
 autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown"
                  \ && &ft != "csv" | set colorcolumn+=81
-" Highlight the current line.
-set cursorline
+" Highlight the current line of the current split.
+autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
 " ...that's stupidly laggy. Mitigate it.
 set lazyredraw
 " Show partial wrapped lines at the end of the window.

@@ -137,17 +137,17 @@ autocmd GUIEnter * set visualbell t_vb=
 " I write too much LaTeX for this to be reasonable, but muscle memory...
 let mapleader='`'
 " Use 'p' to toggle paste mode.
-set pastetoggle=<Leader>p
+nmap <Leader>p :set invpaste<CR>
 " Use 's' to strip trailing whitespace.
-map <Leader>s :%s/\s\+$//e<CR>
+nmap <Leader>s :%s/\s\+$//e<CR>
 " Use 'cd' to set the working directory.
-map <Leader>cd :lcd %:p:h<CR>
+nmap <Leader>cd :lcd %:p:h<CR>
 " Use 'u' to toggle undotree.
-map <Leader>u :silent! UndotreeToggle<CR>
+nmap <Leader>u :silent! UndotreeToggle<CR>
 " Use 'n' to toggle NERDTree.
-map <Leader>n :silent! NERDTreeToggle<CR>
+nmap <Leader>n :silent! NERDTreeToggle<CR>
 " Use 't' to add all the rows in a CSV.
-map <Leader>t :g/./exec 'SumRow' <bar> exec 's/$/\=b:csv_result'<CR>
+nmap <Leader>t :g/./exec 'SumRow' <bar> exec 's/$/\=b:csv_result'<CR>
 
 
 " Plugin settings:

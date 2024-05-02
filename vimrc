@@ -10,6 +10,7 @@ autocmd BufNewFile,BufRead *.pde set filetype=java
 autocmd BufNewFile,BufRead *.rkt set filetype=scheme
 autocmd BufNewFile,BufRead *.3po set filetype=python
 autocmd BufNewFile,BufRead *.txt set filetype=txt
+autocmd BufNewFile,BufRead *.bin set filetype=bin
 autocmd BufNewFile,BufRead .mybashrc set filetype=sh
 
 " Use Bash-esque file completion.
@@ -32,6 +33,13 @@ autocmd FileType python
 autocmd Filetype make setlocal noexpandtab
 " Use two-space indents for CSS, HTML, JavaScript.
 autocmd FileType css,html,javascript setlocal ts=2 sts=2 sw=2
+
+
+" Edit binary files with xxd.
+autocmd FileType bin setlocal binary
+autocmd BufReadPost *.bin %!xxd -p
+autocmd BufWritePre *.bin %!xxd -p -r
+autocmd BufWritePost *.bin %!xxd -p
 
 
 " Enable syntax highlighting.
@@ -97,7 +105,7 @@ set laststatus=2
 set showtabline=2
 " Show a guide at 80 chars.
 autocmd FileType * if &ft != "tex" && &ft != "txt" && &ft != "markdown"
-                 \ && &ft != "csv" | set colorcolumn+=81
+                 \ && &ft != "csv" && &ft != "bin" | set colorcolumn+=81
 " Highlight the current line of the current split.
 autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline

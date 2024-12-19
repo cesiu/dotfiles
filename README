@@ -1,0 +1,23 @@
+Installation as of 12/18/2024:
+ 1. Xcode and Developer Tools
+ 2. Homebrew
+ 3. bash, .bashrc, .bash_profile, .bash_logout
+ 4. vim, .vimrc, .vim
+ 5. git
+ 6. gnupg
+ 7. SSH and GPG keys
+ 8. MesloLGS Nerd Font Mono, Monokai.terminal, and Pencil.terminal
+ 9. coreutils
+10. gnu-sed
+11. dos2unix
+12. tree
+13. ripgrep
+14. colordiff
+15. Vim Airline, Airline Themes, ALE, NERDTree, undotree, gitgutter, csv
+16. cling
+17. python3, coverage, and mypy
+18. openjdk
+19. clojure
+20. kotlin
+21. nodejs
+22. mactex

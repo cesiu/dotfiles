@@ -175,9 +175,10 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 " Underline ALE errors instead of highlighting.
 hi ALEError ctermbg=NONE cterm=underline,bold guibg=NONE gui=underline,bold
-" Make all warnings look like errors.
+" Make all warnings look like errors and disable in-line comments.
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '!'
+let g:ale_virtualtext_cursor = 'disabled'
 
 " Use Powerline fonts for Airline.
 let g:airline_powerline_fonts=1

@@ -124,6 +124,8 @@ tab all
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
                     \ | exe "normal! g`\"" | endif
 
+" Swap files cause weird issues when synced with iCloud.
+set noswapfile
 " Turn off Shift+U; it's too easy to hit accidentally.
 nmap U <Nop>
 " Persist undo history across sessions.

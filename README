@@ -16,8 +16,8 @@ Installation as of 12/18/2024:
 15. Vim Airline, Airline Themes, ALE, NERDTree, undotree, gitgutter, csv
 16. cling
 17. python3, coverage, and mypy
-18. openjdk
-19. clojure
-20. kotlin
+18. openjdk, clojure, kotlin
 21. nodejs
+19. julia
+20. rust
 22. mactex

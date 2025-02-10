@@ -15,7 +15,8 @@
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0em}
 
-% Fix headings for Latin Modern:
+% Fix monospacing and headings for Latin Modern:
+\setmonofont{Latin Modern Mono}
 \makeatletter
 \DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[100]{\small\ct@caps\MakeTextUppercase{#1}}}
 \titleformat{\section}{\relax}{\textsc{\MakeTextLowercase{\small\thesection}}}{1em}{\spacedsmallcaps}

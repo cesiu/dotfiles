@@ -83,6 +83,8 @@ set splitright
 inoremap <C-w> <C-o><C-w>
 " Allow switching to visual block mode from insert mode.
 inoremap <C-v> <C-o><C-v>
+" Use Esc to switch from terminal mode to normal mode.
+tnoremap <Esc> <C-\><C-n>
 
 
 " Turn on line numbers.

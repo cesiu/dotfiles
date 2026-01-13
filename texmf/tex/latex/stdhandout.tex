@@ -1,4 +1,4 @@
-% Because I'm too lazy to manage my used packages properly.
+% NOTE: These settings apply only to non-Beamer documents.
 
 % Include general settings:
 \input{stdheader.tex}
@@ -13,9 +13,18 @@
 \usepackage{enumitem}
 
 % Smaller bullet points:
+\renewcommand{\bullet}{\boldsymbol{\cdot}}
 \renewcommand\labelitemi{{\boldmath$\cdot$}}
 \renewcommand\labelitemii{{\boldmath$\cdot$}}
 \renewcommand\labelitemiii{{\boldmath$\cdot$}}
+
+% Margins compatible with geometry:
+\geometry{
+    top=1.25in,
+    bottom=1in,
+    left=1in,
+    right=1in
+}
 
 % Listing style for shell commands:
 \lstdefinestyle{cli}{

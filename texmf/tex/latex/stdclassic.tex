@@ -1,4 +1,4 @@
-% Because I'm too lazy to manage my used packages properly.
+% NOTE: These settings apply only to non-Beamer, Classic Thesis documents.
 
 % Include general settings:
 \input{stdhandout.tex}
@@ -21,23 +21,26 @@
 \DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[100]{\small\ct@caps\MakeTextUppercase{#1}}}
 \titleformat{\section}{\relax}{\textsc{\MakeTextLowercase{\small\thesection}}}{1em}{\spacedsmallcaps}
 \renewcommand{\sectionmark}[1]{\markright{{\scriptsize\thesection}\enspace\spacedlowsmallcaps{#1}}}
+\renewcommand{\spacedlowsmallcaps}[1]{\textls[120]{\small\ct@caps\MakeTextUppercase{#1}}}
+
+% Realign entries in table of contents:
+\@ifclassloaded{scrbook}{
+    \addtolength{\cftpartnumwidth}{1em}
+    \renewcommand{\cftpartpresnum}{\large\scshape}
+    \renewcommand{\cftpartaftersnumb}{\spacedsmallcaps}
+
+    \setlength{\cftbeforechapskip}{0em}
+    \addtolength{\cftchapnumwidth}{1em}
+    \renewcommand{\cftchappresnum}{\hspace*{1.375em}\small}
+    \renewcommand{\cftchapaftersnumb}{\spacedsmallcaps}
+    \cftpagenumbersoff{chapter}
+
+    \addtolength{\cftsecindent}{1em}
+    \addtolength{\cftsecnumwidth}{0.5em}
+}{
+
+}
 \makeatother
-
-% Realign part entries in table of contents:
-\addtolength{\cftpartnumwidth}{1em}
-\renewcommand{\cftpartpresnum}{\large\scshape}
-\renewcommand{\cftpartaftersnumb}{\spacedsmallcaps}
-
-% Realign chapter entries:
-\setlength{\cftbeforechapskip}{0em}
-\addtolength{\cftchapnumwidth}{1em}
-\renewcommand{\cftchappresnum}{\hspace*{1.375em}\small}
-\renewcommand{\cftchapaftersnumb}{\spacedsmallcaps}
-\cftpagenumbersoff{chapter}
-
-% Realign section entries:
-\addtolength{\cftsecindent}{1em}
-\addtolength{\cftsecnumwidth}{0.5em}
 
 % Set enumitem spacing within marginpar:
 \SetEnumitemKey{marginpar}{

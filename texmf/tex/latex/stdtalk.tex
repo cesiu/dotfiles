@@ -1,0 +1,54 @@
+\usepackage{caption}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{setspace}
+
+\vfuzz=16pt
+\hfuzz=64pt
+
+\newcommand{\semiskip}{\vspace{4.5pt plus 1.5pt minus 1.5pt}}
+\newcommand{\tinyskip}{\vspace{1.5pt plus 0.5pt minus 0.5pt}}
+\newcommand{\zeroskip}{\vspace{0.0pt plus 0.0pt minus 0.0pt}}
+
+\DeclareMathOperator{\rightleftarrow}{\rightarrow\!\leftarrow}
+\let\implies\relax
+\DeclareMathOperator{\implies}{\rightarrow}
+\let\iff\relax
+\DeclareMathOperator{\iff}{\leftrightarrow}
+\newcommand{\fn}[2]{#1\hspace{-0.1em}\left(#2\right)}
+\newcommand{\sfrac}[2]{{^{#1\hspace{-0.1em}}/_{\hspace{-0.1em}#2}}}
+\newcommand{\bset}[2]{\left\{ #1 \:\left\lvert\; #2 \right.\right\}}
+
+\algrenewcommand{\alglinenumber}[1]{\scriptsize#1:}
+\algnewcommand\Input{\item[\textbf{Input:}]}
+\algnewcommand\Output{\item[\textbf{Output:}]}
+\renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
+
+% NOTE: These standardize the distance from the header bar when an element
+%       is at the top of a frame:
+\newcommand{\toptextskip}{\vspace{0.875em}}
+\newcommand{\topitemskip}{\vspace{0.625em}}
+\newcommand{\topblockskip}{\vspace{-0.125em}}
+
+% NOTE: These space out an itemize/enumerate so that the first bullet is
+%       "square" with the previous element...
+\newcommand{\beforeitemskip}{\vspace{-0.125em}}
+\newcommand{\afteritemskip}{\vspace{-0.125em}}
+\newcommand{\beforesubitemskip}{\vspace{-0.1875em}}
+\newcommand{\aftersubitemskip}{\vspace{-0.1875em}}
+
+% NOTE: ...and this then spreads out the remaining bullet points to match,
+%       which looks better for longer items:
+\newcommand{\betweenitemskip}{\setlength{\itemsep}{0.375em}}
+
+% NOTE: This makes the space between consecutive blocks match the space
+%       between the two stripes in the header bar:
+\newcommand{\betweenblockskip}{\vspace{-0.875em}}
+
+% NOTE: This offsets the fact that blocks automatically add struts, which
+%       throw off the spacing if they don't surround text:
+\newcommand{\blocktopblockskip}{\vspace{-1.75em}}
+\newcommand{\blocktopitemskip}{\vspace{-1.0625em}}
+\newcommand{\blockbotitemskip}{\vspace{-0.875em}}
+\newlength{\blockitemmargin}\setlength{\blockitemmargin}{0.63cm}
+

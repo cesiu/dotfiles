@@ -1,0 +1,280 @@
+% NOTE: This ltx-talk theme is based on a beamer theme called "median", which
+%       my advisor had used for many years -- itself, I believe, a port from
+%       Powerpoint. See also https://github.com/samcarter/beamertheme-spectrum
+%       and https://github.com/samcarter/beamertheme-tcolorbox.
+
+\ProvidesPackage{talkthememedian}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins,hooks}
+
+% NOTE: Realistically, the only time I ever need small caps is in math, where
+%       I prefer serifs. See also https://github.com/latex3/fontspec/issues/449.
+\setmainfont{Latin Modern Sans}[SmallCapsFont=Latin Modern Roman Caps]
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\setmathfont{Latin Modern Math}
+
+% NOTE: See also https://tex.stackexchange.com/questions/666889/
+%       and https://tex.stackexchange.com/questions/307745/.
+\let\mathbb\relax
+\DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+% NOTE: These are based on Cal Poly colors as of Winter 2026;
+%       see also https://ucm.calpoly.edu/color-guidelines.
+\definecolor{mediangreen}{RGB}{21,71,52}
+\definecolor{mediansycamore}{RGB}{120,159,144}
+\definecolor{mediansage}{RGB}{220,246,233}
+\definecolor{mediangold}{RGB}{198,146,20}
+\definecolor{mediansand}{RGB}{162,159,134}
+\definecolor{medianbeige}{RGB}{239,238,222}
+\colorlet{structure}{black}
+
+% TODO: I'm sure this is not nearly idiomatic, but it's a minimally invasive
+%       way to add to the header and also I dunno what I'm doing...
+\SetKeys[talk/frame]{vertical-alignment=top}
+
+\geometry{
+    tmargin = 1cm,
+    headsep = 0.32cm,
+}
+
+\EditInstance{header}{std}{
+    background-color=white,
+    color=mediangreen,
+    height=1cm
+}
+
+\AddToHook{cmd/frametitle/after}{
+    \begin{picture}[artifact](\paperwidth,0.25cm)(\dimeval{\Gm@lmargin},0cm)
+        \put(0cm, 0cm){\color{mediangold}\rule{\dimeval{\Gm@lmargin-0.1cm}}{0.25cm}}
+        \put(\dimeval{\Gm@lmargin}, 0cm){\color{mediangreen}\rule{\dimeval{\paperwidth-\Gm@lmargin}}{0.25cm}}
+    \end{picture}
+    \vspace{-0.69cm}
+}
+
+\EditInstance{footer}{std}{
+    color=gray,
+    element-order={totalframes},
+    right-hspace=0.18cm,
+    left-hspace=0.18cm,
+}
+
+\ExplSyntaxOn
+\DeclareTemplateInterface { titlepage } { talk } { 0 } { }
+\DeclareTemplateCode { titlepage } { talk } { 0 } { } {
+    \thispagestyle{plain}
+    \centerline{
+        \setlength\unitlength{1cm}
+        \begin{picture}[artifact](\paperwidth,\paperheight)(0cm,\dimeval{-\Gm@tmargin})
+
+            \put(0cm, 1.2cm){\color{mediangreen}\rule{\paperwidth}{\dimeval{\paperheight-1.2cm}}}
+            \ifx\@title\empty\else
+                \put(4.32cm, 1.48cm){
+                    \parbox[b]{\linewidth}{
+                        \UseInstance { titlepage-element } {title} { \@title }\par
+                        \vspace{0.03cm}
+                        \UseInstance { titlepage-element } {subtitle} { \strut\@subtitle }\par
+                    }
+                }
+            \fi
+
+            \put(0cm, 0.1cm){\color{mediangold}\rule{4cm}{1cm}}
+            \ifx\@date\empty\else
+                \put(0cm, 0.16cm){
+                    \parbox[b]{3.76cm}{
+                        \UseInstance { titlepage-element } {date} { \hfill\strut\@date }\par
+                    }
+                }
+            \fi
+
+            \put(4.1cm, 0.1cm){\color{mediangreen}\rule{\dimeval{\paperwidth-4.1cm}}{1cm}}
+            \ifx\@author\@empty\else
+                \put(4.32cm, 0.16cm){
+                    \parbox[b]{\dimeval{\paperwidth-4.34cm}}{
+                        \ifx\@institute\empty
+                            \UseInstance { titlepage-element } {author} { \strut\@author }\par
+                        \else
+                            \UseInstance { titlepage-element } {author} { \strut\@author,~\@institute }\par
+                        \fi
+                    }
+                }
+            \fi
+        \end{picture}
+    }
+    \vskip-\Gm@tmargin
+    \vskip-\headsep
+}
+\ExplSyntaxOff
+
+\EditInstance{titlepage-element}{title}{
+    font=\huge\bfseries,
+    color=white,
+    before-skip=0em,
+    after-skip=0em
+}
+\EditInstance{titlepage-element}{subtitle}{
+    font=\Large\bfseries,
+    color=white,
+    before-skip = 0em,
+    after-skip = 0em
+}
+\EditInstance{titlepage-element}{author}{
+    font=\LARGE,
+    color=white,
+    before-skip=0em,
+    after-skip=0em
+}
+\EditInstance{titlepage-element}{institute}{
+    font=\normalsize,
+    color=black,
+    before-skip = 0em,
+    after-skip = 0em
+}
+\EditInstance{titlepage-element}{date}{
+    font=\LARGE,
+    color=white,
+    before-skip=0em,
+    after-skip=0em
+}
+
+\ExplSyntaxOn
+\NewTemplateType { sectionpage } { 0 }
+\DeclareTemplateInterface { sectionpage } { talk } { 0 } { }
+\DeclareTemplateCode { sectionpage } { talk } { 0 } { } {
+    \begin{frame}
+        \centerline{
+            \setlength\unitlength{1cm}
+            \begin{picture}[artifact](\paperwidth,\paperheight)(0cm,\dimeval{-\Gm@tmargin})
+                \put(0cm, \dimeval{\paperheight-2cm}){\color{mediangreen}\rule{\paperwidth}{2cm}}
+                \put(0cm, \dimeval{\paperheight-3.1cm}){\color{mediangold}\rule{\dimeval{\Gm@lmargin-0.1cm}}{1cm}}
+                \put(\dimeval{\Gm@lmargin}, \dimeval{\paperheight-3.1cm}){\color{mediangreen}\rule{\dimeval{\paperwidth-\Gm@lmargin}}{1cm}}
+                \put(0cm, 0cm){\color{mediangreen}\rule{\paperwidth}{\dimeval{\paperheight-3.2cm}}}
+
+                \put(1.28cm, 7.03cm){
+                    \parbox[b]{\dimeval{\paperwidth-1.28cm}}{
+                        \UseInstance { titlepage-element } {subtitle} { \strut\l__talk_section_tl }\par
+                    }
+                }
+
+            \end{picture}
+        }
+        \vskip-\Gm@tmargin
+        \vskip-\headsep
+    \end{frame}
+}
+\ExplSyntaxOff
+
+\AddToHook{section/begin}{
+    \UseTemplate{sectionpage}{talk}{}
+}
+
+% NOTE: See also https://tex.stackexchange.com/questions/757928.
+\makeatletter
+\ExplSyntaxOn
+\cs_new:Npn \@shorttotalframes {
+    \hfill\arabic{frame} / \RefProperty{lastpage}{totalframes}
+}
+\ExplSyntaxOff
+\makeatother
+
+% TODO: There's probably a better way to reduce the code duplication here, but
+%       for now this covers all the block styles that I ever use.
+\ExplSyntaxOn
+\tcbset{
+    mediantcb/.style={
+        enhanced,
+        sharpish~corners,
+        boxrule=0cm,
+        frame~hidden,
+        toptitle=0.01cm,
+        before~title=\strut,
+        after~title=\strut,
+        bottomtitle=-0.06cm,
+        top=0.01cm,
+        left=0.04cm,
+        before~upper=\strut,
+        after~upper=\strut,
+        before~lower=\strut,
+        after~lower=\strut,
+        right=0.04cm,
+        bottom=-0.06cm,
+        opacityfill=\tl_use:N \l__opacity_backend_fill_tl,
+        opacitytext=\tl_use:N \l__opacity_backend_stroke_tl
+    }
+}
+\ExplSyntaxOff
+
+\newtcolorbox{medianblock}[1]{
+    mediantcb,
+    colbacktitle=mediansycamore,
+    colback=mediansage,
+    title={#1}
+}
+
+\newtcolorbox{mediandefn}{
+    mediantcb,
+    colbacktitle=mediansycamore,
+    colback=mediansage,
+    title={Definition}
+}
+
+\newtcolorbox{medianthm}{
+    mediantcb,
+    colbacktitle=mediansycamore,
+    colback=mediansage,
+    title={Theorem}
+}
+
+\newtcolorbox{mediancor}{
+    mediantcb,
+    colbacktitle=mediansycamore,
+    colback=mediansage,
+    title={Corollary}
+}
+
+\newtcolorbox{medianpf}{
+    mediantcb,
+    colbacktitle=mediansand,
+    colback=medianbeige,
+    title={Proof}
+}
+
+\newtcolorbox{medianex}{
+    mediantcb,
+    colbacktitle=mediansand,
+    colback=medianbeige,
+    title={Example}
+}
+
+\newtcolorbox{mediancont}{
+    mediantcb,
+    colbacktitle=mediansand,
+    colback=medianbeige,
+    title={Example \textit{(continued)}}
+}
+
+% TODO: Similarly, these should be edited via templates, but until that system
+%       has matured, here's a hacky way of styling the bullet points I need.
+\renewcommand{\labelitemi}{
+    \setlength{\fboxrule}{0.05cm}
+    \setlength{\fboxsep}{0cm}
+    \hspace*{-0.01cm}\raisebox{0.05cm}{\fcolorbox{mediansand}{medianbeige}{\makebox(0.1cm, 0.1cm){}}}\hspace*{-0.16cm}
+}
+
+\renewcommand{\labelitemii}{
+    \setlength{\fboxrule}{0.05cm}
+    \setlength{\fboxsep}{0cm}
+    \hspace*{-0.01cm}\raisebox{0.05cm}{\fcolorbox{mediansand}{medianbeige}{\makebox(0.1cm, 0.1cm){}}}\hspace*{-0.16cm}
+}
+
+\renewcommand{\labelenumi}{
+    \setlength{\fboxsep}{0cm}
+    \hspace*{-0.01cm}\colorbox{mediansand}{\makebox(0.2cm, 0.2cm){\color{medianbeige}\tiny\textbf{\arabic{enumi}}}}\hspace*{-0.16cm}
+}
+
+\renewcommand{\labelenumii}{
+    \setlength{\fboxsep}{0cm}
+    \hspace*{-0.01cm}\colorbox{mediansand}{\makebox(0.2cm, 0.2cm){\color{medianbeige}\tiny\textbf{\arabic{enumii}}}}\hspace*{-0.16cm}
+}
+

@@ -5,6 +5,20 @@
 
 % Beamer presentations can't use enumitem:
 \usepackage{enumerate}
+\AddToHook{cmd/itemize/after}{\setlength{\itemsep}{0.125em}}
+\AddToHook{cmd/enumerate/after}{\setlength{\itemsep}{0.125em}}
+
+% Various skips for consistently aligning common elements:
+\newcommand{\toptextskip}{\vspace{0.875em}}
+\newcommand{\topitemskip}{\vspace{0.625em}}
+\newcommand{\topblockskip}{\vspace{0.125em}}
+\newcommand{\topalgoskip}{\vspace{-0.4375em}}
+\newcommand{\beforeitemskip}{\vspace{-0.125em}}
+\newcommand{\beforemulticolskip}{\vspace{-1em}}
+\newcommand{\betweenitemskip}{\setlength{\itemsep}{0.375em}}
+\newcommand{\betweenblockskip}{\vspace{-0.5625em}}
+\newcommand{\aftersubitemskip}{\vspace{0em}}
+\newcommand{\aftermulticolskip}{\vspace{-0.625em}}
 
 % Default to smaller code listings:
 \lstset{

@@ -1,41 +1,25 @@
 \usepackage{tikz, datetime, textpos}
-%\DeclareOption{beteckna}{
-%   \setsansfont[Ligatures=TeX,
-%                Extension=.ttf,
-%                BoldFont=*Bold,
-%                ItalicFont=*Italic
-%                ]{BetecknaLowerCase}
-%}
-\newif\if@IsThesis
-\@IsThesisfalse
-\DeclareOption{thesis}{\@IsThesistrue}
-\ProcessOptions
-%\yyyymmdddate \renewcommand{\dateseparator}{.}
 \usefonttheme[onlymath]{serif}
 
-% Cal Poly green
-\definecolor{MedianBrown}{RGB}{3,86,66}
-% Cal Poly green
-\definecolor{MedianLightBrown}{RGB}{3,86,66}
-% Cal Poly green
-\definecolor{MedianLightBlue}{RGB}{3,86,66}
-% Cal Poly bright gold
-\definecolor{MedianOrange}{RGB}{234,171,0}
-% Cal Poly ocher
-\definecolor{MedianLightOrange}{RGB}{202,155,74}
-% lighter Cal Poly buff
-\definecolor{MedianUltraLightOrange}{RGB}{245,242,228}
+% NOTE: These are based on Cal Poly colors as of Winter 2026;
+%       see also https://ucm.calpoly.edu/color-guidelines.
+\definecolor{MedianGreen}{RGB}{21,71,52}
+\definecolor{MedianSycamore}{RGB}{120,159,144}
+\definecolor{MedianSage}{RGB}{220,246,233}
+\definecolor{MedianGold}{RGB}{198,146,20}
+\definecolor{MedianSand}{RGB}{162,159,134}
+\definecolor{MedianBeige}{RGB}{239,238,222}
 
 \setbeamercolor*{title page header}{fg=white}
-\setbeamercolor*{title}{fg=MedianLightBrown}
+\setbeamercolor*{title}{fg=MedianSage}
 \setbeamercolor*{author}{fg=white}
 \setbeamercolor*{date}{fg=white}
-\setbeamercolor*{item}{fg=MedianOrange}
-\setbeamercolor*{frametitle}{fg=MedianBrown}
-\setbeamercolor*{block title}{fg=white, bg=MedianOrange}
-\setbeamercolor*{block title example}{fg=white, bg=MedianLightOrange}
-\setbeamercolor*{block body}{bg=MedianUltraLightOrange}
-\setbeamercolor*{block body example}{bg=MedianUltraLightOrange}
+\setbeamercolor*{item}{fg=MedianSand}
+\setbeamercolor*{frametitle}{fg=MedianGreen}
+\setbeamercolor*{block title}{fg=white, bg=MedianSycamore}
+\setbeamercolor*{block title example}{fg=white, bg=MedianSand}
+\setbeamercolor*{block body}{bg=MedianSage}
+\setbeamercolor*{block body example}{bg=MedianBeige}
 \setbeamercolor*{section in toc}{fg=black}
 \setbeamercolor*{section page}{fg=white}
 \setbeamercolor*{page number in head/foot}{fg=gray}
@@ -46,75 +30,97 @@
 \setbeamerfont{date}{size=\Large}
 
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
 \setbeamertemplate{caption}{\insertcaption}
 \setbeamertemplate{items}[square]
-\setbeamertemplate{itemize item}{\tikz{\draw[color=MedianOrange, semithick] rectangle(.2,.2);}}
-\setbeamertemplate{itemize subitem}{\tikz{\draw[color=MedianLightBlue, ultra thick] rectangle(.2,.2);}}
 \setbeamertemplate{sections/subsections in toc}[square]
+
+\setbeamertemplate{itemize item}{
+    \tikz{\draw[color=MedianSand, fill=MedianBeige, very thick] rectangle (0.15, 0.15);}
+}
+
+\setbeamertemplate{itemize subitem}{
+    \tikz{\draw[color=MedianSand, fill=MedianBeige, very thick] rectangle (0.15, 0.15);}
+}
+
+\setbeamertemplate{enumerate item}{
+    \tikz{\draw[color=MedianSand, fill=MedianSand, very thick] rectangle (0.15, 0.15)
+        node[midway, text=MedianBeige, inner sep=0cm, outer sep=0cm]{\tiny\textbf{\insertenumlabel}};}
+}
+
+\setbeamertemplate{enumerate subitem}{
+    \tikz{\draw[color=MedianSand, fill=MedianSand, very thick] rectangle (0.15, 0.15)
+        node[midway, text=MedianBeige, inner sep=0cm, outer sep=0cm]{\tiny\textbf{\insertsubenumlabel}};}
+}
+
 \defbeamertemplate{description item}{bulleted}{
-    \hspace{1em}\tikz{\draw[color=MedianOrange, semithick] rectangle(.2,.2);}
+    \hspace{1em}\tikz{\draw[color=MedianSand, fill=MedianBeige, very thick] rectangle (0.15, 0.15);}
     ~\color{black}\textbf{\insertdescriptionitem}~\hfill
 }
 
 \newenvironment{xplainframe}{\bgroup\setbeamertemplate{background}{}\begin{frame}[plain]}{\end{frame}\egroup}
 
+\setbeamertemplate{footline}{
+    \usebeamercolor[fg]{page number in head/foot}
+    \usebeamerfont{page number in head/foot}
+    \hfill\raisebox{0.2cm}{\insertframenumber\,/\,\inserttotalframenumber}\hspace{0.2cm}
+}
+
 \setbeamertemplate{background}{
-  \begin{tikzpicture}
-  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  \ifnum\thepage>1\relax% Not the title page
-        \fill[color=MedianOrange] (0,8) rectangle(0.8,8.3);
-        \fill[color=MedianLightBlue] (0.9,8) rectangle(\the\paperwidth, 8.3);
-  \else% Title page
-      \fill[color=MedianBrown] (0,1.2) rectangle (\the\paperwidth,\the\paperheight);
-      \fill[color=MedianOrange] (0,0.1) rectangle(3.15,1.1);
-      \fill[color=MedianLightBlue] (3.3,0.1) rectangle(\the\paperwidth,1.1);
-  \fi
-  \end{tikzpicture}
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle (\the\paperwidth, \the\paperheight);
+        \ifnum\thepage>1\relax % Not the title page
+              \fill[color=MedianGold] (0, 7.57) rectangle (0.77, 7.82);
+              \fill[color=MedianGreen] (0.87, 7.57) rectangle (\the\paperwidth, 7.82);
+        \else % Title page
+            \fill[color=MedianGreen] (0, 1.2) rectangle (\the\paperwidth, \the\paperheight);
+            \fill[color=MedianGold] (0, 0.1) rectangle (3.36, 1.1);
+            \fill[color=MedianGreen] (3.46, 0.1) rectangle (\the\paperwidth, 1.1);
+        \fi
+    \end{tikzpicture}
 }
+
 \setbeamertemplate{title page}{
-    \if@IsThesis
-        \begin{textblock*}{12cm}(2.55cm,0.6cm)
-    \else
-        \begin{textblock*}{12cm}(2.55cm,2.8cm)
-    \fi
-    \begin{beamercolorbox}[wd=8cm]{title page header}
-      \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
-    \end{beamercolorbox}%
+    \begin{textblock*}{12cm} (2.7cm, 2.7cm)
+        \begin{beamercolorbox}[wd=8cm]{title page header}
+            \usebeamerfont{title}\usebeamercolor{title}\inserttitle%
+        \end{beamercolorbox}%
     \end{textblock*}
-    \begin{textblock*}{3cm}(-1.1cm,5.125cm)
+    \begin{textblock*}{3cm} (-0.92cm, 4.81cm)
         \begin{beamercolorbox}{date}
-          \hfill\usebeamerfont{date}\insertdate%
+            \hfill\usebeamerfont{date}\insertdate%
         \end{beamercolorbox}
     \end{textblock*}
-    \begin{textblock*}{9cm}(2.55cm,5.125cm)
+    \begin{textblock*}{9cm} (2.73cm, 4.81cm)
         \begin{beamercolorbox}{author}
-          \usebeamerfont{author}\insertauthor%
+            \usebeamerfont{author}\insertauthor%
         \end{beamercolorbox}
     \end{textblock*}
 }
+
 \newcommand{\sectionframe}{{
     \setbeamertemplate{background}{
         \begin{tikzpicture}
-            \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-            \fill[color=MedianLightBlue] (0, 0) rectangle (\the\paperwidth, 5.9);
-            \fill[color=MedianOrange] (0,6) rectangle (1.475, 7);
-            \fill[color=MedianLightBlue] (1.6, 6) rectangle (\the\paperwidth, 7);
-            \fill[color=MedianLightBlue] (0, 7.1) rectangle (\the\paperwidth, \the\paperheight);
+            \useasboundingbox (0,0) rectangle (\the\paperwidth, \the\paperheight);
+            \fill[color=MedianGreen] (0, 0) rectangle (\the\paperwidth, 5.74);
+            \fill[color=MedianGold] (0, 5.84) rectangle (0.77, 6.84);
+            \fill[color=MedianGreen] (0.87, 5.84) rectangle (\the\paperwidth, 6.84);
+            \fill[color=MedianGreen] (0, 6.94) rectangle (\the\paperwidth, \the\paperheight);
         \end{tikzpicture}
     }
     \frame{\sectionpage}
 }}
+
 \setbeamertemplate{section page}{
-    \begin{textblock*}{12cm}(0.84cm,-0.78cm)
+    \begin{textblock*}{12cm} (0.11cm, -0.96cm)
         \begin{beamercolorbox}{section page}
             \insertsectionhead
         \end{beamercolorbox}
     \end{textblock*}
 }
+
 \setbeamertemplate{frametitle}{
-    \vspace{0.3cm}
+    \vspace{0.13cm}
     \begin{beamercolorbox}{frametitle}
-        \strut\insertframetitle\strut
+        \hspace{0.03cm}\strut\insertframetitle\strut%
     \end{beamercolorbox}
 }

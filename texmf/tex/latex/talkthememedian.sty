@@ -4,6 +4,7 @@
 %       and https://github.com/samcarter/beamertheme-tcolorbox.
 
 \ProvidesPackage{talkthememedian}
+\RequirePackage{sansmathfonts}
 \RequirePackage{tcolorbox}
 \tcbuselibrary{skins,hooks}
 
@@ -19,6 +20,16 @@
 \let\mathbb\relax
 \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\let\mathbfcal\relax
+\DeclareMathAlphabet{\mathbfcal}{OMS}{cmsy}{b}{n}
+
+% TODO: There has to be a better way to prevent lua-unicode-math from forcing
+%       sans-serif math fonts, right?
+\renewcommand{\mathsf}[1]{\mathserif{#1}}
+\renewcommand{\log}{\mathop{\mathsf{log}}}
+\renewcommand{\max}{\mathop{\mathsf{max}}}
+\renewcommand{\min}{\mathop{\mathsf{min}}}
+\renewcommand{\deg}{\mathop{\mathsf{deg}}}
 
 % NOTE: These are based on Cal Poly colors as of Winter 2026;
 %       see also https://ucm.calpoly.edu/color-guidelines.
@@ -199,6 +210,7 @@
         after~lower=\strut,
         right=0.04cm,
         bottom=-0.06cm,
+        halign=flush~left,
         opacityfill=\tl_use:N \l__opacity_backend_fill_tl,
         opacitytext=\tl_use:N \l__opacity_backend_stroke_tl
     }
@@ -226,6 +238,13 @@
     title={Theorem}
 }
 
+\newtcolorbox{medianlemma}{
+    mediantcb,
+    colbacktitle=mediansycamore,
+    colback=mediansage,
+    title={Lemma}
+}
+
 \newtcolorbox{mediancor}{
     mediantcb,
     colbacktitle=mediansycamore,
@@ -240,6 +259,13 @@
     title={Proof}
 }
 
+\newtcolorbox{medianpfcont}{
+    mediantcb,
+    colbacktitle=mediansand,
+    colback=medianbeige,
+    title={Proof \textit{(continued)}}
+}
+
 \newtcolorbox{medianex}{
     mediantcb,
     colbacktitle=mediansand,
@@ -247,7 +273,7 @@
     title={Example}
 }
 
-\newtcolorbox{mediancont}{
+\newtcolorbox{medianexcont}{
     mediantcb,
     colbacktitle=mediansand,
     colback=medianbeige,

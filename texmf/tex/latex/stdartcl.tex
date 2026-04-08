@@ -1,0 +1,82 @@
+\usepackage[parts, manychapters, palatino=false, beramono=false]{classicthesis}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{lastpage}
+\usepackage{unicode-math}
+
+\geometry{
+    top=1.5in,
+    bottom=1in,
+    left=1.25in,
+    right=1.25in,
+}
+
+% TODO: These don't appear to do anything anymore. See also:
+%       https://tug.ctan.org/macros/latex/required/latex-lab/blocks-code.pdf
+% \EditInstance{list}{itemize-1}{
+%     item-vspace=0em
+% }
+% \setlength{\topsep}{0em}
+% \setlength{\parsep}{0em}
+% \setlength{\itemsep}{0em}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\setlength{\partopsep}{0em}
+\setlength{\multicolsep}{0em}
+
+\setmonofont{Latin Modern Mono}
+\setkomafont{title}{\LARGE\lsstyle\scshape}
+\setkomafont{subtitle}{\large\bfseries}
+\setkomafont{author}{\large\bfseries}
+\setkomafont{date}{\large\bfseries}
+
+\clearpairofpagestyles
+\cfoot[\pagemark{}]{\pagemark{}}
+\ihead[]{\textsc{\theauthor : \thedoc}}
+\ohead[]{\textsc{\thedate}}
+
+% NOTE: This does not cover all the possible empty/non-empty combinations, but
+%       it's enough for my foreseeable use cases.
+\makeatletter
+\renewcommand{\maketitle}{
+    \ifx\@author\empty
+        \let\theauthor\@title
+        \let\thedoc\@subtitle
+    \else
+        \let\theauthor\@author
+        \let\thedoc\@title
+    \fi
+    \let\thesub\@subtitle
+    \let\thedate\@date
+
+    \begin{center}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{c}
+            \ifx\@subtitle\empty
+                \usekomafont{title}{\@title} \\
+            \else
+                \usekomafont{title}{\@title : \@subtitle} \\
+            \fi
+            \midrule[\heavyrulewidth]
+            \ifx\@author\empty
+                \usekomafont{subtitle}{\@date} \\
+            \else
+                \usekomafont{subtitle}{\@author , \@date} \\
+            \fi
+        \end{tabular}
+    \end{center}
+
+    \thispagestyle{plain}
+}
+\makeatother
+
+\titleformat{\section}{\relax}{\textbf{\uppercase{\thesection}}}{1em}{\bfseries\lsstyle\uppercase}
+\titlespacing*{\section}{0em}{\baselineskip}{\baselineskip}
+
+\renewcommand{\labelitemi}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelitemii}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelitemiii}{\raisebox{0.4ex}{\scriptsize\bullet}}
+
+\hypersetup{colorlinks=false}
+

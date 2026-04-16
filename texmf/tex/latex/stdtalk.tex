@@ -5,6 +5,8 @@
 \usepackage{multicol}
 \usepackage{contour}
 
+\input{stdltx}
+
 \vfuzz=16pt
 \hfuzz=64pt
 
@@ -17,18 +19,6 @@
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
-
-\DeclareMathOperator{\rightleftarrow}{\rightarrow\!\leftarrow}
-\let\implies\relax
-\DeclareMathOperator{\implies}{\rightarrow}
-\let\iff\relax
-\DeclareMathOperator{\iff}{\leftrightarrow}
-\newcommand{\fn}[2]{#1\hspace{-0.1em}\left(#2\right)}
-\newcommand{\sfrac}[2]{{^{#1\hspace{-0.1em}}/_{\hspace{-0.1em}#2}}}
-\newcommand{\bset}[2]{\left\{ #1 \:\left\lvert\; #2 \right.\right\}}
-\newcommand{\dplus}{\mathbin{+\hspace{-0.6em}+}}
-\newcommand{\np}{\mathcal{N\!P}}
-\newcommand{\p}{\mathcal{P}}
 
 \algrenewcommand{\alglinenumber}[1]{\scriptsize#1:}
 \algnewcommand\Input{\item[\textbf{Input:}]}
@@ -70,6 +60,7 @@
 \input{stdtikz.tex}
 
 
+% TODO: How much of this can be automated with hooks?
 % NOTE: These standardize the distance from the header bar when an element
 %       is at the top of a frame:
 \newcommand{\toptextskip}{\vspace{0.875em}}

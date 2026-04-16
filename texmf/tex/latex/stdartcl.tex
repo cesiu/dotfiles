@@ -3,7 +3,14 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{lastpage}
+\usepackage{amssymb}
 \usepackage{unicode-math}
+\usepackage{listings}
+\usepackage{cprotect}
+\usepackage{tikz}
+\usepackage{verbatim}
+
+\input{stdltx}
 
 \geometry{
     top=1.5in,
@@ -24,6 +31,8 @@
 \setlength{\parskip}{0.5em}
 \setlength{\partopsep}{0em}
 \setlength{\multicolsep}{0em}
+
+\AddToHook{env/multicols/before}{\vspace{\parskip}}
 
 \setmonofont{Latin Modern Mono}
 \setkomafont{title}{\LARGE\lsstyle\scshape}
@@ -77,6 +86,101 @@
 \renewcommand{\labelitemi}{\raisebox{0.4ex}{\scriptsize\bullet}}
 \renewcommand{\labelitemii}{\raisebox{0.4ex}{\scriptsize\bullet}}
 \renewcommand{\labelitemiii}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelenumii}{\alph{enumii}.}
 
 \hypersetup{colorlinks=false}
 
+% TODO: This is known to be a temporary workaround for tagging listings that
+%       may not work in later releases or in all possible use cases. See
+%       https://github.com/latex3/tagging-project/issues/70 and
+%       https://tex.stackexchange.com/questions/755794/.
+\makeatletter
+\ExplSyntaxOn
+\DeclareInstance{blockenv}{lstlisting}{display}{
+    name = lstlisting,
+    tag-name = verbatim,
+    tag-attr-class = ,
+    tagging-recipe = standard,
+    inner-level-counter = ,
+    increment-level = false,
+    setup-code = ,
+    block-instance = displayblock ,
+    inner-instance = ,
+    final-code = \tl_set:Nn \l__tag_para_main_tag_tl {codeline}\tagtool{paratag=Code},
+}
+\ExplSyntaxOff
+\lstnewenvironment{taglisting}[2][]{%
+    \UseInstance{blockenv}{lstlisting} {}
+    \lst@TestEOLChar{#2}%
+    \lstset{#1}%
+    \csname\@lst @SetFirstNumber\endcsname%
+}{%
+    \@nobreakfalse
+    \csname\@lst @SaveFirstNumber\endcsname%
+    \endblockenv
+}
+\makeatother
+
+\lstset{
+    numbers=left,
+    numberstyle=\scriptsize\ttfamily,
+    basicstyle=\normalsize\ttfamily,
+    tabsize=4,
+    frame=L,
+    xleftmargin=1.75em,
+    aboveskip=0.4375em,
+    belowskip=0em,
+    upquote=true,
+    basewidth=0.5625em
+}
+
+\usetikzlibrary{
+    positioning,
+    calc,
+    fit,
+    shapes,
+    shapes.multipart,
+    shapes.misc,
+    intersections,
+    arrows,
+    arrows.meta,
+    backgrounds,
+    patterns,
+    shadings,
+    decorations.pathreplacing,
+    decorations.pathmorphing,
+    calligraphy,
+    automata,
+    chains
+}
+
+\tikzstyle{contains}=[diamond-]
+\tikzstyle{implements}=[-open triangle 60, dashed]
+\tikzstyle{extends}=[-open triangle 60]
+\input{stdtikz.tex}
+
+\newboolean{@showsolns}
+\newcommand{\showsoln}{\setboolean{@showsolns}{true}}
+\newcommand{\hidesoln}{\setboolean{@showsolns}{false}}
+
+% TODO: Do these need to be vboxes? Minipages result in runaway arguments when
+%       combined with comments inside of a macro/environment def'n (and they
+%       ruin the spaces anyways), but vboxes might be overkill (and they reset
+%       the indentation too).
+\newenvironment{solution}[1][]{
+    \ifthenelse{\equal{#1}{}}{}{\vbox to #1}\bgroup
+    \ifthenelse{\boolean{@showsolns}}{\color{red}\em}{\comment}
+} {
+    \ifthenelse{\boolean{@showsolns}}{}{\endcomment}
+    \egroup
+}
+
+\newcommand{\solnraw}[2]{
+    \ifthenelse{\boolean{@showsolns}}{#1}{#2}
+}
+
+\newcommand{\solninline}[1]{
+    \solnraw{{\color{red}\em #1}}{#1}
+}
+
+\newenvironment{problems}{\begin{enumerate}[item-vspace=\baselineskip]}{\end{enumerate}}

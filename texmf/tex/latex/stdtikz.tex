@@ -3,7 +3,7 @@
     bg/.style={dashed, draw=gray, fill=none, text=gray},
     fg/.style={very thick, draw=black, text=black},
     % Nodes:
-    anon/.style={every node/.append style={minimum width=0.3cm}},
+    anon/.style={every node/.append style={minimum width=0.5cm}},
     % Sets:
     set/.style={
         rectangle, dashed, inner sep=0.1cm, thick,
@@ -33,7 +33,8 @@
         dummy/.style={weight, draw=black},
         soln/.style={
             draw=red, text=red,
-            every node/.append style={draw=red, text=red}}
+            every node/.append style={draw=red, text=red},
+            every label/.append style={text=red}}
     },
     % Jobs:
     jobs/.style={

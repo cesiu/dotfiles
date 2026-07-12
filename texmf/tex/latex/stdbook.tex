@@ -1,0 +1,162 @@
+\input{stdclassic}
+
+\usepackage[english]{babel}
+\usepackage{tcolorbox}
+\usepackage{epigraph}
+
+\geometry{
+    top=1.5in,
+    inner=1.25in,
+    outer=2.5in,
+    bottom=1.25in
+}
+
+\makeatletter
+\let\MakeTitle\maketitle
+\renewcommand{\maketitle}{
+    \pagenumbering{gobble}
+    \newgeometry{inner=1in, outer=1in}
+    \vspace*{\fill}
+    \MakeTitle
+    \vspace*{\fill}
+    \restoregeometry
+    \pagebreak
+}
+
+% TODO: A lot of classicthesis' TOC styling either breaks or does nothing
+%       because tocloft/titlesec are currently incompatible with tagging:
+%       https://tex.stackexchange.com/questions/759605/.
+\setlength{\cftpartnumwidth}{1cm}
+\renewcommand{\cftpartfont}{}
+%\renewcommand{\cftpartfont}{\lsstyle\uppercase}
+\setlength{\cftbeforechapskip}{0cm}
+\setlength{\cftchapindent}{0.5cm}
+\setlength{\cftchapnumwidth}{0.5cm}
+\renewcommand{\cftchapfont}{}
+\cftpagenumbersoff{chapter}
+\setlength{\cftsecindent}{1cm}
+\setlength{\cftsecnumwidth}{1cm}
+\makeatother
+
+% NOTE: In a book, most code listings are outside an itemize.
+\lstset{
+    aboveskip=-0.4375em,
+    belowskip=-0.8125em
+}
+
+\lstdefinestyle{cli}{
+    numbers=none,
+    frame=none,
+    xleftmargin=1.125em,
+    aboveskip=-0.4375em,
+    belowskip=-0.8125em
+}
+
+\definecolor{CTtitle}{gray}{0}
+
+% TODO: There's probably a better way to reduce the code duplication here
+%       (see also talkthememedian.sty), but for now this covers all the block
+%       styles that I ever use.
+\tcbuselibrary{skins, hooks}
+
+\ExplSyntaxOn
+\tcbset{
+    classictcb/.style={
+        enhanced,
+        sharpish~corners,
+        boxrule=\heavyrulewidth,
+        toptitle=0.01cm,
+        before~title=\strut,
+        after~title=\strut,
+        bottomtitle=-0.06cm,
+        fonttitle=\scshape,
+        top=0.01cm,
+        left=0.04cm,
+        right=0.04cm,
+        bottom=-0.06cm,
+        % before~upper=\strut,
+        % after~upper=\strut,
+        % before~lower=\strut,
+        % after~lower=\strut,
+        halign=flush~left,
+        halign~title=flush~left,
+        parbox=false
+    }
+}
+\ExplSyntaxOff
+
+\newtcolorbox{classicblock}[1]{
+    classictcb,
+    colbacktitle=gray,
+    colback=white,
+    colframe=gray,
+    title={#1}
+}
+
+\newtcolorbox{classicdefn}{
+    classictcb,
+    colbacktitle=gray,
+    colback=white,
+    colframe=gray,
+    title={Definition}
+}
+
+\newtcolorbox{classicthm}{
+    classictcb,
+    colbacktitle=gray,
+    colback=white,
+    colframe=gray,
+    title={Theorem}
+}
+
+\newtcolorbox{classiclemma}{
+    classictcb,
+    colbacktitle=gray,
+    colback=white,
+    colframe=gray,
+    title={Lemma}
+}
+
+\newtcolorbox{classiccor}{
+    classictcb,
+    colbacktitle=gray,
+    colback=white,
+    colframe=gray,
+    title={Corollary}
+}
+
+\newtcolorbox{classicpf}{
+    classictcb,
+    colbacktitle=lightgray,
+    colback=white,
+    colframe=lightgray,
+    coltitle=darkgray,
+    title={Proof}
+}
+
+\newtcolorbox{classicpfcont}{
+    classictcb,
+    colbacktitle=lightgray,
+    colback=white,
+    colframe=lightgray,
+    coltitle=darkgray,
+    title={Proof \textit{(continued)}}
+}
+
+\newtcolorbox{classicex}{
+    classictcb,
+    colbacktitle=lightgray,
+    colback=white,
+    colframe=lightgray,
+    coltitle=darkgray,
+    title={Example}
+}
+
+\newtcolorbox{classicexcont}{
+    classictcb,
+    colbacktitle=lightgray,
+    colback=white,
+    colframe=lightgray,
+    coltitle=darkgray,
+    title={Example \textit{(continued)}}
+}

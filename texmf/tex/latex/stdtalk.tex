@@ -4,6 +4,7 @@
 \usepackage{setspace}
 \usepackage{multicol}
 \usepackage{contour}
+\usepackage{cancel}
 
 \input{stdltx}
 
@@ -30,6 +31,17 @@
 \algnewcommand\DPBase{\smallskip\item[\DPBullet\textit{Base Cases:}]}
 \algnewcommand\DPForm{\smallskip\item[\DPBullet\textit{Formula:}]}
 \algnewcommand\DPSoln{\smallskip\item[\DPBullet\textit{Solution:}]}
+
+% NOTE: In slides, we already use the spacing macros below depending on the
+%       context of a code listing, so this just needs to make CLI listings
+%       consistent when the same macros are used.
+\lstdefinestyle{cli}{
+    numbers=none,
+    frame=none,
+    xleftmargin=0.1em,
+    aboveskip=0.3125em,
+    belowskip=-0.1875em
+}
 
 \newdimen{\tempx}
 \newdimen{\tempy}
@@ -80,6 +92,8 @@
 \newcommand{\aftertikzskip}{\vspace{-0.5em}}
 \newcommand{\beforetableskip}{\vspace{-0.375em}}
 \newcommand{\aftertableskip}{\vspace{-0.5625em}}
+\newcommand{\beforelstskip}{\vspace{-0.6875em}}
+\newcommand{\afterlstskip}{\vspace{-0.5em}}
 
 % NOTE: These space out an itemize/enumerate so that the first bullet is
 %       "square" with the previous element...
@@ -98,6 +112,10 @@
 %       between the two stripes in the header bar:
 \newcommand{\betweenblockskip}{\vspace{-0.875em}}
 
+% NOTE: This removes the space between consecutive listings so that they
+%       appear to be the same listing with different styles:
+\newcommand{\betweenlstskip}{\vspace{-1.6875em}}
+
 % NOTE: This offsets the fact that blocks automatically add struts, which
 %       throw off the spacing if they don't surround text:
 \newcommand{\blocktopblockskip}{\vspace{-1.75em}}
@@ -111,3 +129,7 @@
 \newcommand{\blocktoptikzskip}{\vspace{-1.375em}}
 \newcommand{\blockbottikzskip}{\vspace{-1.5em}}
 \newcommand{\blockbottableskip}{\vspace{-1.5em}}
+\newcommand{\blocktoplstskip}{\vspace{-1.9375em}}
+\newcommand{\blockbotlstskip}{\vspace{-1.75em}}
+\newcommand{\blocktopmemskip}{\vspace{-2.9375em}\linebreak}
+\newcommand{\blockbotmemskip}{\vspace{0.3125em}}

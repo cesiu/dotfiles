@@ -189,8 +189,9 @@
 \ExplSyntaxOff
 \makeatother
 
-% TODO: There's probably a better way to reduce the code duplication here, but
-%       for now this covers all the block styles that I ever use.
+% TODO: There's probably a better way to reduce the code duplication here
+%       (see also stdbook.tex), but for now this covers all the block styles
+%       that I ever use.
 \ExplSyntaxOn
 \tcbset{
     mediantcb/.style={
@@ -204,12 +205,12 @@
         bottomtitle=-0.06cm,
         top=0.01cm,
         left=0.04cm,
+        right=0.04cm,
+        bottom=-0.06cm,
         before~upper=\strut,
         after~upper=\strut,
         before~lower=\strut,
         after~lower=\strut,
-        right=0.04cm,
-        bottom=-0.06cm,
         halign=flush~left,
         opacityfill=\tl_use:N \l__opacity_backend_fill_tl,
         opacitytext=\tl_use:N \l__opacity_backend_stroke_tl

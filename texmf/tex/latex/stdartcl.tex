@@ -1,16 +1,14 @@
-\usepackage[parts, manychapters, palatino=false, beramono=false]{classicthesis}
-\usepackage{geometry}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage{lastpage}
-\usepackage{amssymb}
-\usepackage{unicode-math}
-\usepackage{listings}
-\usepackage{cprotect}
-\usepackage{tikz}
-\usepackage{verbatim}
+\input{stdclassic}
 
-\input{stdltx}
+\usepackage[bottom]{footmisc}
+\usepackage{lastpage}
+\usepackage{cprotect}
+\usepackage{verbatim}
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{skak}
+
+
 
 \geometry{
     top=1.5in,
@@ -19,145 +17,45 @@
     right=1.25in,
 }
 
-% TODO: These don't appear to do anything anymore. See also:
-%       https://tug.ctan.org/macros/latex/required/latex-lab/blocks-code.pdf
-% \EditInstance{list}{itemize-1}{
-%     item-vspace=0em
-% }
-% \setlength{\topsep}{0em}
-% \setlength{\parsep}{0em}
-% \setlength{\itemsep}{0em}
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.5em}
-\setlength{\partopsep}{0em}
-\setlength{\multicolsep}{0em}
 
-\AddToHook{env/multicols/before}{\vspace{\parskip}}
-
-\setmonofont{Latin Modern Mono}
-\setkomafont{title}{\LARGE\lsstyle\scshape}
-\setkomafont{subtitle}{\large\bfseries}
-\setkomafont{author}{\large\bfseries}
-\setkomafont{date}{\large\bfseries}
 
 \clearpairofpagestyles
 \cfoot[\pagemark{}]{\pagemark{}}
 \ihead[]{\textsc{\theauthor : \thedoc}}
 \ohead[]{\textsc{\thedate}}
 
-% NOTE: This does not cover all the possible empty/non-empty combinations, but
-%       it's enough for my foreseeable use cases.
-\makeatletter
-\renewcommand{\maketitle}{
-    \ifx\@author\empty
-        \let\theauthor\@title
-        \let\thedoc\@subtitle
-    \else
-        \let\theauthor\@author
-        \let\thedoc\@title
-    \fi
-    \let\thesub\@subtitle
-    \let\thedate\@date
-
-    \begin{center}
-        \renewcommand{\arraystretch}{1.5}
-        \begin{tabular}{c}
-            \ifx\@subtitle\empty
-                \usekomafont{title}{\@title} \\
-            \else
-                \usekomafont{title}{\@title : \@subtitle} \\
-            \fi
-            \midrule[\heavyrulewidth]
-            \ifx\@author\empty
-                \usekomafont{subtitle}{\@date} \\
-            \else
-                \usekomafont{subtitle}{\@author , \@date} \\
-            \fi
-        \end{tabular}
-    \end{center}
-
-    \thispagestyle{plain}
-}
-\makeatother
-
 \titleformat{\section}{\relax}{\textbf{\uppercase{\thesection}}}{1em}{\bfseries\lsstyle\uppercase}
-\titlespacing*{\section}{0em}{\baselineskip}{\baselineskip}
 
-\renewcommand{\labelitemi}{\raisebox{0.4ex}{\scriptsize\bullet}}
-\renewcommand{\labelitemii}{\raisebox{0.4ex}{\scriptsize\bullet}}
-\renewcommand{\labelitemiii}{\raisebox{0.4ex}{\scriptsize\bullet}}
-\renewcommand{\labelenumii}{\alph{enumii}.}
-
-\hypersetup{colorlinks=false}
-
-% TODO: This is known to be a temporary workaround for tagging listings that
-%       may not work in later releases or in all possible use cases. See
-%       https://github.com/latex3/tagging-project/issues/70 and
-%       https://tex.stackexchange.com/questions/755794/.
-\makeatletter
-\ExplSyntaxOn
-\DeclareInstance{blockenv}{lstlisting}{display}{
-    name = lstlisting,
-    tag-name = verbatim,
-    tag-attr-class = ,
-    tagging-recipe = standard,
-    inner-level-counter = ,
-    increment-level = false,
-    setup-code = ,
-    block-instance = displayblock ,
-    inner-instance = ,
-    final-code = \tl_set:Nn \l__tag_para_main_tag_tl {codeline}\tagtool{paratag=Code},
-}
-\ExplSyntaxOff
-\lstnewenvironment{taglisting}[2][]{%
-    \UseInstance{blockenv}{lstlisting} {}
-    \lst@TestEOLChar{#2}%
-    \lstset{#1}%
-    \csname\@lst @SetFirstNumber\endcsname%
-}{%
-    \@nobreakfalse
-    \csname\@lst @SaveFirstNumber\endcsname%
-    \endblockenv
-}
-\makeatother
-
-\lstset{
-    numbers=left,
-    numberstyle=\scriptsize\ttfamily,
-    basicstyle=\normalsize\ttfamily,
-    tabsize=4,
-    frame=L,
-    xleftmargin=1.75em,
+% NOTE: In an article, most code listings are inside an itemize...
+\lstdefinestyle{cli}{
+    numbers=none,
+    frame=none,
+    xleftmargin=2.125em,
     aboveskip=0.4375em,
-    belowskip=0em,
-    upquote=true,
-    basewidth=0.5625em
+    belowskip=0em
 }
 
-\usetikzlibrary{
-    positioning,
-    calc,
-    fit,
-    shapes,
-    shapes.multipart,
-    shapes.misc,
-    intersections,
-    arrows,
-    arrows.meta,
-    backgrounds,
-    patterns,
-    shadings,
-    decorations.pathreplacing,
-    decorations.pathmorphing,
-    calligraphy,
-    automata,
-    chains
+% NOTE: ...but occasionally we need listings outside an itemize.
+\lstdefinestyle{exlst}{
+    aboveskip=-0.4375em,
+    belowskip=-0.8125em
 }
 
-\tikzstyle{contains}=[diamond-]
-\tikzstyle{implements}=[-open triangle 60, dashed]
-\tikzstyle{extends}=[-open triangle 60]
-\input{stdtikz.tex}
+\lstdefinestyle{excli}{
+    numbers=none,
+    frame=none,
+    xleftmargin=2.5em,
+    aboveskip=-0.4375em,
+    belowskip=-0.8125em
+}
+
+% NOTE: This is used for code listings that are placed inside of a zero-height
+%       solution box, so that they overlay some subsequent given code listing.
+\lstdefinestyle{soln}{
+    numbers=none,
+    frame=none,
+    aboveskip=0.8125em
+}
 
 \newboolean{@showsolns}
 \newcommand{\showsoln}{\setboolean{@showsolns}{true}}
@@ -168,7 +66,7 @@
 %       ruin the spaces anyways), but vboxes might be overkill (and they reset
 %       the indentation too).
 \newenvironment{solution}[1][]{
-    \ifthenelse{\equal{#1}{}}{}{\vbox to #1}\bgroup
+    \ifthenelse{\equal{#1}{}}{}{\vtop to #1}\bgroup
     \ifthenelse{\boolean{@showsolns}}{\color{red}\em}{\comment}
 } {
     \ifthenelse{\boolean{@showsolns}}{}{\endcomment}
@@ -184,3 +82,4 @@
 }
 
 \newenvironment{problems}{\begin{enumerate}[item-vspace=\baselineskip]}{\end{enumerate}}
+\newenvironment{choices}{\begin{enumerate}[item-vspace=-0.5em, begin-vspace=-0.5em]}{\end{enumerate}}

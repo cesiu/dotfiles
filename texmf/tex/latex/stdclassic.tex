@@ -1,113 +1,252 @@
-% NOTE: These settings apply only to non-Beamer, Classic Thesis documents.
+\usepackage[parts, manychapters, palatino=false, beramono=false]{classicthesis}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{contour}
 
-% Include general settings:
-\input{stdhandout.tex}
+\input{stdltx}
 
-% Redefine Classic Thesis Maroon as Cal Poly green and fix colors.
-\definecolor{Maroon}{RGB}{3,86,66}
-\definecolor{mdenvCTsemi}{gray}{0.55}
+\raggedbottom
 
-% Bring in Classic Thesis:
-\usepackage[parts,manychapters,palatino=false,beramono=false]{classicthesis}
-\hypersetup{colorlinks=false}
+\newcommand{\semiskip}{\vspace{4.5pt plus 1.5pt minus 1.5pt}}
+\newcommand{\tinyskip}{\vspace{1.5pt plus 0.5pt minus 0.5pt}}
+\newcommand{\zeroskip}{\vspace{0.0pt plus 0.0pt minus 0.0pt}}
+\newcommand{\halfstrut}{\rule{0pt}{0.5\baselineskip}}
+\newcommand{\cursor}[1]{\framebox{\halfstrut\!#1\!}}
 
-% Set indentations:
-\setlength{\parskip}{0.5em}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+% TODO: These don't appear to do anything anymore. See also:
+%       https://tug.ctan.org/macros/latex/required/latex-lab/blocks-code.pdf
+% \EditInstance{list}{itemize-1}{
+%     item-vspace=0em
+% }
+% \setlength{\topsep}{0em}
+% \setlength{\parsep}{0em}
+% \setlength{\itemsep}{0em}
 \setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\setlength{\partopsep}{0em}
+\setlength{\multicolsep}{0em}
+\AddToHook{env/multicols/before}{\vspace{\parskip}}
 
-% Fix monospacing and headings for Latin Modern:
+\titlespacing*{\section}{0em}{\baselineskip}{\baselineskip}
+
+\renewcommand{\labelitemi}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelitemii}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelitemiii}{\raisebox{0.4ex}{\scriptsize\bullet}}
+\renewcommand{\labelenumii}{\alph{enumii}.}
+
+\hypersetup{colorlinks=false}
+\definecolor{mediansage}{gray}{1}
+\definecolor{medianbeige}{gray}{1}
+
 \setmonofont{Latin Modern Mono}
+\setkomafont{title}{\LARGE\lsstyle\scshape}
+\setkomafont{subtitle}{\large\bfseries}
+\setkomafont{author}{\large\bfseries}
+\setkomafont{date}{\large\bfseries}
+
+% NOTE: See also https://tex.stackexchange.com/questions/666889/
+%       and https://tex.stackexchange.com/questions/307745/.
+\let\mathbb\relax
+\DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+\let\mathbfcal\relax
+\DeclareMathAlphabet{\mathbfcal}{OMS}{cmsy}{b}{n}
+
+\algrenewcommand{\alglinenumber}[1]{\scriptsize#1:}
+\algnewcommand\Input{\item[\textbf{Input:}]}
+\algnewcommand\Output{\item[\textbf{Output:}]}
+\algnewcommand{\Let}[1]{\State{\textbf{let} #1}}
+\renewcommand{\algorithmicreturn}[1]{\State{\textbf{return}#1}}
+\newcommand{\DPBullet}{\raisebox{0.5ex}{\hspace*{0.5em}\tiny$\bullet$\hspace*{0.7em}}}
+\algnewcommand\DPDefn{\smallskip\item[\DPBullet\textit{Definition:}]}
+\algnewcommand\DPBase{\smallskip\item[\DPBullet\textit{Base Cases:}]}
+\algnewcommand\DPForm{\smallskip\item[\DPBullet\textit{Formula:}]}
+\algnewcommand\DPSoln{\smallskip\item[\DPBullet\textit{Solution:}]}
+
+% NOTE: This does not cover all the possible empty/non-empty combinations, but
+%       it's enough for my foreseeable use cases.
 \makeatletter
-\DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[100]{\small\ct@caps\MakeTextUppercase{#1}}}
-\titleformat{\section}{\relax}{\textsc{\MakeTextLowercase{\small\thesection}}}{1em}{\spacedsmallcaps}
-\renewcommand{\sectionmark}[1]{\markright{{\scriptsize\thesection}\enspace\spacedlowsmallcaps{#1}}}
-\renewcommand{\spacedlowsmallcaps}[1]{\textls[120]{\small\ct@caps\MakeTextUppercase{#1}}}
+\renewcommand{\maketitle}{
+    \ifx\@author\empty
+        \let\theauthor\@title
+        \let\thedoc\@subtitle
+    \else
+        \let\theauthor\@author
+        \let\thedoc\@title
+    \fi
+    \let\thesub\@subtitle
+    \let\thedate\@date
 
-% Realign entries in table of contents:
-\@ifclassloaded{scrbook}{
-    \addtolength{\cftpartnumwidth}{1em}
-    \renewcommand{\cftpartpresnum}{\large\scshape}
-    \renewcommand{\cftpartaftersnumb}{\spacedsmallcaps}
+    \begin{center}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{c}
+            \ifx\@subtitle\empty
+                \usekomafont{title}{\@title} \\
+            \else
+                \usekomafont{title}{\@title : \@subtitle} \\
+            \fi
+            \midrule[\heavyrulewidth]
+            \ifx\@author\empty
+                \usekomafont{subtitle}{\@date} \\
+            \else
+                \usekomafont{subtitle}{\@author , \@date} \\
+            \fi
+        \end{tabular}
+    \end{center}
 
-    \setlength{\cftbeforechapskip}{0em}
-    \addtolength{\cftchapnumwidth}{1em}
-    \renewcommand{\cftchappresnum}{\hspace*{1.375em}\small}
-    \renewcommand{\cftchapaftersnumb}{\spacedsmallcaps}
-    \cftpagenumbersoff{chapter}
-
-    \addtolength{\cftsecindent}{1em}
-    \addtolength{\cftsecnumwidth}{0.5em}
-}{
-
+    \thispagestyle{plain}
 }
 \makeatother
 
-% Set enumitem spacing within marginpar:
-\SetEnumitemKey{marginpar}{
-    left=0.25em,
-    labelsep=0.25em,
-    topsep=0.25em,
-    itemsep=0em
+\newcommand{\pause}{}
+
+\newdimen{\tempx}
+\newdimen{\tempy}
+
+\usetikzlibrary{
+    positioning,
+    calc,
+    fit,
+    shapes,
+    shapes.multipart,
+    shapes.misc,
+    intersections,
+    arrows,
+    arrows.meta,
+    backgrounds,
+    patterns,
+    shadings,
+    decorations.pathreplacing,
+    decorations.pathmorphing,
+    calligraphy,
+    automata,
+    chains
 }
 
-% Add Beamer-esque blocks with Classic Thesis styling:
-\newmdenv[
-    linecolor=Maroon,
-    frametitlebackgroundcolor=Maroon,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{definition}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{ctdefinition}
+\tikzstyle{contains}=[diamond-]
+\tikzstyle{implements}=[-open triangle 60, dashed]
+\tikzstyle{extends}=[-open triangle 60]
+\input{stdtikz.tex}
 
-\newmdenv[
-    linecolor=Maroon,
-    frametitlebackgroundcolor=Maroon,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{theorem}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{cttheorem}
-
-\newmdenv[
-    linecolor=Maroon,
-    frametitlebackgroundcolor=Maroon,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{corollary}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{ctcorollary}
-
-\newmdenv[
-    linecolor=mdenvCTsemi,
-    frametitlebackgroundcolor=mdenvCTsemi,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{example}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{ctexample}
-
-\newmdenv[
-    linecolor=mdenvCTsemi,
-    frametitlebackgroundcolor=mdenvCTsemi,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{example \textit{\small(cont.)}}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{ctexcont}
-
-\newmdenv[
-    linecolor=mdenvCTsemi,
-    frametitle={},
-    skipabove=0.5em,
-    skipbelow=0.5em
-]{ctsubexample}
-
-\newmdenv[
-    linecolor=mdenvCTsemi,
-    frametitlebackgroundcolor=mdenvCTsemi,
-    frametitlefont=\color{white}\scshape,
-    frametitle={\textls[80]{lemma}},
-    skipabove=1em,
-    skipbelow=0.5em
-]{ctlemma}
+%% Include general settings:
+%\input{stdhandout.tex}
+%
+%% Redefine Classic Thesis Maroon as Cal Poly green and fix colors.
+%\definecolor{Maroon}{RGB}{3,86,66}
+%\definecolor{mdenvCTsemi}{gray}{0.55}
+%
+%% Bring in Classic Thesis:
+%\usepackage[parts,manychapters,palatino=false,beramono=false]{classicthesis}
+%\hypersetup{colorlinks=false}
+%
+%% Set indentations:
+%\setlength{\parskip}{0.5em}
+%\setlength{\parindent}{0em}
+%
+%% Fix monospacing and headings for Latin Modern:
+%\setmonofont{Latin Modern Mono}
+%\makeatletter
+%\DeclareRobustCommand{\spacedsmallcaps}[1]{\textls[100]{\small\ct@caps\MakeTextUppercase{#1}}}
+%\titleformat{\section}{\relax}{\textsc{\MakeTextLowercase{\small\thesection}}}{1em}{\spacedsmallcaps}
+%\renewcommand{\sectionmark}[1]{\markright{{\scriptsize\thesection}\enspace\spacedlowsmallcaps{#1}}}
+%\renewcommand{\spacedlowsmallcaps}[1]{\textls[120]{\small\ct@caps\MakeTextUppercase{#1}}}
+%
+%% Realign entries in table of contents:
+%\@ifclassloaded{scrbook}{
+%    \addtolength{\cftpartnumwidth}{1em}
+%    \renewcommand{\cftpartpresnum}{\large\scshape}
+%    \renewcommand{\cftpartaftersnumb}{\spacedsmallcaps}
+%
+%    \setlength{\cftbeforechapskip}{0em}
+%    \addtolength{\cftchapnumwidth}{1em}
+%    \renewcommand{\cftchappresnum}{\hspace*{1.375em}\small}
+%    \renewcommand{\cftchapaftersnumb}{\spacedsmallcaps}
+%    \cftpagenumbersoff{chapter}
+%
+%    \addtolength{\cftsecindent}{1em}
+%    \addtolength{\cftsecnumwidth}{0.5em}
+%}{
+%
+%}
+%\makeatother
+%
+%% Set enumitem spacing within marginpar:
+%\SetEnumitemKey{marginpar}{
+%    left=0.25em,
+%    labelsep=0.25em,
+%    topsep=0.25em,
+%    itemsep=0em
+%}
+%
+%% Add Beamer-esque blocks with Classic Thesis styling:
+%\newmdenv[
+%    linecolor=Maroon,
+%    frametitlebackgroundcolor=Maroon,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{definition}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{ctdefinition}
+%
+%\newmdenv[
+%    linecolor=Maroon,
+%    frametitlebackgroundcolor=Maroon,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{theorem}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{cttheorem}
+%
+%\newmdenv[
+%    linecolor=Maroon,
+%    frametitlebackgroundcolor=Maroon,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{corollary}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{ctcorollary}
+%
+%\newmdenv[
+%    linecolor=mdenvCTsemi,
+%    frametitlebackgroundcolor=mdenvCTsemi,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{example}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{ctexample}
+%
+%\newmdenv[
+%    linecolor=mdenvCTsemi,
+%    frametitlebackgroundcolor=mdenvCTsemi,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{example \textit{\small(cont.)}}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{ctexcont}
+%
+%\newmdenv[
+%    linecolor=mdenvCTsemi,
+%    frametitle={},
+%    skipabove=0.5em,
+%    skipbelow=0.5em
+%]{ctsubexample}
+%
+%\newmdenv[
+%    linecolor=mdenvCTsemi,
+%    frametitlebackgroundcolor=mdenvCTsemi,
+%    frametitlefont=\color{white}\scshape,
+%    frametitle={\textls[80]{lemma}},
+%    skipabove=1em,
+%    skipbelow=0.5em
+%]{ctlemma}

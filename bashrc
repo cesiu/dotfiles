@@ -96,11 +96,3 @@ alias starwars='telnet towel.blinkenlights.nl'
 OLDPWD=$(cat ~/.oldpwd)
 
 # End cesiu.
-
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/openjdk/bin:/Users/christopher/iCloud/grading/threepio/bin:/Users/christopher/iCloud/grading/artoo/bin:$PATH:/Users/christopher/iCloud/grading/threepio/packages/lc3/bin"
-export MANPATH="$MANPATH:/Users/christopher/iCloud/grading/threepio/man"
-export LIBRARY_PATH="$LIBRARY_PATH:/Users/christopher/iCloud/grading/threepio/packages/c/lib"
-export C_INCLUDE_PATH="$C_INCLUDE_PATH:/Users/christopher/iCloud/grading/threepio/packages/c/lib"
-export CLASSPATH="$CLASSPATH:/Users/christopher/iCloud/grading/threepio/packages/java/*"
-export PYTHONPATH="$PYTHONPATH:/Users/christopher/iCloud/grading/threepio/lib:/Users/christopher/iCloud/grading/threepio/packages/python:/Users/christopher/iCloud/grading/artoo/lib"
-export GPG_TTY=$(tty)

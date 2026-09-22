@@ -149,6 +149,8 @@
 	</data>
 	<key>Bell</key>
 	<false/>
+	<key>DynamicANSIForegroundColors</key>
+	<false/>
 	<key>CommandString</key>
 	<string>export LC_COLORSCHEME=@beamer</string>
 	<key>CursorColor</key>

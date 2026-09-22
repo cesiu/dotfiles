@@ -625,6 +625,8 @@
 	<false/>
 	<key>CursorBlink</key>
 	<false/>
+	<key>DynamicANSIForegroundColors</key>
+	<false/>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS

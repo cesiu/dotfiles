@@ -45,7 +45,7 @@ autocmd BufWritePost *.bin %!xxd -p
 " Enable syntax highlighting.
 syntax enable
 " Use the Monokai color scheme by default; Pencil for projections.
-if stridx($XMODIFIERS, "@beamer") >= 0
+if stridx($LC_COLORSCHEME, "@beamer") >= 0
     colorscheme pencil
     let g:airline_theme='silver'
 else
@@ -54,7 +54,7 @@ else
 endif
 " Check spelling in TeX, text, and Markdown files.
 autocmd FileType tex,txt,markdown setlocal spell spelllang=en_us
-set spellfile=$HOME/dotfiles/spellfile.utf-8.add
+set spellfile=$HOME/.dotfiles/spellfile.utf-8.add
 " Default to LaTeX highlighting.
 let g:tex_flavor = "latex"
 

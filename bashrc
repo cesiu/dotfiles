@@ -1,11 +1,17 @@
 # Begin cesiu.
 
 # Make the prompt look like Vim Airline.
-export PROMPT_COMMAND=genprompt
 function genprompt() {
-    export PS1="\[\e[0;40;37m\]$(date '+%I:%M:%S %p' | sed 's/:/\\[\\033[93m\\]:\\[\\033[37m\\]/g')\[\e[100;30m\] \[\e[1;36m\]\h \[\e[40;90m\] \[\e[1;34m\]\W\[\e[97m\]  \$\[\e[0;30m\]\[\e[0m\] "
+    export PS1="\[\e[0;40;37m\]$(date '+%I:%M:%S %p' | sed 's/:/\\[\\033[93m\\]:\\[\\033[37m\\]/g')\[\e[100;30m\] \[\e[1;36m\]\h \[\e[40;90m\] \[\e[1;34m\]\W\[\e[97m\] \$\[\e[0;30m\]\[\e[0m\] "
 }
-export PS2="\[\e[0;40;37m\] (cont.)  \[\e[0;30m\]\[\e[0m\] "
+
+if [ "x$XMODIFIERS" == "x@ide" ]; then
+    unset PROMPT_COMMAND
+    export PS1=">$ "
+else
+    export PROMPT_COMMAND=genprompt
+    export PS2="\[\e[0;40;37m\] (cont.)  \[\e[0;30m\]\[\e[0m\] "
+fi
 
 # vim masterrace
 export VISUAL=vim
@@ -54,7 +60,9 @@ else
 fi
 
 # Don't let those 101 classmates hijack your terminal during a lab quiz.
-mesg n
+if [ -x "$(command -v mesg)" ]; then
+    mesg n
+fi
 
 # Ignore macOS's ".DS_Store" directories when autocompleting.
 export FIGNORE="$FIGNORE:.DS_Store"
@@ -88,3 +96,11 @@ alias starwars='telnet towel.blinkenlights.nl'
 OLDPWD=$(cat ~/.oldpwd)
 
 # End cesiu.
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/openjdk/bin:/Users/christopher/iCloud/grading/threepio/bin:/Users/christopher/iCloud/grading/artoo/bin:$PATH:/Users/christopher/iCloud/grading/threepio/packages/lc3/bin"
+export MANPATH="$MANPATH:/Users/christopher/iCloud/grading/threepio/man"
+export LIBRARY_PATH="$LIBRARY_PATH:/Users/christopher/iCloud/grading/threepio/packages/c/lib"
+export C_INCLUDE_PATH="$C_INCLUDE_PATH:/Users/christopher/iCloud/grading/threepio/packages/c/lib"
+export CLASSPATH="$CLASSPATH:/Users/christopher/iCloud/grading/threepio/packages/java/*"
+export PYTHONPATH="$PYTHONPATH:/Users/christopher/iCloud/grading/threepio/lib:/Users/christopher/iCloud/grading/threepio/packages/python:/Users/christopher/iCloud/grading/artoo/lib"
+export GPG_TTY=$(tty)
